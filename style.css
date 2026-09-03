@@ -1,404 +1,1612 @@
-/* --- TEMEL AYARLAR & SIFIRLAMA --- */
+/* ========================================================= */
+/* RESET */
+/* ========================================================= */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+
+html {
+    scroll-behavior: smooth;
+}
+
 
 body {
-    display: flex;
-    background-color: #0f1115;
-    color: #e1e1e1;
+
+    font-family: "Montserrat", sans-serif;
+
+    background: #f3f1ed;
+
+    color: #111;
+
     overflow-x: hidden;
+
 }
 
-/* --- SOL YAN MENÜ (SIDEBAR) --- */
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+button {
+    font-family: inherit;
+}
+
+
+/* ========================================================= */
+/* SIDEBAR */
+/* ========================================================= */
+
 .sidebar {
-    width: 260px;
-    height: 100vh;
-    background-color: #161920;
+
     position: fixed;
+
     top: 0;
     left: 0;
+
+    width: 240px;
+
+    height: 100vh;
+
+    background: #090b10;
+
+    color: #fff;
+
     display: flex;
+
     flex-direction: column;
+
     justify-content: space-between;
-    padding: 25px 20px;
-    border-right: 1px solid #262a36;
-    z-index: 100;
+
+    z-index: 1000;
+
 }
 
-.logo h2 {
-    color: #d4af37; /* Altın sarısı mermer/taş vurgusu */
-    letter-spacing: 2px;
-    font-size: 24px;
+
+.sidebar-logo {
+
+    padding: 45px 25px;
+
 }
 
-.logo span {
-    font-size: 11px;
-    color: #8a8f9d;
-    letter-spacing: 3px;
+
+.logo-main {
+
+    font-size: 25px;
+
+    letter-spacing: 5px;
+
+    font-weight: 700;
+
 }
 
-.nav-links {
+
+.logo-main span {
+
+    font-weight: 400;
+
+    margin-left: 6px;
+
+}
+
+
+.logo-subtitle {
+
+    margin-top: 12px;
+
+    font-size: 9px;
+
+    letter-spacing: 5px;
+
+    color: #aaa;
+
+}
+
+
+.side-navigation {
+
     display: flex;
+
     flex-direction: column;
-    gap: 15px;
-    margin-top: 40px;
+
+    padding: 0 25px;
+
+    gap: 8px;
+
 }
 
-.nav-links a {
-    color: #a0a5b5;
-    text-decoration: none;
-    padding: 12px 15px;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 12px;
+
+.nav-link {
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid rgba(255,255,255,.08);
+
+    color: #aaa;
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+
+    transition: .25s;
+
 }
 
-.nav-links a:hover, .nav-links a.active {
-    background-color: #d4af37;
-    color: #0f1115;
-    font-weight: bold;
+
+.nav-link span:first-child {
+
+    margin-right: 8px;
+
+    font-size: 10px;
+
+    color: #777;
+
 }
+
+
+.nav-link:hover {
+
+    color: white;
+
+    padding-left: 7px;
+
+}
+
+
+.nav-link.active {
+
+    color: #d7b66e;
+
+}
+
 
 .sidebar-footer {
-    font-size: 12px;
-    color: #555866;
-    text-align: center;
+
+    padding: 25px;
+
+    border-top: 1px solid rgba(255,255,255,.08);
+
 }
 
-/* --- ANA İÇERİK ALANI --- */
+
+.sidebar-footer p {
+
+    font-size: 10px;
+
+    margin-bottom: 8px;
+
+    color: #aaa;
+
+}
+
+
+.sidebar-footer span {
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+
+    color: #666;
+
+}
+
+
+
+/* ========================================================= */
+/* MAIN */
+/* ========================================================= */
+
 .main-content {
-    margin-left: 260px;
-    width: calc(100% - 260px);
+
+    margin-left: 240px;
+
     min-height: 100vh;
+
 }
 
-/* --- SAĞ ÜST DİL SEÇİM BARI --- */
-.top-bar {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    z-index: 90;
+
+
+/* ========================================================= */
+/* TOPBAR */
+/* ========================================================= */
+
+.topbar {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 240px;
+
+    right: 0;
+
+    height: 90px;
+
+    background: rgba(243,241,237,.96);
+
+    border-bottom: 1px solid #ddd;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 0 50px;
+
+    z-index: 900;
+
 }
+
+
+.topbar-title {
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: #555;
+
+}
+
+
+
+/* ========================================================= */
+/* LANGUAGE */
+/* ========================================================= */
 
 .language-selector {
-    background: rgba(22, 25, 32, 0.85);
-    backdrop-filter: blur(8px);
-    padding: 8px 15px;
-    border-radius: 20px;
-    border: 1px solid #d4af37;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: #d4af37;
-}
 
-.language-selector select {
-    background: transparent;
-    border: none;
-    color: #fff;
-    outline: none;
-    cursor: pointer;
-    font-weight: 500;
-}
-
-.language-selector select option {
-    background-color: #161920;
-    color: #fff;
-}
-
-/* --- ANA EKRAN SLIDER (HERO) --- */
-.hero-slider {
     position: relative;
-    height: 80vh;
-    overflow: hidden;
+
 }
 
-.slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 0.8s ease-in-out;
+
+.language-button {
+
+    width: 110px;
+
+    height: 50px;
+
+    border-radius: 30px;
+
+    border: 1px solid #d5d0c8;
+
+    background: #f7f6f2;
+
+    cursor: pointer;
+
     display: flex;
+
     align-items: center;
-    padding: 0 80px;
+
+    justify-content: space-around;
+
+    font-weight: 600;
+
 }
 
-.slide.active {
-    opacity: 1;
-}
 
-.slide-content {
-    max-width: 600px;
-}
+.language-dropdown {
 
-.slide-content h1 {
-    font-size: 42px;
-    color: #ffffff;
-    margin-bottom: 15px;
-    line-height: 1.2;
-}
-
-.slide-content p {
-    font-size: 18px;
-    color: #ccc;
-    margin-bottom: 25px;
-}
-
-.btn {
-    display: inline-block;
-    padding: 12px 30px;
-    background-color: #d4af37;
-    color: #0f1115;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 4px;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    background-color: #f3ca4d;
-    transform: translateY(-2px);
-}
-
-.slider-btn {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    border: none;
-    padding: 15px;
-    cursor: pointer;
-    border-radius: 50%;
-    transition: 0.3s;
-}
 
-.slider-btn:hover {
-    background: #d4af37;
-    color: #000;
-}
+    top: 60px;
 
-.prev { left: 20px; }
-.next { right: 20px; }
+    right: 0;
 
-/* --- KOLEKSİYON & TAŞ DÜZENİ --- */
-.section {
-    padding: 60px 40px;
-}
+    width: 160px;
 
-.section-title {
-    font-size: 32px;
-    color: #d4af37;
-    margin-bottom: 10px;
-}
+    background: white;
 
-.section-subtitle {
-    color: #8a8f9d;
-    margin-bottom: 40px;
-}
+    border: 1px solid #ddd;
 
-.stone-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-}
-
-.stone-card {
-    background-color: #161920;
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid #262a36;
-    transition: transform 0.3s, border-color 0.3s;
-    cursor: pointer;
-}
-
-.stone-card:hover {
-    transform: translateY(-5px);
-    border-color: #d4af37;
-}
-
-.stone-img-container {
-    position: relative;
-    height: 220px;
-    overflow: hidden;
-}
-
-.stone-img-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s;
-}
-
-.stone-card:hover .stone-img-container img {
-    transform: scale(1.08);
-}
-
-.badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: rgba(0,0,0,0.7);
-    color: #d4af37;
-    padding: 4px 10px;
-    border-radius: 4px;
-    font-size: 12px;
-    border: 1px solid #d4af37;
-}
-
-.stone-info {
-    padding: 20px;
-}
-
-.stone-info h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-    color: #fff;
-}
-
-.stone-info p {
-    font-size: 14px;
-    color: #a0a5b5;
-    margin-bottom: 15px;
-    line-height: 1.4;
-}
-
-.card-btn {
-    background: none;
-    border: none;
-    color: #d4af37;
-    font-weight: bold;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-/* --- TAŞ DETAY MODAL PENCERESİ --- */
-.modal {
     display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.85);
-    z-index: 200;
-    justify-content: center;
-    align-items: center;
+
+    flex-direction: column;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,.12);
+
 }
+
+
+.language-dropdown.show {
+
+    display: flex;
+
+}
+
+
+.language-option {
+
+    background: none;
+
+    border: none;
+
+    padding: 15px;
+
+    text-align: left;
+
+    cursor: pointer;
+
+}
+
+
+.language-option:hover {
+
+    background: #111;
+
+    color: white;
+
+}
+
+
+
+/* ========================================================= */
+/* HERO */
+/* ========================================================= */
+
+.hero-section {
+
+    height: 100vh;
+
+    min-height: 650px;
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+
+.hero-slider {
+
+    height: 100%;
+
+}
+
+
+.hero-slide {
+
+    position: absolute;
+
+    inset: 0;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: opacity .8s ease;
+
+    background-size: cover;
+
+    background-position: center;
+
+}
+
+
+.hero-slide.active {
+
+    opacity: 1;
+
+    visibility: visible;
+
+}
+
+
+.hero-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.78),
+            rgba(0,0,0,.35),
+            rgba(0,0,0,.05)
+        );
+
+}
+
+
+.hero-text {
+
+    position: absolute;
+
+    z-index: 3;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    left: 9%;
+
+    width: min(650px, 75%);
+
+    color: white;
+
+}
+
+
+.hero-small {
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    color: #d7b66e;
+
+}
+
+
+.hero-text h1 {
+
+    margin-top: 25px;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(42px, 6vw, 90px);
+
+    line-height: 1;
+
+    font-weight: 500;
+
+}
+
+
+.hero-text h1 strong {
+
+    font-weight: 700;
+
+}
+
+
+.hero-text p {
+
+    margin-top: 25px;
+
+    max-width: 550px;
+
+    line-height: 1.8;
+
+    font-size: 14px;
+
+    color: rgba(255,255,255,.85);
+
+}
+
+
+.hero-button {
+
+    display: inline-block;
+
+    margin-top: 35px;
+
+    padding: 16px 28px;
+
+    background: #d7b66e;
+
+    color: #111;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+    font-weight: 700;
+
+}
+
+
+.hero-button:hover {
+
+    background: white;
+
+}
+
+
+
+/* ========================================================= */
+/* SLIDER CONTROLS */
+/* ========================================================= */
+
+.slider-controls {
+
+    position: absolute;
+
+    z-index: 10;
+
+    bottom: 40px;
+
+    left: 9%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+}
+
+
+.slider-arrow {
+
+    width: 45px;
+
+    height: 45px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255,255,255,.5);
+
+    background: rgba(0,0,0,.25);
+
+    color: white;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+}
+
+
+.slider-dots {
+
+    display: flex;
+
+    gap: 10px;
+
+}
+
+
+.slider-dot {
+
+    width: 35px;
+
+    height: 2px;
+
+    border: none;
+
+    background: rgba(255,255,255,.4);
+
+    cursor: pointer;
+
+}
+
+
+.slider-dot.active {
+
+    background: #d7b66e;
+
+}
+
+
+
+/* ========================================================= */
+/* GENERAL SECTION */
+/* ========================================================= */
+
+.section-label {
+
+    display: block;
+
+    color: #9d7d3c;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.intro-section,
+.collection-section,
+.about-section,
+.applications-section,
+.contact-section {
+
+    padding: 110px 7%;
+
+}
+
+
+.intro-section {
+
+    text-align: center;
+
+    max-width: 1000px;
+
+    margin: auto;
+
+}
+
+
+.intro-section h2 {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(35px, 5vw, 65px);
+
+    font-weight: 500;
+
+}
+
+
+.intro-section h2 span {
+
+    color: #9d7d3c;
+
+}
+
+
+.intro-section p {
+
+    max-width: 700px;
+
+    margin: 30px auto 0;
+
+    line-height: 1.9;
+
+    color: #666;
+
+}
+
+
+
+/* ========================================================= */
+/* COLLECTION */
+/* ========================================================= */
+
+.collection-section {
+
+    background: white;
+
+}
+
+
+.section-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 50px;
+
+    align-items: flex-end;
+
+    margin-bottom: 60px;
+
+}
+
+
+.section-header h2,
+.about-section h2,
+.applications-section h2,
+.contact-section h2 {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(35px, 4vw, 60px);
+
+    font-weight: 500;
+
+}
+
+
+.section-header h2 span,
+.about-section h2 span,
+.applications-section h2 span,
+.contact-section h2 span {
+
+    color: #9d7d3c;
+
+}
+
+
+.section-header p {
+
+    max-width: 350px;
+
+    color: #666;
+
+    line-height: 1.8;
+
+    font-size: 13px;
+
+}
+
+
+
+/* ========================================================= */
+/* PRODUCT GRID */
+/* ========================================================= */
+
+.product-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 35px;
+
+}
+
+
+.product-card {
+
+    cursor: pointer;
+
+    background: #f5f3ef;
+
+    overflow: hidden;
+
+}
+
+
+.product-image {
+
+    position: relative;
+
+    aspect-ratio: 1 / 0.72;
+
+    overflow: hidden;
+
+    background: #ddd;
+
+}
+
+
+.product-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform .5s;
+
+}
+
+
+.product-card:hover img {
+
+    transform: scale(1.05);
+
+}
+
+
+.product-hover {
+
+    position: absolute;
+
+    left: 0;
+
+    right: 0;
+
+    bottom: 0;
+
+    padding: 20px;
+
+    background: #111;
+
+    color: white;
+
+    text-align: center;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    transform: translateY(100%);
+
+    transition: .3s;
+
+}
+
+
+.product-card:hover .product-hover {
+
+    transform: translateY(0);
+
+}
+
+
+.product-info {
+
+    padding: 25px;
+
+}
+
+
+.product-info span {
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: #888;
+
+}
+
+
+.product-info h3 {
+
+    margin-top: 14px;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 26px;
+
+    font-weight: 500;
+
+}
+
+
+.product-info p {
+
+    margin-top: 10px;
+
+    color: #777;
+
+    font-size: 13px;
+
+}
+
+
+
+/* ========================================================= */
+/* ABOUT */
+/* ========================================================= */
+
+.about-section {
+
+    background: #0c0e13;
+
+    color: white;
+
+}
+
+
+.about-content {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 100px;
+
+}
+
+
+.about-text p {
+
+    margin-top: 25px;
+
+    line-height: 1.9;
+
+    color: #aaa;
+
+}
+
+
+.about-features {
+
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 1px;
+
+    background: rgba(255,255,255,.08);
+
+}
+
+
+.feature-box {
+
+    padding: 35px;
+
+    background: #0c0e13;
+
+}
+
+
+.feature-box span {
+
+    color: #d7b66e;
+
+    font-size: 11px;
+
+}
+
+
+.feature-box h3 {
+
+    margin-top: 15px;
+
+    letter-spacing: 1px;
+
+    font-size: 15px;
+
+}
+
+
+.feature-box p {
+
+    margin-top: 12px;
+
+    color: #888;
+
+    line-height: 1.7;
+
+    font-size: 13px;
+
+}
+
+
+
+/* ========================================================= */
+/* APPLICATIONS */
+/* ========================================================= */
+
+.applications-section {
+
+    background: #ebe8e1;
+
+}
+
+
+.applications-grid {
+
+    margin-top: 60px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+
+}
+
+
+.application-item {
+
+    background: white;
+
+    padding: 35px;
+
+    min-height: 230px;
+
+}
+
+
+.application-item span {
+
+    color: #a18345;
+
+    font-size: 11px;
+
+}
+
+
+.application-item h3 {
+
+    margin-top: 35px;
+
+    font-size: 17px;
+
+    letter-spacing: 1px;
+
+}
+
+
+.application-item p {
+
+    margin-top: 15px;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    color: #777;
+
+}
+
+
+
+/* ========================================================= */
+/* CONTACT */
+/* ========================================================= */
+
+.contact-section {
+
+    background: white;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 100px;
+
+}
+
+
+.contact-left p {
+
+    margin-top: 25px;
+
+    color: #777;
+
+    line-height: 1.8;
+
+}
+
+
+.contact-details {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 30px;
+
+}
+
+
+.contact-item {
+
+    padding-bottom: 25px;
+
+    border-bottom: 1px solid #ddd;
+
+}
+
+
+.contact-item span {
+
+    display: block;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color: #999;
+
+    margin-bottom: 12px;
+
+}
+
+
+.contact-item a {
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+}
+
+
+.contact-item a:hover {
+
+    color: #9d7d3c;
+
+}
+
+
+
+/* ========================================================= */
+/* FOOTER */
+/* ========================================================= */
+
+.footer {
+
+    background: #090b10;
+
+    color: white;
+
+    padding: 40px 7%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+.footer strong {
+
+    display: block;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 8px;
+
+}
+
+
+.footer span {
+
+    color: #777;
+
+    font-size: 10px;
+
+}
+
+
+.footer p {
+
+    color: #666;
+
+    font-size: 10px;
+
+}
+
+
+
+/* ========================================================= */
+/* MODAL */
+/* ========================================================= */
+
+.product-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 2000;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 30px;
+
+}
+
+
+.product-modal.show {
+
+    display: flex;
+
+}
+
+
+.modal-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background: rgba(0,0,0,.75);
+
+}
+
 
 .modal-content {
-    background: #161920;
-    padding: 30px;
-    border-radius: 8px;
-    max-width: 700px;
-    width: 90%;
-    border: 1px solid #d4af37;
+
     position: relative;
-}
 
-.close-modal {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    color: #fff;
-    font-size: 30px;
-    cursor: pointer;
-}
+    z-index: 2;
 
-#modalImgMain {
+    max-width: 1100px;
+
     width: 100%;
-    height: 350px;
-    object-fit: cover;
-    border-radius: 6px;
-    margin-top: 15px;
-}
 
-.modal-thumbnails {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
-    overflow-x: auto;
-}
+    max-height: 90vh;
 
-.modal-thumbnails img {
-    width: 80px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 4px;
-    cursor: pointer;
-    opacity: 0.6;
-    border: 1px solid transparent;
-}
+    overflow-y: auto;
 
-.modal-thumbnails img:hover, .modal-thumbnails img.active-thumb {
-    opacity: 1;
-    border-color: #d4af37;
-}
+    background: white;
 
-/* --- ALT BİLGİ & İLETİŞİM ALANI --- */
-.footer-section {
-    background-color: #0a0b0e;
-    padding: 60px 40px;
-    border-top: 1px solid #262a36;
-}
-
-.footer-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
+
+    grid-template-columns: 1.1fr .9fr;
+
 }
 
-.footer-info h2 {
-    color: #d4af37;
-    margin-bottom: 10px;
+
+.modal-image {
+
+    background: #eee;
+
+    min-height: 500px;
+
 }
 
-.footer-info p {
-    color: #8a8f9d;
-    margin-bottom: 25px;
+
+.modal-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
 }
 
-.contact-detail {
+
+.modal-details {
+
+    padding: 60px;
+
+}
+
+
+.modal-code {
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    color: #a18345;
+
+}
+
+
+.modal-details h2 {
+
+    margin-top: 20px;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 42px;
+
+    font-weight: 500;
+
+}
+
+
+.modal-line {
+
+    width: 70px;
+
+    height: 1px;
+
+    background: #b18b42;
+
+    margin: 30px 0;
+
+}
+
+
+.modal-info-row {
+
     display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 15px;
+
+    justify-content: space-between;
+
+    padding: 14px 0;
+
+    border-bottom: 1px solid #eee;
+
+    font-size: 12px;
+
 }
 
-.contact-detail i {
-    color: #d4af37;
-    font-size: 20px;
-    width: 25px;
+
+.modal-info-row span {
+
+    color: #888;
+
 }
 
-.contact-detail a {
-    color: #fff;
-    text-decoration: none;
+
+.modal-description {
+
+    margin-top: 30px;
+
+    color: #777;
+
+    line-height: 1.8;
+
+    font-size: 13px;
+
 }
 
-.contact-detail a:hover {
-    color: #d4af37;
+
+.modal-button {
+
+    display: inline-block;
+
+    margin-top: 30px;
+
+    padding: 16px 25px;
+
+    background: #111;
+
+    color: white;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+
 }
 
-/* --- MOBİL UYUMLULUK (RESPONSIVE) --- */
+
+.modal-close {
+
+    position: absolute;
+
+    z-index: 5;
+
+    top: 15px;
+
+    right: 15px;
+
+    width: 45px;
+
+    height: 45px;
+
+    border: none;
+
+    background: #111;
+
+    color: white;
+
+    font-size: 28px;
+
+    cursor: pointer;
+
+}
+
+
+
+/* ========================================================= */
+/* MOBILE MENU */
+/* ========================================================= */
+
+.mobile-menu-button {
+
+    display: none;
+
+}
+
+
+
+/* ========================================================= */
+/* TABLET */
+/* ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .product-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .applications-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .about-content {
+
+        gap: 50px;
+
+    }
+
+}
+
+
+
+/* ========================================================= */
+/* MOBILE */
+/* ========================================================= */
+
 @media (max-width: 768px) {
-    body { flex-direction: column; }
-    .sidebar { width: 100%; height: auto; position: relative; }
-    .main-content { margin-left: 0; width: 100%; }
-    .footer-container { grid-template-columns: 1fr; }
-    .slide { padding: 0 20px; }
-    .slide-content h1 { font-size: 28px; }
+
+
+    .sidebar {
+
+        transform: translateX(-100%);
+
+        transition: transform .3s;
+
+        width: 270px;
+
+    }
+
+
+    .sidebar.open {
+
+        transform: translateX(0);
+
+    }
+
+
+    .mobile-menu-button {
+
+        display: block;
+
+        position: fixed;
+
+        top: 18px;
+
+        left: 18px;
+
+        z-index: 1500;
+
+        width: 48px;
+
+        height: 48px;
+
+        border: none;
+
+        background: #111;
+
+        color: white;
+
+        font-size: 22px;
+
+    }
+
+
+    .main-content {
+
+        margin-left: 0;
+
+    }
+
+
+    .topbar {
+
+        left: 0;
+
+        height: 75px;
+
+        padding: 0 20px 0 85px;
+
+    }
+
+
+    .topbar-title {
+
+        display: none;
+
+    }
+
+
+    .hero-section {
+
+        min-height: 650px;
+
+    }
+
+
+    .hero-text {
+
+        left: 7%;
+
+        width: 85%;
+
+    }
+
+
+    .hero-text h1 {
+
+        font-size: 48px;
+
+    }
+
+
+    .slider-controls {
+
+        left: 7%;
+
+    }
+
+
+    .intro-section,
+    .collection-section,
+    .about-section,
+    .applications-section,
+    .contact-section {
+
+        padding: 80px 7%;
+
+    }
+
+
+    .section-header {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+
+    .product-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .about-content {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .applications-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .contact-section {
+
+        grid-template-columns: 1fr;
+
+        gap: 60px;
+
+    }
+
+
+    .footer {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 25px;
+
+    }
+
+
+    .modal-content {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .modal-image {
+
+        min-height: 300px;
+
+    }
+
+
+    .modal-details {
+
+        padding: 35px 25px;
+
+    }
+
+
+    .modal-details h2 {
+
+        font-size: 32px;
+
+    }
+
 }
