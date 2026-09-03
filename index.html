@@ -2,1289 +2,262 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>AB AYCAM | Creating Brilliance</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AbayCam - Doğaltaş & Mermer Koleksiyonu</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
 
-    <!-- =========================================
-         HEADER
-    ========================================== -->
-
-    <header class="top-header">
-
-        <button
-            class="menu-button"
-            id="menuButton"
-            aria-label="Menüyü Aç"
-        >
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-
-
-        <a href="#home" class="logo">
-
-            <span class="logo-ab">AB</span>
-
-            <span class="logo-aycam">
-                AYCAM
-            </span>
-
-        </a>
-
-
-        <div class="header-actions">
-
-            <div class="language-wrapper">
-
-                <button
-                    class="language-button"
-                    id="languageButton"
-                >
-
-                    <span id="currentLanguage">
-                        TR
-                    </span>
-
-                    <span class="language-arrow">
-                        ▾
-                    </span>
-
-                </button>
-
-
-                <div
-                    class="language-menu"
-                    id="languageMenu"
-                >
-
-                    <button data-lang="TR">
-                        Türkçe
-                    </button>
-
-                    <button data-lang="EN">
-                        English
-                    </button>
-
-                    <button data-lang="AR">
-                        العربية
-                    </button>
-
-                </div>
-
-            </div>
-
+    <!-- Sol Yan Menü -->
+    <aside class="sidebar">
+        <div class="logo">
+            <h2>ABAYCAM</h2>
+            <span>STONE & MARBLE</span>
         </div>
-
-    </header>
-
-
-
-    <!-- =========================================
-         SIDE MENU
-    ========================================== -->
-
-    <aside
-        class="side-menu"
-        id="sideMenu"
-    >
-
-        <div class="side-menu-top">
-
-            <div class="side-logo">
-
-                <span>AB</span>
-
-                <strong>
-                    AYCAM
-                </strong>
-
-            </div>
-
-
-            <button
-                class="close-menu"
-                id="closeMenu"
-                aria-label="Menüyü Kapat"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-        <nav class="side-navigation">
-
-            <a
-                href="#home"
-                class="nav-link"
-            >
-                <span>01</span>
-                HOME
-            </a>
-
-
-            <a
-                href="#collection"
-                class="nav-link"
-            >
-                <span>02</span>
-                COLLECTION
-            </a>
-
-
-            <a
-                href="#process"
-                class="nav-link"
-            >
-                <span>03</span>
-                OUR PROCESS
-            </a>
-
-
-            <a
-                href="#applications"
-                class="nav-link"
-            >
-                <span>04</span>
-                APPLICATIONS
-            </a>
-
-
-            <a
-                href="#custom"
-                class="nav-link"
-            >
-                <span>05</span>
-                CUSTOM DESIGN
-            </a>
-
-
-            <a
-                href="#contact"
-                class="nav-link"
-            >
-                <span>06</span>
-                CONTACT
-            </a>
-
+        <nav class="nav-links">
+            <a href="#hero" class="active"><i class="fa-solid fa-house"></i> <span data-i18n="nav_home">Ana Sayfa</span></a>
+            <a href="#collection"><i class="fa-solid fa-layer-group"></i> <span data-i18n="nav_collection">Koleksiyon</span></a>
+            <a href="#contact"><i class="fa-solid fa-envelope"></i> <span data-i18n="nav_contact">İletişim</span></a>
         </nav>
-
-
-        <div class="side-footer">
-
-            <p>
-                © 2026 AB AYCAM
-            </p>
-
-            <strong>
-                CREATING BRILLIANCE
-            </strong>
-
+        <div class="sidebar-footer">
+            <p>&copy; 2026 AbayCam</p>
         </div>
-
     </aside>
 
+    <!-- Ana İçerik Alanı -->
+    <main class="main-content">
 
-
-    <!-- MENU OVERLAY -->
-
-    <div
-        class="menu-overlay"
-        id="menuOverlay"
-    ></div>
-
-
-
-    <!-- =========================================
-         MAIN CONTENT
-    ========================================== -->
-
-    <main>
-
-
-        <!-- =====================================
-             HOME
-        ====================================== -->
-
-        <section
-            id="home"
-            class="hero-section"
-        >
-
-            <div class="hero-content">
-
-                <p class="hero-eyebrow">
-                    PREMIUM TEXTILE EMBELLISHMENT
-                </p>
-
-
-                <h1>
-                    TEXTILE
-                    <br>
-                    DESIGNS
-                    <br>
-                    THAT SHINE.
-                </h1>
-
-
-                <p class="hero-description">
-
-                    Premium crystal stone, hotfix and
-                    textile embellishment solutions
-                    designed for fashion brands and
-                    manufacturers.
-
-                </p>
-
-
-                <a
-                    href="#collection"
-                    class="hero-button"
-                >
-
-                    VIEW COLLECTION
-
-                    <span>
-                        →
-                    </span>
-
-                </a>
-
+        <!-- Sağ Üst Dil Seçeneği -->
+        <div class="top-bar">
+            <div class="language-selector">
+                <i class="fa-solid fa-globe"></i>
+                <select id="langSelect" onchange="changeLanguage(this.value)">
+                    <option value="tr">Türkçe</option>
+                    <option value="ar">العامية المصرية (Mısır Arapçası)</option>
+                    <option value="en">English</option>
+                </select>
             </div>
+        </div>
 
-
-            <div class="hero-image">
-
-                <img
-                    src="images/1.png"
-                    alt="AB AYCAM Textile Design"
-                >
-
+        <!-- Ana Ekran Slider (Hero) -->
+        <section id="hero" class="hero-slider">
+            <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('1.png');">
+                <div class="slide-content">
+                    <h1 data-i18n="slide1_title">Doğanın Zarafeti, Mimarinin Gücü</h1>
+                    <p data-i18n="slide1_desc">En nadide mermer ve doğaltaş koleksiyonları ile projelerinize değer katıyoruz.</p>
+                    <a href="#collection" class="btn" data-i18n="btn_explore">Koleksiyonu Keşfet</a>
+                </div>
             </div>
-
+            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('2.png');">
+                <div class="slide-content">
+                    <h1 data-i18n="slide2_title">Eşsiz Dokular, Premium Kalite</h1>
+                    <p data-i18n="slide2_desc">Dünyanın en elit taş bloklarını doğrudan projelerinizle buluşturuyoruz.</p>
+                    <a href="#contact" class="btn" data-i18n="btn_quote">Teklif Alın</a>
+                </div>
+            </div>
+            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('3.png');">
+                <div class="slide-content">
+                    <h1 data-i18n="slide3_title">Mısır ve Dünya Pazarına Özel Çözümler</h1>
+                    <p data-i18n="slide3_desc">Uzman ekibimiz ve geniş lojistik ağımızla mimari projelerinizde yanınızdayız.</p>
+                    <a href="#collection" class="btn" data-i18n="btn_explore">Taşlarımızı İnceleyin</a>
+                </div>
+            </div>
+            
+            <button class="slider-btn prev" onclick="moveSlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="slider-btn next" onclick="moveSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
         </section>
 
+        <!-- Koleksiyon / Taş Düzeni Bölümü (10 Taş) -->
+        <section id="collection" class="section">
+            <h2 class="section-title" data-i18n="title_collection">Doğaltaş & Mermer Koleksiyonumuz</h2>
+            <p class="section-subtitle" data-i18n="sub_collection">İncelemek istediğiniz taşın üzerine tıklayarak detaylı görsellerini görebilirsiniz.</p>
 
+            <div class="stone-grid">
+                <!-- Taş 1 -->
+                <div class="stone-card" onclick="openModal('stone1')">
+                    <div class="stone-img-container">
+                        <img src="1.png" alt="Taş 1">
+                        <span class="badge">N101</span>
+                    </div>
+                    <div class="stone-info">
+                        <h3>Premium Seri - Taş 1</h3>
+                        <p data-i18n="stone_desc_gen">Özel dokusu ve damar yapısıyla mimari projeler için ideal doğaltaş.</p>
+                        <button class="card-btn" data-i18n="btn_view_details">Detaylı Görseller <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
 
-        <!-- =====================================
-             INTRO
-        ====================================== -->
+                <!-- Taş 2 -->
+                <div class="stone-card" onclick="openModal('stone2')">
+                    <div class="stone-img-container">
+                        <img src="2.png" alt="Taş 2">
+                        <span class="badge">N102</span>
+                    </div>
+                    <div class="stone-info">
+                        <h3>Lüks Mermer - Taş 2</h3>
+                        <p data-i18n="stone_desc_gen">Özel dokusu ve damar yapısıyla mimari projeler için ideal doğaltaş.</p>
+                        <button class="card-btn" data-i18n="btn_view_details">Detaylı Görseller <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
 
-        <section class="intro-section">
+                <!-- Taş 3 -->
+                <div class="stone-card" onclick="openModal('stone3')">
+                    <div class="stone-img-container">
+                        <img src="3.png" alt="Taş 3">
+                        <span class="badge">N103</span>
+                    </div>
+                    <div class="stone-info">
+                        <h3>Modern Dokulu Seri - Taş 3</h3>
+                        <p data-i18n="stone_desc_gen">Özel dokusu ve damar yapısıyla mimari projeler için ideal doğaltaş.</p>
+                        <button class="card-btn" data-i18n="btn_view_details">Detaylı Görseller <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
 
-            <div class="intro-left">
+                <!-- Taş 4 -->
+                <div class="stone-card" onclick="openModal('stone4')">
+                    <div class="stone-img-container">
+                        <img src="4.png" alt="Taş 4">
+                        <span class="badge">N104</span>
+                    </div>
+                    <div class="stone-info">
+                        <h3>Seçkin Koleksiyon - Taş 4</h3>
+                        <p data-i18n="stone_desc_gen">Özel dokusu ve damar yapısıyla mimari projeler için ideal doğaltaş.</p>
+                        <button class="card-btn" data-i18n="btn_view_details">Detaylı Görseller <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
 
-                <p>
-                    AB AYCAM
-                </p>
+                <!-- Taş 5 -->
+                <div class="stone-card" onclick="openModal('stone5')">
+                    <div class="stone-img-container">
+                        <img src="5.png" alt="Taş 5">
+                        <span class="badge">N105</span>
+                    </div>
+                    <div class="stone-info">
+                        <h3>Özel Tasarım Seri - Taş 5</h3>
+                        <p data-i18n="stone_desc_gen">Özel dokusu ve damar yapısıyla mimari projeler için ideal doğaltaş.</p>
+                        <button class="card-btn" data-i18n="btn_view_details">Detaylı Görseller <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
 
-                <h2>
-                    CREATING BRILLIANCE
-                    FOR TEXTILE.
-                </h2>
+                <!-- Taş 6 -->
+                <div class="stone-card" onclick="openModal('stone6')">
+                    <div class="stone-img-container">
+                        <img src="6.png" alt="Taş 6">
+                        <span class="badge">N106</span>
+                    </div>
+                    <div class="stone-info">
+                        <h3>Klasik Doğaltaş - Taş 6</h3>
+                        <p data-i18n="stone_desc_gen">Özel dokusu ve damar yapısıyla mimari projeler için ideal doğaltaş.</p>
+                        <button class="card-btn" data-i18n="btn_view_details">Detaylı Görseller <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
 
+                <!-- Taş 7 -->
+                <div class="stone-card" onclick="openModal('stone7')">
+                    <div class="stone-img-container">
+                        <img src="7.png" alt="Taş 7">
+                        <span class="badge">N107</span>
+                    </div>
+                    <div class="stone-info">
+                        <h3>Zarif Yapılı Seri - Taş 7</h3>
+                        <p data-i18n="stone_desc_gen">Özel dokusu ve damar yapısıyla mimari projeler için ideal doğaltaş.</p>
+                        <button class="card-btn" data-i18n="btn_view_details">Detaylı Görseller <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Taş 8 -->
+                <div class="stone-card" onclick="openModal('stone8')">
+                    <div class="stone-img-container">
+                        <img src="8.png" alt="Taş 8">
+                        <span class="badge">N108</span>
+                    </div>
+                    <div class="stone-info">
+                        <h3>Estetik Mermer - Taş 8</h3>
+                        <p data-i18n="stone_desc_gen">Özel dokusu ve damar yapısıyla mimari projeler için ideal doğaltaş.</p>
+                        <button class="card-btn" data-i18n="btn_view_details">Detaylı Görseller <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Taş 9 -->
+                <div class="stone-card" onclick="openModal('stone9')">
+                    <div class="stone-img-container">
+                        <img src="9.png" alt="Taş 9">
+                        <span class="badge">N109</span>
+                    </div>
+                    <div class="stone-info">
+                        <h3>Prestij Serisi - Taş 9</h3>
+                        <p data-i18n="stone_desc_gen">Özel dokusu ve damar yapısıyla mimari projeler için ideal doğaltaş.</p>
+                        <button class="card-btn" data-i18n="btn_view_details">Detaylı Görseller <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Taş 10 -->
+                <div class="stone-card" onclick="openModal('stone10')">
+                    <div class="stone-img-container">
+                        <img src="10.png" alt="Taş 10">
+                        <span class="badge">N110</span>
+                    </div>
+                    <div class="stone-info">
+                        <h3>Siyah Gold Seri - Taş 10</h3>
+                        <p data-i18n="stone_desc_gen">Özel dokusu ve damar yapısıyla mimari projeler için ideal doğaltaş.</p>
+                        <button class="card-btn" data-i18n="btn_view_details">Detaylı Görseller <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
             </div>
-
-
-            <div class="intro-right">
-
-                <p>
-
-                    We transform fabrics into distinctive
-                    fashion surfaces through crystal,
-                    stone and premium embellishment
-                    applications.
-
-                </p>
-
-
-                <p>
-
-                    Every design is developed with
-                    production quality, durability and
-                    visual impact in mind.
-
-                </p>
-
-            </div>
-
         </section>
 
+        <!-- Alt Kısım / İletişim ve Konum -->
+        <footer id="contact" class="footer-section">
+            <div class="footer-container">
+                <div class="footer-info">
+                    <h2 data-i18n="contact_title">Bizimle İletişime Geçin</h2>
+                    <p data-i18n="contact_desc">Projeleriniz ve toplu mermer/taş siparişleriniz için 7/24 hizmetinizdeyiz.</p>
+                    
+                    <div class="contact-detail">
+                        <i class="fa-solid fa-phone"></i>
+                        <div>
+                            <strong>Telefon:</strong>
+                            <a href="tel:+201039812810">+20 103 981 2810</a>
+                        </div>
+                    </div>
 
+                    <div class="contact-detail">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div>
+                            <strong>E-Mail:</strong>
+                            <a href="mailto:levent.aslan@abaycam.com">levent.aslan@abaycam.com</a>
+                        </div>
+                    </div>
 
-        <!-- =====================================
-             COLLECTION
-        ====================================== -->
-
-        <section
-            id="collection"
-            class="collection-section"
-        >
-
-
-            <div class="section-heading">
-
-                <div>
-
-                    <p class="section-number">
-                        02
-                    </p>
-
-                    <p class="section-label">
-                        COLLECTION
-                    </p>
-
+                    <div class="contact-detail">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div>
+                            <strong>Konum:</strong>
+                            <a href="https://maps.app.goo.gl/fuM3JiKSK4K6LEa98" target="_blank" data-i18n="map_link">Haritada Görüntüle (Google Maps)</a>
+                        </div>
+                    </div>
                 </div>
 
-
-                <h2>
-                    TEXTILE DESIGNS
-                    <br>
-                    COLLECTION
-                </h2>
-
+                <div class="footer-map">
+                    <iframe src="https://maps.google.com/maps?q=30.0444,31.2357&z=15&output=embed" width="100%" height="250" style="border:0; border-radius:8px;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
             </div>
-
-
-
-            <!-- COLLECTION GRID -->
-
-            <div class="collection-grid">
-
-
-
-                <!-- 01 -->
-
-                <article
-                    class="design-card"
-                    data-image="images/1.png"
-                    data-name="EMERALD CRYSTAL"
-                    data-color="Deep Emerald Green"
-                    data-code="AB-CR-001"
-                    data-description="Premium crystal stone pattern designed for elegant fashion applications."
-                    data-application="T-Shirts, Dresses, Blouses"
-                >
-
-                    <div class="card-image">
-
-                        <img
-                            src="images/1.png"
-                            alt="Emerald Crystal Textile Design"
-                        >
-
-                        <div class="image-overlay">
-
-                            <span>
-                                VIEW DETAILS
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="card-content">
-
-                        <div class="card-code">
-                            01 · AB-CR-001
-                        </div>
-
-
-                        <h3>
-                            EMERALD
-                            CRYSTAL
-                        </h3>
-
-
-                        <div class="card-bottom">
-
-                            <span>
-                                DEEP EMERALD
-                            </span>
-
-                            <button
-                                class="detail-button"
-                            >
-                                +
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- 02 -->
-
-                <article
-                    class="design-card"
-                    data-image="images/2.png"
-                    data-name="MIDNIGHT BLOOM"
-                    data-color="Midnight Black"
-                    data-code="AB-MB-002"
-                    data-description="A refined crystal pattern with strong visual contrast and premium surface detailing."
-                    data-application="Hoodies, Dresses, Premium Tops"
-                >
-
-                    <div class="card-image">
-
-                        <img
-                            src="images/2.png"
-                            alt="Midnight Bloom"
-                        >
-
-                        <div class="image-overlay">
-                            <span>VIEW DETAILS</span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="card-content">
-
-                        <div class="card-code">
-                            02 · AB-MB-002
-                        </div>
-
-                        <h3>
-                            MIDNIGHT
-                            BLOOM
-                        </h3>
-
-                        <div class="card-bottom">
-
-                            <span>
-                                MIDNIGHT BLACK
-                            </span>
-
-                            <button class="detail-button">
-                                +
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- 03 -->
-
-                <article
-                    class="design-card"
-                    data-image="images/3.png"
-                    data-name="ROYAL FLOW"
-                    data-color="Royal Blue"
-                    data-code="AB-RF-003"
-                    data-description="Modern decorative crystal design developed for fashion collections."
-                    data-application="T-Shirts, Denim, Jackets"
-                >
-
-                    <div class="card-image">
-
-                        <img
-                            src="images/3.png"
-                            alt="Royal Flow"
-                        >
-
-                        <div class="image-overlay">
-                            <span>VIEW DETAILS</span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="card-content">
-
-                        <div class="card-code">
-                            03 · AB-RF-003
-                        </div>
-
-                        <h3>
-                            ROYAL
-                            FLOW
-                        </h3>
-
-                        <div class="card-bottom">
-
-                            <span>
-                                ROYAL BLUE
-                            </span>
-
-                            <button class="detail-button">
-                                +
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- 04 -->
-
-                <article
-                    class="design-card"
-                    data-image="images/4.png"
-                    data-name="GOLDEN EDGE"
-                    data-color="Warm Gold"
-                    data-code="AB-GE-004"
-                    data-description="Elegant golden embellishment concept suitable for premium collections."
-                    data-application="Dresses, Blouses, Evening Wear"
-                >
-
-                    <div class="card-image">
-
-                        <img
-                            src="images/4.png"
-                            alt="Golden Edge"
-                        >
-
-                        <div class="image-overlay">
-                            <span>VIEW DETAILS</span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="card-content">
-
-                        <div class="card-code">
-                            04 · AB-GE-004
-                        </div>
-
-                        <h3>
-                            GOLDEN
-                            EDGE
-                        </h3>
-
-                        <div class="card-bottom">
-
-                            <span>
-                                WARM GOLD
-                            </span>
-
-                            <button class="detail-button">
-                                +
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- 05 -->
-
-                <article
-                    class="design-card"
-                    data-image="images/5.png"
-                    data-name="SILVER LIGHT"
-                    data-color="Silver Grey"
-                    data-code="AB-SL-005"
-                    data-description="Minimal and elegant textile stone application with a refined surface."
-                    data-application="Shirts, Blouses, Premium Basics"
-                >
-
-                    <div class="card-image">
-
-                        <img
-                            src="images/5.png"
-                            alt="Silver Light"
-                        >
-
-                        <div class="image-overlay">
-                            <span>VIEW DETAILS</span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="card-content">
-
-                        <div class="card-code">
-                            05 · AB-SL-005
-                        </div>
-
-                        <h3>
-                            SILVER
-                            LIGHT
-                        </h3>
-
-                        <div class="card-bottom">
-
-                            <span>
-                                SILVER GREY
-                            </span>
-
-                            <button class="detail-button">
-                                +
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- 06 -->
-
-                <article
-                    class="design-card"
-                    data-image="images/6.png"
-                    data-name="CRYSTAL WAVE"
-                    data-color="Ocean Blue"
-                    data-code="AB-CW-006"
-                    data-description="Flowing crystal composition inspired by movement and modern textile design."
-                    data-application="T-Shirts, Dresses, Sportswear"
-                >
-
-                    <div class="card-image">
-
-                        <img
-                            src="images/6.png"
-                            alt="Crystal Wave"
-                        >
-
-                        <div class="image-overlay">
-                            <span>VIEW DETAILS</span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="card-content">
-
-                        <div class="card-code">
-                            06 · AB-CW-006
-                        </div>
-
-                        <h3>
-                            CRYSTAL
-                            WAVE
-                        </h3>
-
-                        <div class="card-bottom">
-
-                            <span>
-                                OCEAN BLUE
-                            </span>
-
-                            <button class="detail-button">
-                                +
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- 07 -->
-
-                <article
-                    class="design-card"
-                    data-image="images/7.png"
-                    data-name="NOIR SHINE"
-                    data-color="Noir Black"
-                    data-code="AB-NS-007"
-                    data-description="High-impact premium embellishment for contemporary fashion."
-                    data-application="Hoodies, Denim, Jackets"
-                >
-
-                    <div class="card-image">
-
-                        <img
-                            src="images/7.png"
-                            alt="Noir Shine"
-                        >
-
-                        <div class="image-overlay">
-                            <span>VIEW DETAILS</span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="card-content">
-
-                        <div class="card-code">
-                            07 · AB-NS-007
-                        </div>
-
-                        <h3>
-                            NOIR
-                            SHINE
-                        </h3>
-
-                        <div class="card-bottom">
-
-                            <span>
-                                NOIR BLACK
-                            </span>
-
-                            <button class="detail-button">
-                                +
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- 08 -->
-
-                <article
-                    class="design-card"
-                    data-image="images/8.png"
-                    data-name="PEARL GLOW"
-                    data-color="Soft Pearl"
-                    data-code="AB-PG-008"
-                    data-description="Soft and elegant crystal arrangement with a premium appearance."
-                    data-application="Blouses, Dresses, Womenswear"
-                >
-
-                    <div class="card-image">
-
-                        <img
-                            src="images/8.png"
-                            alt="Pearl Glow"
-                        >
-
-                        <div class="image-overlay">
-                            <span>VIEW DETAILS</span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="card-content">
-
-                        <div class="card-code">
-                            08 · AB-PG-008
-                        </div>
-
-                        <h3>
-                            PEARL
-                            GLOW
-                        </h3>
-
-                        <div class="card-bottom">
-
-                            <span>
-                                SOFT PEARL
-                            </span>
-
-                            <button class="detail-button">
-                                +
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- 09 -->
-
-                <article
-                    class="design-card"
-                    data-image="images/9.png"
-                    data-name="MIDNIGHT DOTS"
-                    data-color="Dark Navy"
-                    data-code="AB-MD-009"
-                    data-description="Detailed stone pattern suitable for repeat fashion applications."
-                    data-application="T-Shirts, Shirts, Denim"
-                >
-
-                    <div class="card-image">
-
-                        <img
-                            src="images/9.png"
-                            alt="Midnight Dots"
-                        >
-
-                        <div class="image-overlay">
-                            <span>VIEW DETAILS</span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="card-content">
-
-                        <div class="card-code">
-                            09 · AB-MD-009
-                        </div>
-
-                        <h3>
-                            MIDNIGHT
-                            DOTS
-                        </h3>
-
-                        <div class="card-bottom">
-
-                            <span>
-                                DARK NAVY
-                            </span>
-
-                            <button class="detail-button">
-                                +
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- 10 -->
-
-                <article
-                    class="design-card"
-                    data-image="images/10.png"
-                    data-name="SIGNATURE STONE"
-                    data-color="Signature Green"
-                    data-code="AB-SS-010"
-                    data-description="Exclusive signature pattern created for premium textile collections."
-                    data-application="Premium Fashion Collections"
-                >
-
-                    <div class="card-image">
-
-                        <img
-                            src="images/10.png"
-                            alt="Signature Stone"
-                        >
-
-                        <div class="image-overlay">
-                            <span>VIEW DETAILS</span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="card-content">
-
-                        <div class="card-code">
-                            10 · AB-SS-010
-                        </div>
-
-                        <h3>
-                            SIGNATURE
-                            STONE
-                        </h3>
-
-                        <div class="card-bottom">
-
-                            <span>
-                                SIGNATURE GREEN
-                            </span>
-
-                            <button class="detail-button">
-                                +
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================
-             PROCESS
-        ====================================== -->
-
-        <section
-            id="process"
-            class="dark-section"
-        >
-
-            <div class="process-title">
-
-                <p>
-                    03 · OUR PROCESS
-                </p>
-
-                <h2>
-                    FROM DESIGN
-                    <br>
-                    TO PRODUCTION.
-                </h2>
-
-            </div>
-
-
-            <div class="process-grid">
-
-                <div class="process-item">
-
-                    <span>01</span>
-
-                    <h3>
-                        DESIGN
-                    </h3>
-
-                    <p>
-                        Pattern development according to
-                        brand requirements.
-                    </p>
-
-                </div>
-
-
-                <div class="process-item">
-
-                    <span>02</span>
-
-                    <h3>
-                        DEVELOPMENT
-                    </h3>
-
-                    <p>
-                        Material selection and sample
-                        preparation.
-                    </p>
-
-                </div>
-
-
-                <div class="process-item">
-
-                    <span>03</span>
-
-                    <h3>
-                        PRODUCTION
-                    </h3>
-
-                    <p>
-                        Controlled production with
-                        consistent quality.
-                    </p>
-
-                </div>
-
-
-                <div class="process-item">
-
-                    <span>04</span>
-
-                    <h3>
-                        DELIVERY
-                    </h3>
-
-                    <p>
-                        Ready-to-use embellishment
-                        solutions for your production.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================
-             APPLICATIONS
-        ====================================== -->
-
-        <section
-            id="applications"
-            class="applications-section"
-        >
-
-            <p class="section-label">
-                04 · APPLICATIONS
-            </p>
-
-
-            <h2>
-                WHERE DESIGNS
-                <br>
-                BECOME FASHION.
-            </h2>
-
-
-            <div class="application-list">
-
-                <div>
-                    <span>01</span>
-                    T-SHIRTS
-                </div>
-
-                <div>
-                    <span>02</span>
-                    SWEATSHIRTS
-                </div>
-
-                <div>
-                    <span>03</span>
-                    HOODIES
-                </div>
-
-                <div>
-                    <span>04</span>
-                    DRESSES
-                </div>
-
-                <div>
-                    <span>05</span>
-                    DENIM
-                </div>
-
-                <div>
-                    <span>06</span>
-                    CUSTOM BRANDING
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================
-             CUSTOM DESIGN
-        ====================================== -->
-
-        <section
-            id="custom"
-            class="custom-section"
-        >
-
-            <div>
-
-                <p>
-                    05 · CUSTOM DESIGN
-                </p>
-
-
-                <h2>
-                    YOUR IDEA.
-                    <br>
-                    OUR EXPERTISE.
-                </h2>
-
-            </div>
-
-
-            <p class="custom-text">
-
-                Send us your artwork, logo or idea.
-                Our team can transform it into a
-                professional textile embellishment
-                application.
-
-            </p>
-
-        </section>
-
-
-
-        <!-- =====================================
-             CONTACT
-        ====================================== -->
-
-        <section
-            id="contact"
-            class="contact-section"
-        >
-
-            <p>
-                06 · CONTACT
-            </p>
-
-
-            <h2>
-                LET'S CREATE
-                <br>
-                SOMETHING BRILLIANT.
-            </h2>
-
-
-            <div class="contact-info">
-
-                <div>
-
-                    <span>EMAIL</span>
-
-                    <a href="mailto:levent.aslan@abaycam.com">
-                        levent.aslan@abaycam.com
-                    </a>
-
-                </div>
-
-
-                <div>
-
-                    <span>PHONE</span>
-
-                    <a href="tel:+201039812810">
-                        +20 103 981 2810
-                    </a>
-
-                </div>
-
-            </div>
-
-        </section>
-
+        </footer>
 
     </main>
 
-
-
-    <!-- =========================================
-         PRODUCT DETAIL MODAL
-    ========================================== -->
-
-    <div
-        class="modal"
-        id="designModal"
-    >
-
-        <div class="modal-overlay"></div>
-
-
-        <div class="modal-box">
-
-            <button
-                class="modal-close"
-                id="modalClose"
-            >
-                ×
-            </button>
-
-
-            <div class="modal-image">
-
-                <img
-                    id="modalImage"
-                    src=""
-                    alt=""
-                >
-
+    <!-- Taş Detay Modalı -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <h3 id="modalTitle">Taş Detayı</h3>
+            <div class="modal-gallery">
+                <img id="modalImgMain" src="" alt="Ana Görsel">
+                <div class="modal-thumbnails" id="modalThumbnails"></div>
             </div>
-
-
-            <div class="modal-details">
-
-                <p
-                    class="modal-code"
-                    id="modalCode"
-                ></p>
-
-
-                <h2
-                    id="modalName"
-                ></h2>
-
-
-                <div class="detail-row">
-
-                    <span>
-                        COLOR
-                    </span>
-
-                    <strong
-                        id="modalColor"
-                    ></strong>
-
-                </div>
-
-
-                <div class="detail-row">
-
-                    <span>
-                        QUALITY CODE
-                    </span>
-
-                    <strong
-                        id="modalQuality"
-                    ></strong>
-
-                </div>
-
-
-                <div class="detail-row">
-
-                    <span>
-                        APPLICATION
-                    </span>
-
-                    <strong
-                        id="modalApplication"
-                    ></strong>
-
-                </div>
-
-
-                <div class="modal-description">
-
-                    <p
-                        id="modalDescription"
-                    ></p>
-
-                </div>
-
-
-                <a
-                    href="#contact"
-                    id="modalContact"
-                    class="modal-contact-button"
-                >
-
-                    REQUEST INFORMATION
-
-                </a>
-
-            </div>
-
         </div>
-
     </div>
 
-
-
     <script src="script.js"></script>
-
 </body>
 </html>
