@@ -1,1465 +1,2707 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AB AYCAM | Stone & Textile Embellishment</title>
+<title>AB AYCAM | Creating Brilliance</title>
 
-    <meta name="description"
-        content="AB AYCAM - Premium stone, crystal and textile embellishment solutions.">
+<style>
 
-    <link rel="stylesheet" href="style.css">
+/* =========================================================
+   AB AYCAM - COMPLETE SINGLE FILE WEBSITE
+   ========================================================= */
+
+:root {
+    --bg: #08090c;
+    --bg-soft: #101218;
+    --bg-card: #151820;
+    --white: #f5f3ee;
+    --gray: #9da1aa;
+    --line: rgba(255,255,255,.12);
+    --gold: #c9a76a;
+    --transition: all .45s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+button {
+    font-family: inherit;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 82px;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 48px;
+
+    background: rgba(8,9,12,.80);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.menu-button {
+    width: 52px;
+    height: 52px;
+
+    background: transparent;
+    border: none;
+
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 7px;
+}
+
+.menu-button span {
+    display: block;
+    width: 31px;
+    height: 2px;
+
+    background: var(--white);
+    transition: var(--transition);
+}
+
+.logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    text-align: center;
+    color: var(--white);
+    text-decoration: none;
+}
+
+.logo-main {
+    font-size: 24px;
+    letter-spacing: 8px;
+    font-weight: 300;
+}
+
+.logo-main strong {
+    font-weight: 800;
+}
+
+.logo-sub {
+    margin-top: 4px;
+
+    font-size: 7px;
+    letter-spacing: 5px;
+
+    color: var(--gray);
+}
+
+.language {
+    position: relative;
+}
+
+.language-button {
+    min-width: 96px;
+    height: 50px;
+
+    padding: 0 18px;
+
+    background: rgba(255,255,255,.05);
+    border: 1px solid var(--line);
+    border-radius: 30px;
+
+    color: var(--white);
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 16px;
+}
+
+.language-menu {
+    position: absolute;
+
+    top: 60px;
+    right: 0;
+
+    width: 150px;
+
+    padding: 8px;
+
+    background: #15171d;
+    border: 1px solid var(--line);
+
+    border-radius: 12px;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+
+    transition: var(--transition);
+}
+
+.language.open .language-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.language-menu button {
+    width: 100%;
+
+    padding: 12px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: transparent;
+
+    color: var(--white);
+
+    text-align: left;
+
+    cursor: pointer;
+}
+
+.language-menu button:hover {
+    background: rgba(255,255,255,.08);
+}
+
+/* =========================================================
+   SIDE MENU
+   ========================================================= */
+
+.side-menu {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: min(390px, 88vw);
+    height: 100vh;
+
+    padding: 130px 50px 40px;
+
+    background: #0b0d12;
+
+    z-index: 2000;
+
+    transform: translateX(-105%);
+    transition: transform .55s cubic-bezier(.77,0,.18,1);
+
+    border-right: 1px solid var(--line);
+}
+
+.side-menu.open {
+    transform: translateX(0);
+}
+
+.close-menu {
+    position: absolute;
+
+    top: 30px;
+    right: 30px;
+
+    width: 45px;
+    height: 45px;
+
+    border: 1px solid var(--line);
+    border-radius: 50%;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 26px;
+
+    cursor: pointer;
+}
+
+.side-menu-logo {
+    margin-bottom: 80px;
+
+    font-size: 30px;
+    letter-spacing: 9px;
+}
+
+.side-menu-logo strong {
+    font-weight: 800;
+}
+
+.side-menu nav {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+}
+
+.side-menu nav a {
+    color: var(--white);
+    text-decoration: none;
+
+    font-size: 18px;
+
+    transition: var(--transition);
+}
+
+.side-menu nav a:hover {
+    color: var(--gold);
+    padding-left: 12px;
+}
+
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+
+    z-index: 1500;
+
+    background: rgba(0,0,0,.65);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: var(--transition);
+}
+
+.menu-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+    min-height: 100vh;
+
+    padding: 140px 5vw 70px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+
+    inset: 0;
+
+    opacity: .18;
+
+    background:
+    radial-gradient(circle at 70% 30%, rgba(201,167,106,.25), transparent 35%),
+    radial-gradient(circle at 20% 80%, rgba(255,255,255,.08), transparent 30%);
+}
+
+.hero-content {
+    position: relative;
+
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    width: 100%;
+
+    text-align: center;
+}
+
+.hero-eyebrow {
+    font-size: 11px;
+
+    letter-spacing: 7px;
+
+    color: var(--gold);
+
+    margin-bottom: 24px;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 7vw, 105px);
+
+    font-weight: 300;
+
+    line-height: .95;
+
+    letter-spacing: -3px;
+}
+
+.hero h1 strong {
+    font-weight: 800;
+}
+
+.hero-description {
+    max-width: 650px;
+
+    margin: 28px auto;
+
+    color: var(--gray);
+
+    line-height: 1.8;
+
+    font-size: 16px;
+}
+
+.hero-button {
+    display: inline-flex;
+
+    padding: 16px 30px;
+
+    color: var(--white);
+
+    text-decoration: none;
+
+    border: 1px solid var(--line);
+
+    transition: var(--transition);
+}
+
+.hero-button:hover {
+    background: var(--white);
+    color: #000;
+}
+
+/* =========================================================
+   SMALL FAST SLIDER
+   ========================================================= */
+
+.slider-section {
+    background: var(--bg);
+
+    padding: 20px 0 110px;
+
+    overflow: hidden;
+}
+
+.slider-title {
+    padding: 0 5vw 35px;
+
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+}
+
+.slider-title small {
+    color: var(--gold);
+    letter-spacing: 4px;
+}
+
+.slider-title h2 {
+    margin-top: 10px;
+
+    font-size: clamp(28px, 4vw, 50px);
+    font-weight: 400;
+}
+
+.slider {
+    width: 100%;
+    overflow: hidden;
+}
+
+.slider-track {
+    display: flex;
+
+    gap: 18px;
+
+    width: max-content;
+
+    animation: autoSlide 28s linear infinite;
+}
+
+.slider:hover .slider-track {
+    animation-play-state: paused;
+}
+
+.slide {
+    width: clamp(220px, 23vw, 340px);
+    height: clamp(170px, 18vw, 250px);
+
+    overflow: hidden;
+
+    position: relative;
+
+    border: 1px solid var(--line);
+
+    background: #111;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform .7s ease;
+}
+
+.slide:hover img {
+    transform: scale(1.08);
+}
+
+.slide-number {
+    position: absolute;
+
+    bottom: 12px;
+    left: 14px;
+
+    font-size: 11px;
+    letter-spacing: 3px;
+
+    padding: 8px 10px;
+
+    background: rgba(0,0,0,.65);
+}
+
+@keyframes autoSlide {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+
+}
+
+/* =========================================================
+   MACHINE TRANSITION
+   ========================================================= */
+
+.machine-section {
+    min-height: 125vh;
+
+    position: relative;
+
+    background:
+    linear-gradient(to bottom,
+    #08090c 0%,
+    #11141a 30%,
+    #0a0b0e 100%);
+
+    overflow: hidden;
+}
+
+.machine-sticky {
+    position: sticky;
+
+    top: 0;
+
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 100px 5vw 40px;
+}
+
+.machine-heading {
+    position: absolute;
+
+    top: 120px;
+
+    text-align: center;
+
+    z-index: 5;
+}
+
+.machine-heading small {
+    color: var(--gold);
+    letter-spacing: 5px;
+}
+
+.machine-heading h2 {
+    margin-top: 14px;
+
+    font-size: clamp(28px, 4vw, 55px);
+
+    font-weight: 300;
+}
+
+.machine-container {
+    position: relative;
+
+    width: min(900px, 90vw);
+
+    z-index: 3;
+}
+
+.machine-image {
+    width: 100%;
+
+    max-height: 470px;
+
+    object-fit: contain;
+
+    filter:
+    drop-shadow(0 30px 60px rgba(0,0,0,.6));
+}
+
+.fabric-flow {
+    position: absolute;
+
+    left: 50%;
+    bottom: -250px;
+
+    transform: translateX(-50%);
+
+    width: min(520px, 70vw);
+    height: 300px;
+
+    overflow: hidden;
+
+    border-left: 1px solid rgba(255,255,255,.08);
+    border-right: 1px solid rgba(255,255,255,.08);
+
+    background:
+    repeating-linear-gradient(
+        90deg,
+        rgba(255,255,255,.12) 0px,
+        rgba(255,255,255,.04) 1px,
+        transparent 3px,
+        transparent 12px
+    );
+
+    opacity: .9;
+
+    animation: fabricMove 1.2s linear infinite;
+}
+
+.fabric-flow::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+    linear-gradient(
+        to bottom,
+        rgba(201,167,106,.25),
+        rgba(255,255,255,.08),
+        rgba(10,10,10,.8)
+    );
+
+    mix-blend-mode: screen;
+}
+
+.meter-print {
+    position: absolute;
+
+    left: 50%;
+    top: 18%;
+
+    transform: translateX(-50%);
+
+    width: 80%;
+
+    color: rgba(255,255,255,.45);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    animation: meterMove 1.2s linear infinite;
+}
+
+@keyframes fabricMove {
+
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 0 60px;
+    }
+
+}
+
+@keyframes meterMove {
+
+    from {
+        transform: translate(-50%, -20px);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    to {
+        transform: translate(-50%, 220px);
+        opacity: 0;
+    }
+
+}
+
+.machine-info {
+    position: absolute;
+
+    bottom: 45px;
+
+    color: var(--gray);
+
+    text-align: center;
+
+    letter-spacing: 2px;
+
+    font-size: 11px;
+
+    z-index: 5;
+}
+
+/* =========================================================
+   COLLECTION
+   ========================================================= */
+
+.collection {
+    padding: 130px 5vw;
+
+    background: #f1eee7;
+
+    color: #181818;
+}
+
+.section-intro {
+    max-width: 700px;
+
+    margin-bottom: 70px;
+}
+
+.section-intro small {
+    color: #75613e;
+
+    letter-spacing: 5px;
+}
+
+.section-intro h2 {
+    margin-top: 16px;
+
+    font-size: clamp(38px, 6vw, 80px);
+
+    font-weight: 300;
+
+    line-height: 1;
+}
+
+.section-intro p {
+    margin-top: 25px;
+
+    color: #666;
+
+    line-height: 1.8;
+}
+
+.collection-grid {
+    display: grid;
+
+    grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+    gap: 28px;
+}
+
+.product-card {
+    background: #e7e2d9;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    transition:
+    transform .45s ease,
+    box-shadow .45s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow: 0 25px 50px rgba(0,0,0,.15);
+}
+
+.product-image {
+    position: relative;
+
+    aspect-ratio: 4 / 3;
+
+    overflow: hidden;
+
+    background: #ddd;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform .7s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.07);
+}
+
+.product-number {
+    position: absolute;
+
+    top: 20px;
+    left: 20px;
+
+    padding: 8px 12px;
+
+    background: rgba(255,255,255,.85);
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+}
+
+.product-info {
+    padding: 28px;
+}
+
+.product-code {
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    color: #777;
+
+    margin-bottom: 16px;
+}
+
+.product-name {
+    font-family: Georgia, serif;
+
+    font-size: clamp(25px, 2vw, 38px);
+
+    font-weight: 400;
+
+    margin-bottom: 16px;
+}
+
+.product-description {
+    color: #666;
+
+    line-height: 1.7;
+
+    min-height: 55px;
+}
+
+.product-details {
+    margin-top: 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-top: 1px solid rgba(0,0,0,.12);
+
+    padding-top: 18px;
+}
+
+.color-dot {
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+
+    margin-right: 8px;
+}
+
+.color-info {
+    display: flex;
+    align-items: center;
+
+    color: #555;
+
+    font-size: 12px;
+}
+
+.view-detail {
+    padding: 10px 14px;
+
+    border: 1px solid #222;
+
+    background: transparent;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+}
+
+/* =========================================================
+   APPLICATIONS
+   ========================================================= */
+
+.applications {
+    padding: 130px 5vw;
+
+    background: #0d0f14;
+}
+
+.application-grid {
+    margin-top: 70px;
+
+    display: grid;
+
+    grid-template-columns:
+    repeat(3, 1fr);
+
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+}
+
+.application {
+    min-height: 260px;
+
+    padding: 38px;
+
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+
+    transition: var(--transition);
+}
+
+.application:hover {
+    background: rgba(255,255,255,.04);
+}
+
+.application-number {
+    color: var(--gold);
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+}
+
+.application h3 {
+    margin-top: 55px;
+
+    font-size: 25px;
+
+    font-weight: 400;
+}
+
+.application p {
+    margin-top: 15px;
+
+    color: var(--gray);
+
+    line-height: 1.7;
+}
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+
+.contact {
+    padding: 130px 5vw;
+
+    background: #08090c;
+}
+
+.contact-container {
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 80px;
+}
+
+.contact h2 {
+    font-size: clamp(40px, 5vw, 75px);
+
+    font-weight: 300;
+
+    line-height: 1;
+}
+
+.contact-info {
+    margin-top: 35px;
+
+    color: var(--gray);
+
+    line-height: 2;
+}
+
+.contact-form {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+    width: 100%;
+
+    padding: 18px;
+
+    background: transparent;
+
+    border: 1px solid var(--line);
+
+    color: white;
+
+    outline: none;
+}
+
+.contact-form textarea {
+    min-height: 140px;
+
+    resize: vertical;
+}
+
+.contact-form button {
+    padding: 18px;
+
+    border: none;
+
+    background: var(--white);
+
+    color: #000;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    transition: var(--transition);
+}
+
+.contact-form button:hover {
+    background: var(--gold);
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+    padding: 45px 5vw;
+
+    background: #050609;
+
+    border-top: 1px solid var(--line);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    color: var(--gray);
+
+    font-size: 12px;
+}
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+.modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 3000;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 25px;
+
+    background: rgba(0,0,0,.78);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: var(--transition);
+}
+
+.modal.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    position: relative;
+
+    width: min(1000px, 100%);
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: #f1eee7;
+
+    color: #171717;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+}
+
+.modal-image {
+    min-height: 500px;
+}
+
+.modal-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.modal-info {
+    padding: 55px;
+}
+
+.modal-close {
+    position: absolute;
+
+    top: 15px;
+    right: 15px;
+
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    background: rgba(0,0,0,.75);
+
+    color: white;
+
+    font-size: 25px;
+
+    cursor: pointer;
+
+    z-index: 10;
+}
+
+.modal-info small {
+    letter-spacing: 3px;
+
+    color: #777;
+}
+
+.modal-info h2 {
+    margin-top: 20px;
+
+    font-family: Georgia, serif;
+
+    font-size: 50px;
+
+    font-weight: 400;
+}
+
+.modal-info p {
+    margin-top: 25px;
+
+    color: #666;
+
+    line-height: 1.8;
+}
+
+.specifications {
+    margin-top: 35px;
+
+    border-top: 1px solid #ccc;
+}
+
+.specification {
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 17px 0;
+
+    border-bottom: 1px solid #ccc;
+
+    gap: 20px;
+}
+
+.specification span:first-child {
+    color: #777;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .collection-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .application-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .header {
+        padding: 0 20px;
+        height: 70px;
+    }
+
+    .logo-main {
+        font-size: 17px;
+        letter-spacing: 5px;
+    }
+
+    .logo-sub {
+        font-size: 5px;
+        letter-spacing: 3px;
+    }
+
+    .language-button {
+        min-width: 65px;
+        height: 42px;
+        padding: 0 12px;
+    }
+
+    .hero {
+        padding-top: 110px;
+    }
+
+    .hero h1 {
+        letter-spacing: -1px;
+    }
+
+    .slider-section {
+        padding-bottom: 70px;
+    }
+
+    .machine-heading {
+        top: 100px;
+    }
+
+    .fabric-flow {
+        height: 220px;
+    }
+
+    .collection {
+        padding: 90px 20px;
+    }
+
+    .collection-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .applications {
+        padding: 90px 20px;
+    }
+
+    .application-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact {
+        padding: 90px 20px;
+    }
+
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .modal-content {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-image {
+        min-height: 300px;
+    }
+
+    .modal-info {
+        padding: 35px 25px;
+    }
+
+    .modal-info h2 {
+        font-size: 38px;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+
+}
+
+</style>
 </head>
+
 
 <body>
 
-    <!-- =========================
-         LOADING SCREEN
-    ========================== -->
 
-    <div id="loader">
-        <div class="loader-logo">
-            <span>AB</span> AYCAM
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+    <button class="menu-button" id="menuButton" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <a href="#home" class="logo">
+
+        <div class="logo-main">
+            <strong>AB</strong> AYCAM
         </div>
 
-        <div class="loader-line">
-            <div></div>
+        <div class="logo-sub">
+            CREATING BRILLIANCE
         </div>
 
-        <p>CREATING BRILLIANCE</p>
-    </div>
+    </a>
 
 
-    <!-- =========================
-         LEFT SIDEBAR
-    ========================== -->
+    <div class="language" id="languageBox">
 
-    <aside class="sidebar">
-
-        <div class="brand">
-            <span>AB</span>
-            <strong>AYCAM</strong>
-        </div>
-
-
-        <nav class="side-menu">
-
-            <a href="#home" class="nav-link active">
-                <span>01</span>
-                <b data-i18n="home">HOME</b>
-            </a>
-
-            <a href="#collection" class="nav-link">
-                <span>02</span>
-                <b data-i18n="collection">COLLECTION</b>
-            </a>
-
-            <a href="#process" class="nav-link">
-                <span>03</span>
-                <b data-i18n="process">OUR PROCESS</b>
-            </a>
-
-            <a href="#applications" class="nav-link">
-                <span>04</span>
-                <b data-i18n="applications">APPLICATIONS</b>
-            </a>
-
-            <a href="#custom" class="nav-link">
-                <span>05</span>
-                <b data-i18n="custom">CUSTOM DESIGN</b>
-            </a>
-
-            <a href="#contact" class="nav-link">
-                <span>06</span>
-                <b data-i18n="contact">CONTACT</b>
-            </a>
-
-        </nav>
-
-
-        <div class="sidebar-bottom">
-            <small>© 2026 AB AYCAM</small>
-
-            <a href="#contact">
-                GET IN TOUCH
-            </a>
-        </div>
-
-    </aside>
-
-
-    <!-- =========================
-         MOBILE HEADER
-    ========================== -->
-
-    <header class="mobile-header">
-
-        <button id="mobileMenuButton" class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-
-        <div class="mobile-brand">
-            <span>AB</span> AYCAM
-        </div>
-
-    </header>
-
-
-    <!-- =========================
-         LANGUAGE SELECTOR
-    ========================== -->
-
-    <div class="language-selector">
-
-        <button id="languageButton">
+        <button class="language-button" id="languageButton">
 
             <span id="currentLanguage">TR</span>
-
-            <span class="arrow">⌄</span>
+            <span>⌄</span>
 
         </button>
 
+        <div class="language-menu">
 
-        <div class="language-dropdown">
+            <button data-language="TR">Türkçe</button>
+            <button data-language="EN">English</button>
+            <button data-language="AR">العربية</button>
 
-            <button data-lang="tr">
-                TR — Türkçe
-            </button>
+        </div>
 
-            <button data-lang="ar">
-                AR — العربية المصرية
-            </button>
+    </div>
 
-            <button data-lang="en">
-                EN — English
-            </button>
+</header>
+
+
+
+<!-- =====================================================
+     SIDE MENU
+===================================================== -->
+
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<aside class="side-menu" id="sideMenu">
+
+    <button class="close-menu" id="closeMenu">×</button>
+
+    <div class="side-menu-logo">
+        <strong>AB</strong> AYCAM
+    </div>
+
+    <nav>
+
+        <a href="#home" class="menu-link">01 HOME</a>
+
+        <a href="#collection" class="menu-link">02 COLLECTION</a>
+
+        <a href="#process" class="menu-link">03 OUR PROCESS</a>
+
+        <a href="#applications" class="menu-link">04 APPLICATIONS</a>
+
+        <a href="#contact" class="menu-link">05 CONTACT</a>
+
+    </nav>
+
+</aside>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero" id="home">
+
+    <div class="hero-background"></div>
+
+    <div class="hero-content">
+
+        <div class="hero-eyebrow">
+            PREMIUM STONE & TEXTILE EMBELLISHMENT
+        </div>
+
+        <h1>
+            <strong>DESIGN.</strong><br>
+            CREATE.<br>
+            <strong>SHINE.</strong>
+        </h1>
+
+        <p class="hero-description">
+
+            AB AYCAM transforms fabric into extraordinary designs.
+            Discover premium stone applications, creative textile
+            embellishment and distinctive collections.
+
+        </p>
+
+        <a href="#collection" class="hero-button">
+            EXPLORE COLLECTION ↓
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FAST SLIDER
+===================================================== -->
+
+<section class="slider-section">
+
+    <div class="slider-title">
+
+        <div>
+
+            <small>
+                ENDLESS POSSIBILITIES
+            </small>
+
+            <h2>
+                WHERE YOUR DESIGNS<br>
+                CAN SHINE.
+            </h2>
 
         </div>
 
     </div>
 
 
-    <!-- =========================
-         MAIN
-    ========================== -->
+    <div class="slider">
 
-    <main>
+        <div class="slider-track">
 
 
-        <!-- =========================
-             HOME
-        ========================== -->
+            <div class="slide">
+                <img src="images/1.jpeg" alt="AB AYCAM Design 1">
+                <span class="slide-number">01</span>
+            </div>
 
-        <section id="home" class="hero">
+            <div class="slide">
+                <img src="images/2.jpeg" alt="AB AYCAM Design 2">
+                <span class="slide-number">02</span>
+            </div>
 
+            <div class="slide">
+                <img src="images/3.jpeg" alt="AB AYCAM Design 3">
+                <span class="slide-number">03</span>
+            </div>
 
-            <!-- HERO SLIDER -->
+            <div class="slide">
+                <img src="images/4.jpeg" alt="AB AYCAM Design 4">
+                <span class="slide-number">04</span>
+            </div>
 
-            <div class="hero-slider">
+            <div class="slide">
+                <img src="images/5.jpeg" alt="AB AYCAM Design 5">
+                <span class="slide-number">05</span>
+            </div>
 
+            <div class="slide">
+                <img src="images/6.jpeg" alt="AB AYCAM Design 6">
+                <span class="slide-number">06</span>
+            </div>
 
-                <div class="hero-slide active"
-                     data-image="images/1.jpeg">
+            <div class="slide">
+                <img src="images/7.jpeg" alt="AB AYCAM Design 7">
+                <span class="slide-number">07</span>
+            </div>
 
-                    <img src="images/1.jpeg" alt="AB AYCAM Stone Design">
+            <div class="slide">
+                <img src="images/8.jpeg" alt="AB AYCAM Design 8">
+                <span class="slide-number">08</span>
+            </div>
 
-                </div>
+            <div class="slide">
+                <img src="images/9.jpeg" alt="AB AYCAM Design 9">
+                <span class="slide-number">09</span>
+            </div>
 
-
-                <div class="hero-slide"
-                     data-image="images/2.jpeg">
-
-                    <img src="images/2.jpeg" alt="AB AYCAM Textile Design">
-
-                </div>
-
-
-                <div class="hero-slide"
-                     data-image="images/3.jpeg">
-
-                    <img src="images/3.jpeg" alt="AB AYCAM Crystal Design">
-
-                </div>
-
-
-                <div class="hero-slide"
-                     data-image="images/4.jpeg">
-
-                    <img src="images/4.jpeg" alt="AB AYCAM Collection">
-
-                </div>
-
-
+            <div class="slide">
+                <img src="images/10.jpeg" alt="AB AYCAM Design 10">
+                <span class="slide-number">10</span>
             </div>
 
 
-            <div class="hero-overlay"></div>
+            <!-- SAME IMAGES AGAIN FOR CONTINUOUS FAST LOOP -->
 
 
-            <div class="hero-content">
+            <div class="slide">
+                <img src="images/1.jpeg" alt="AB AYCAM Design">
+                <span class="slide-number">01</span>
+            </div>
 
-                <div class="hero-eyebrow">
-                    PREMIUM STONE & TEXTILE DESIGN
-                </div>
+            <div class="slide">
+                <img src="images/2.jpeg" alt="AB AYCAM Design">
+                <span class="slide-number">02</span>
+            </div>
 
+            <div class="slide">
+                <img src="images/3.jpeg" alt="AB AYCAM Design">
+                <span class="slide-number">03</span>
+            </div>
 
-                <h1>
-                    WHERE DETAILS
-                    <br>
-                    <span>CREATE BRILLIANCE.</span>
-                </h1>
+            <div class="slide">
+                <img src="images/4.jpeg" alt="AB AYCAM Design">
+                <span class="slide-number">04</span>
+            </div>
 
+            <div class="slide">
+                <img src="images/5.jpeg" alt="AB AYCAM Design">
+                <span class="slide-number">05</span>
+            </div>
 
-                <p data-i18n="heroText">
+            <div class="slide">
+                <img src="images/6.jpeg" alt="AB AYCAM Design">
+                <span class="slide-number">06</span>
+            </div>
 
-                    Premium stone, crystal and textile embellishment
-                    solutions designed to make every surface shine.
+            <div class="slide">
+                <img src="images/7.jpeg" alt="AB AYCAM Design">
+                <span class="slide-number">07</span>
+            </div>
 
-                </p>
+            <div class="slide">
+                <img src="images/8.jpeg" alt="AB AYCAM Design">
+                <span class="slide-number">08</span>
+            </div>
 
+            <div class="slide">
+                <img src="images/9.jpeg" alt="AB AYCAM Design">
+                <span class="slide-number">09</span>
+            </div>
 
-                <a href="#collection" class="hero-button">
-
-                    <span data-i18n="explore">
-                        EXPLORE COLLECTION
-                    </span>
-
-                    <span>→</span>
-
-                </a>
-
-
+            <div class="slide">
+                <img src="images/10.jpeg" alt="AB AYCAM Design">
+                <span class="slide-number">10</span>
             </div>
 
 
-            <!-- SLIDER CONTROLS -->
+        </div>
 
-            <div class="slider-controls">
+    </div>
 
-                <div class="slider-count">
+</section>
 
-                    <span id="currentSlideNumber">01</span>
 
-                    <span>/</span>
 
-                    <span>04</span>
+<!-- =====================================================
+     MACHINE / FABRIC ANIMATION
+===================================================== -->
 
-                </div>
+<section class="machine-section" id="process">
 
+    <div class="machine-sticky">
 
-                <div class="slider-progress">
 
-                    <div id="sliderProgress"></div>
+        <div class="machine-heading">
 
-                </div>
+            <small>
+                OUR PRODUCTION PROCESS
+            </small>
 
+            <h2>
+                FROM DESIGN<br>
+                TO BRILLIANCE
+            </h2>
 
-            </div>
+        </div>
 
 
-            <div class="scroll-indicator">
+        <div class="machine-container">
 
-                <span>SCROLL TO DISCOVER</span>
+            <img
+                src="images/machine.png"
+                class="machine-image"
+                alt="AB AYCAM Production Machine"
+            >
 
-                <div class="scroll-line"></div>
 
-            </div>
+            <div class="fabric-flow">
 
+                <div class="meter-print">
 
-        </section>
-
-
-
-        <!-- =========================
-             MACHINE ANIMATION
-        ========================== -->
-
-        <section id="process" class="machine-section">
-
-
-            <div class="machine-intro">
-
-                <span class="section-number">
-                    01 / THE PROCESS
-                </span>
-
-                <h2>
-                    FROM DESIGN
-                    <br>
-                    <span>TO BRILLIANCE.</span>
-                </h2>
-
-                <p>
-
-                    Scroll down and follow the transformation.
-                    Every design begins with an idea and becomes
-                    a detailed stone application.
-
-                </p>
-
-            </div>
-
-
-
-            <!-- STICKY MACHINE AREA -->
-
-            <div class="machine-sticky">
-
-
-                <div class="machine-stage">
-
-
-                    <!-- MACHINE IMAGE -->
-
-                    <div class="machine-image-wrapper">
-
-                        <img
-                            src="images/machine.png"
-                            alt="AB AYCAM Stone Application Machine"
-                            class="machine-image"
-                        >
-
-                    </div>
-
-
-                    <!-- FABRIC COMING OUT -->
-
-                    <div class="fabric-output">
-
-
-                        <div class="fabric fabric-1">
-
-                            <img
-                                src="images/1.jpeg"
-                                alt="Stone Design"
-                            >
-
-                        </div>
-
-
-                        <div class="fabric fabric-2">
-
-                            <img
-                                src="images/2.jpeg"
-                                alt="Stone Design"
-                            >
-
-                        </div>
-
-
-                        <div class="fabric fabric-3">
-
-                            <img
-                                src="images/3.jpeg"
-                                alt="Stone Design"
-                            >
-
-                        </div>
-
-
-                        <div class="fabric fabric-4">
-
-                            <img
-                                src="images/4.jpeg"
-                                alt="Stone Design"
-                            >
-
-                        </div>
-
-
-                        <div class="fabric fabric-5">
-
-                            <img
-                                src="images/5.jpeg"
-                                alt="Stone Design"
-                            >
-
-                        </div>
-
-
-                    </div>
-
-
-                    <!-- MACHINE LIGHT -->
-
-                    <div class="machine-glow"></div>
-
-
-                    <!-- PROCESS TEXT -->
-
-                    <div class="machine-status">
-
-                        <span id="processNumber">
-                            01
-                        </span>
-
-                        <div>
-
-                            <strong id="processTitle">
-                                DESIGN SELECTED
-                            </strong>
-
-                            <p id="processText">
-                                Preparing the pattern for precision application.
-                            </p>
-
-                        </div>
-
-                    </div>
-
+                    <span>0001 M</span>
+                    <span>0002 M</span>
+                    <span>0003 M</span>
 
                 </div>
 
-
             </div>
 
+        </div>
 
-        </section>
 
+        <div class="machine-info">
+            SCROLL TO DISCOVER THE COLLECTION ↓
+        </div>
 
+    </div>
 
-        <!-- =========================
-             COLLECTION
-        ========================== -->
+</section>
 
-        <section id="collection" class="collection-section">
 
 
-            <div class="collection-header">
+<!-- =====================================================
+     COLLECTION
+===================================================== -->
 
-                <div>
+<section class="collection" id="collection">
 
-                    <span class="section-number">
-                        02 / COLLECTION
-                    </span>
+    <div class="section-intro">
 
-                    <h2>
-                        DESIGNS THAT
-                        <br>
-                        <span>MAKE AN IMPACT.</span>
-                    </h2>
+        <small>
+            AB AYCAM COLLECTION
+        </small>
 
-                </div>
+        <h2>
+            DESIGNS<br>
+            THAT SHINE.
+        </h2>
 
+        <p>
+            Discover our textile and stone embellishment collection.
+            Click any design to view its pattern information,
+            color, quality code and additional details.
+        </p>
 
-                <p>
+    </div>
 
-                    Explore our selected stone and textile
-                    embellishment designs. Click on any design
-                    to view its detailed information.
 
-                </p>
+    <div class="collection-grid" id="collectionGrid"></div>
 
-            </div>
+</section>
 
 
 
-            <!-- COLLECTION GRID -->
+<!-- =====================================================
+     APPLICATIONS
+===================================================== -->
 
-            <div class="collection-grid">
+<section class="applications" id="applications">
 
+    <div class="section-intro">
 
-                <!-- CARD 1 -->
+        <small>
+            ENDLESS APPLICATIONS
+        </small>
 
-                <article
-                    class="collection-card"
-                    data-id="1"
-                >
+        <h2>
+            WHERE DESIGN<br>
+            MEETS TEXTILE.
+        </h2>
 
-                    <div class="card-image">
+        <p>
+            Our embellishment solutions can be adapted to
+            different product categories and creative concepts.
+        </p>
 
-                        <img
-                            src="images/1.jpeg"
-                            alt="Stone Design 01"
-                        >
+    </div>
 
-                        <div class="card-overlay">
 
-                            <span>VIEW DETAILS</span>
+    <div class="application-grid">
 
-                        </div>
 
-                    </div>
+        <div class="application">
 
+            <div class="application-number">01</div>
 
-                    <div class="card-info">
+            <h3>T-SHIRTS</h3>
 
-                        <span class="design-number">
-                            01
-                        </span>
+            <p>
+                Premium stone and crystal embellishment
+                for modern apparel.
+            </p>
 
-                        <h3>
-                            SIGNATURE DESIGN
-                        </h3>
+        </div>
 
-                        <div class="card-meta">
 
-                            <span>
-                                STONE
-                            </span>
+        <div class="application">
 
-                            <span>
-                                PREMIUM
-                            </span>
+            <div class="application-number">02</div>
 
-                        </div>
+            <h3>SWEATSHIRTS</h3>
 
-                    </div>
+            <p>
+                Bold and expressive decorative designs
+                for statement pieces.
+            </p>
 
-                </article>
+        </div>
 
 
+        <div class="application">
 
-                <!-- CARD 2 -->
+            <div class="application-number">03</div>
 
-                <article
-                    class="collection-card"
-                    data-id="2"
-                >
+            <h3>HOODIES</h3>
 
-                    <div class="card-image">
+            <p>
+                High-impact stone applications designed
+                for contemporary collections.
+            </p>
 
-                        <img
-                            src="images/2.jpeg"
-                            alt="Stone Design 02"
-                        >
+        </div>
 
-                        <div class="card-overlay">
-                            <span>VIEW DETAILS</span>
-                        </div>
 
-                    </div>
+        <div class="application">
 
+            <div class="application-number">04</div>
 
-                    <div class="card-info">
+            <h3>DRESSES</h3>
 
-                        <span class="design-number">
-                            02
-                        </span>
+            <p>
+                Elegant crystal detailing for premium
+                fashion and special designs.
+            </p>
 
-                        <h3>
-                            BLUE CRYSTAL
-                        </h3>
+        </div>
 
-                        <div class="card-meta">
 
-                            <span>
-                                CRYSTAL
-                            </span>
+        <div class="application">
 
-                            <span>
-                                PREMIUM
-                            </span>
+            <div class="application-number">05</div>
 
-                        </div>
+            <h3>DENIM</h3>
 
-                    </div>
+            <p>
+                Modern textile decoration solutions
+                for denim collections.
+            </p>
 
-                </article>
+        </div>
 
 
+        <div class="application">
 
-                <!-- CARD 3 -->
+            <div class="application-number">06</div>
 
-                <article
-                    class="collection-card"
-                    data-id="3"
-                >
+            <h3>BRANDING</h3>
 
-                    <div class="card-image">
+            <p>
+                Custom logos, motifs and unique
+                embellishment applications.
+            </p>
 
-                        <img
-                            src="images/3.jpeg"
-                            alt="Stone Design 03"
-                        >
+        </div>
 
-                        <div class="card-overlay">
-                            <span>VIEW DETAILS</span>
-                        </div>
 
-                    </div>
+    </div>
 
+</section>
 
-                    <div class="card-info">
 
-                        <span class="design-number">
-                            03
-                        </span>
 
-                        <h3>
-                            MODERN FLORAL
-                        </h3>
+<!-- =====================================================
+     CONTACT
+===================================================== -->
 
-                        <div class="card-meta">
+<section class="contact" id="contact">
 
-                            <span>
-                                STONE
-                            </span>
+    <div class="contact-container">
 
-                            <span>
-                                TEXTILE
-                            </span>
 
-                        </div>
+        <div>
 
-                    </div>
+            <small style="color:#c9a76a; letter-spacing:5px;">
+                LET'S WORK TOGETHER
+            </small>
 
-                </article>
+            <h2>
+                READY TO CREATE<br>
+                SOMETHING<br>
+                BRILLIANT?
+            </h2>
 
 
+            <div class="contact-info">
 
-                <!-- CARD 4 -->
-
-                <article
-                    class="collection-card"
-                    data-id="4"
-                >
-
-                    <div class="card-image">
-
-                        <img
-                            src="images/4.jpeg"
-                            alt="Stone Design 04"
-                        >
-
-                        <div class="card-overlay">
-                            <span>VIEW DETAILS</span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="card-info">
-
-                        <span class="design-number">
-                            04
-                        </span>
-
-                        <h3>
-                            CLASSIC SHINE
-                        </h3>
-
-                        <div class="card-meta">
-
-                            <span>
-                                CRYSTAL
-                            </span>
-
-                            <span>
-                                HIGH SHINE
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- CARD 5 -->
-
-                <article
-                    class="collection-card"
-                    data-id="5"
-                >
-
-                    <div class="card-image">
-
-                        <img
-                            src="images/5.jpeg"
-                            alt="Stone Design 05"
-                        >
-
-                        <div class="card-overlay">
-                            <span>VIEW DETAILS</span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="card-info">
-
-                        <span class="design-number">
-                            05
-                        </span>
-
-                        <h3>
-                            GEOMETRIC DETAIL
-                        </h3>
-
-                        <div class="card-meta">
-
-                            <span>
-                                STONE
-                            </span>
-
-                            <span>
-                                CUSTOM
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- CARD 6 -->
-
-                <article
-                    class="collection-card"
-                    data-id="6"
-                >
-
-                    <div class="card-image">
-
-                        <img
-                            src="images/6.jpeg"
-                            alt="Stone Design 06"
-                        >
-
-                        <div class="card-overlay">
-                            <span>VIEW DETAILS</span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="card-info">
-
-                        <span class="design-number">
-                            06
-                        </span>
-
-                        <h3>
-                            LUXE PATTERN
-                        </h3>
-
-                        <div class="card-meta">
-
-                            <span>
-                                PREMIUM
-                            </span>
-
-                            <span>
-                                STONE
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- CARD 7 -->
-
-                <article
-                    class="collection-card"
-                    data-id="7"
-                >
-
-                    <div class="card-image">
-
-                        <img
-                            src="images/7.jpeg"
-                            alt="Stone Design 07"
-                        >
-
-                        <div class="card-overlay">
-                            <span>VIEW DETAILS</span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="card-info">
-
-                        <span class="design-number">
-                            07
-                        </span>
-
-                        <h3>
-                            ARTISTIC FLOW
-                        </h3>
-
-                        <div class="card-meta">
-
-                            <span>
-                                TEXTILE
-                            </span>
-
-                            <span>
-                                STONE
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- CARD 8 -->
-
-                <article
-                    class="collection-card"
-                    data-id="8"
-                >
-
-                    <div class="card-image">
-
-                        <img
-                            src="images/8.jpeg"
-                            alt="Stone Design 08"
-                        >
-
-                        <div class="card-overlay">
-                            <span>VIEW DETAILS</span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="card-info">
-
-                        <span class="design-number">
-                            08
-                        </span>
-
-                        <h3>
-                            CRYSTAL MOTION
-                        </h3>
-
-                        <div class="card-meta">
-
-                            <span>
-                                CRYSTAL
-                            </span>
-
-                            <span>
-                                DETAIL
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- CARD 9 -->
-
-                <article
-                    class="collection-card"
-                    data-id="9"
-                >
-
-                    <div class="card-image">
-
-                        <img
-                            src="images/9.jpeg"
-                            alt="Stone Design 09"
-                        >
-
-                        <div class="card-overlay">
-                            <span>VIEW DETAILS</span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="card-info">
-
-                        <span class="design-number">
-                            09
-                        </span>
-
-                        <h3>
-                            PREMIUM LINE
-                        </h3>
-
-                        <div class="card-meta">
-
-                            <span>
-                                STONE
-                            </span>
-
-                            <span>
-                                FASHION
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- CARD 10 -->
-
-                <article
-                    class="collection-card"
-                    data-id="10"
-                >
-
-                    <div class="card-image">
-
-                        <img
-                            src="images/10.jpeg"
-                            alt="Stone Design 10"
-                        >
-
-                        <div class="card-overlay">
-                            <span>VIEW DETAILS</span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="card-info">
-
-                        <span class="design-number">
-                            10
-                        </span>
-
-                        <h3>
-                            SIGNATURE LUXE
-                        </h3>
-
-                        <div class="card-meta">
-
-                            <span>
-                                PREMIUM
-                            </span>
-
-                            <span>
-                                CUSTOM
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-            </div>
-
-
-        </section>
-
-
-
-        <!-- =========================
-             APPLICATIONS
-        ========================== -->
-
-        <section id="applications" class="applications-section">
-
-
-            <div class="applications-header">
-
-                <span class="section-number">
-                    03 / APPLICATIONS
-                </span>
-
-                <h2>
-                    MADE TO
-                    <br>
-                    <span>STAND OUT.</span>
-                </h2>
-
-            </div>
-
-
-            <div class="application-list">
-
-
-                <div class="application-item">
-
-                    <span>01</span>
-
-                    <h3>T-SHIRTS</h3>
-
-                    <p>
-                        Premium fashion embellishment.
-                    </p>
-
-                </div>
-
-
-                <div class="application-item">
-
-                    <span>02</span>
-
-                    <h3>SWEATSHIRTS</h3>
-
-                    <p>
-                        Bold and expressive designs.
-                    </p>
-
-                </div>
-
-
-                <div class="application-item">
-
-                    <span>03</span>
-
-                    <h3>HOODIES</h3>
-
-                    <p>
-                        High-impact stone applications.
-                    </p>
-
-                </div>
-
-
-                <div class="application-item">
-
-                    <span>04</span>
-
-                    <h3>DRESSES</h3>
-
-                    <p>
-                        Elegant crystal detailing.
-                    </p>
-
-                </div>
-
-
-                <div class="application-item">
-
-                    <span>05</span>
-
-                    <h3>DENIM</h3>
-
-                    <p>
-                        Modern textile decoration.
-                    </p>
-
-                </div>
-
-
-                <div class="application-item">
-
-                    <span>06</span>
-
-                    <h3>BRANDING</h3>
-
-                    <p>
-                        Custom logo and identity applications.
-                    </p>
-
-                </div>
-
-
-            </div>
-
-
-        </section>
-
-
-
-        <!-- =========================
-             CUSTOM DESIGN
-        ========================== -->
-
-        <section id="custom" class="custom-section">
-
-
-            <div class="custom-image">
-
-                <img
-                    src="images/10.jpeg"
-                    alt="Custom Stone Design"
-                >
-
-            </div>
-
-
-            <div class="custom-content">
-
-                <span class="section-number">
-                    04 / CUSTOM DESIGN
-                </span>
-
-
-                <h2>
-                    YOUR IDEA.
-                    <br>
-                    <span>LET'S MAKE IT SHINE.</span>
-                </h2>
-
-
-                <p>
-
-                    Send us your artwork, sketch or idea.
-                    Our team can transform it into a professional
-                    stone and textile application.
-
-                </p>
-
-
-                <a href="#contact" class="outline-button">
-
-                    START YOUR PROJECT
-
-                    <span>→</span>
-
-                </a>
-
-            </div>
-
-
-        </section>
-
-
-
-        <!-- =========================
-             CONTACT
-        ========================== -->
-
-        <section id="contact" class="contact-section">
-
-
-            <div class="contact-left">
-
-                <span class="section-number">
-                    05 / CONTACT
-                </span>
-
-
-                <h2>
-                    READY TO CREATE
-                    <br>
-                    <span>SOMETHING BRILLIANT?</span>
-                </h2>
-
-
-                <div class="contact-details">
-
-
-                    <a href="tel:+201039812810">
-
-                        <span>PHONE</span>
-
-                        +20 103 981 2810
-
-                    </a>
-
-
-                    <a href="mailto:levent.aslan@abaycam.com">
-
-                        <span>EMAIL</span>
-
-                        levent.aslan@abaycam.com
-
-                    </a>
-
-
-                    <a
-                        href="https://maps.app.goo.gl/fuM3JiKSK4K6LEa98"
-                        target="_blank"
-                    >
-
-                        <span>LOCATION</span>
-
-                        VIEW OUR LOCATION
-
-                    </a>
-
-
-                </div>
-
-
-            </div>
-
-
-
-            <form class="contact-form" id="contactForm">
-
-
-                <input
-                    type="text"
-                    placeholder="YOUR NAME"
-                    required
-                >
-
-
-                <input
-                    type="text"
-                    placeholder="COMPANY NAME"
-                >
-
-
-                <input
-                    type="email"
-                    placeholder="EMAIL"
-                    required
-                >
-
-
-                <input
-                    type="tel"
-                    placeholder="PHONE / WHATSAPP"
-                >
-
-
-                <select>
-
-                    <option value="">
-                        SELECT PROJECT TYPE
-                    </option>
-
-                    <option>
-                        STONE APPLICATION
-                    </option>
-
-                    <option>
-                        CRYSTAL APPLICATION
-                    </option>
-
-                    <option>
-                        CUSTOM DESIGN
-                    </option>
-
-                    <option>
-                        BULK PRODUCTION
-                    </option>
-
-                </select>
-
-
-                <textarea
-                    placeholder="TELL US ABOUT YOUR PROJECT"
-                ></textarea>
-
-
-                <button type="submit">
-
-                    SEND REQUEST
-
-                    <span>→</span>
-
-                </button>
-
-
-            </form>
-
-
-        </section>
-
-
-
-        <!-- =========================
-             FOOTER
-        ========================== -->
-
-        <footer>
-
-            <div class="footer-brand">
-
-                <strong>
-                    <span>AB</span> AYCAM
-                </strong>
-
-                <p>
-                    Premium Stone & Textile
-                    Embellishment Solutions.
-                </p>
-
-            </div>
-
-
-            <div class="footer-copy">
-
-                © 2026 AB AYCAM
+                <strong>PHONE</strong>
+                +20 103 981 2810
 
                 <br>
 
-                ALL RIGHTS RESERVED.
+                <strong>EMAIL</strong>
+                levent.aslan@abaycam.com
+
+                <br>
+
+                <strong>LOCATION</strong>
+                CAIRO, EGYPT
 
             </div>
-
-
-        </footer>
-
-
-    </main>
-
-
-
-    <!-- =========================
-         PRODUCT MODAL
-    ========================== -->
-
-    <div id="designModal" class="design-modal">
-
-
-        <div class="modal-backdrop"></div>
-
-
-        <div class="modal-content">
-
-
-            <button
-                id="closeModal"
-                class="close-modal"
-            >
-                ×
-            </button>
-
-
-            <div class="modal-image">
-
-                <img
-                    id="modalImage"
-                    src=""
-                    alt="Design"
-                >
-
-            </div>
-
-
-            <div class="modal-details">
-
-
-                <span id="modalNumber">
-                    DESIGN 01
-                </span>
-
-
-                <h2 id="modalTitle">
-                    SIGNATURE DESIGN
-                </h2>
-
-
-                <div class="modal-specs">
-
-
-                    <div>
-
-                        <span>
-                            DESIGN CODE
-                        </span>
-
-                        <strong id="modalCode">
-                            AB-001
-                        </strong>
-
-                    </div>
-
-
-                    <div>
-
-                        <span>
-                            STONE TYPE
-                        </span>
-
-                        <strong id="modalStone">
-                            PREMIUM CRYSTAL
-                        </strong>
-
-                    </div>
-
-
-                    <div>
-
-                        <span>
-                            COLOR
-                        </span>
-
-                        <strong id="modalColor">
-                            CUSTOM
-                        </strong>
-
-                    </div>
-
-
-                    <div>
-
-                        <span>
-                            QUALITY CODE
-                        </span>
-
-                        <strong id="modalQuality">
-                            AB-Q01
-                        </strong>
-
-                    </div>
-
-
-                    <div>
-
-                        <span>
-                            APPLICATION
-                        </span>
-
-                        <strong id="modalApplication">
-                            TEXTILE / FASHION
-                        </strong>
-
-                    </div>
-
-
-                    <div>
-
-                        <span>
-                            CUSTOMIZATION
-                        </span>
-
-                        <strong>
-                            AVAILABLE
-                        </strong>
-
-                    </div>
-
-
-                </div>
-
-
-                <p id="modalDescription">
-
-                    This design can be customized according to
-                    your fabric, color palette and production requirements.
-
-                </p>
-
-
-                <a
-                    href="#contact"
-                    id="modalContactButton"
-                    class="modal-button"
-                >
-
-                    REQUEST THIS DESIGN
-
-                    <span>→</span>
-
-                </a>
-
-
-            </div>
-
 
         </div>
 
 
+        <form class="contact-form" id="contactForm">
+
+            <input
+                type="text"
+                placeholder="YOUR NAME"
+                required
+            >
+
+            <input
+                type="text"
+                placeholder="COMPANY NAME"
+            >
+
+            <input
+                type="tel"
+                placeholder="PHONE / WHATSAPP"
+            >
+
+            <select>
+
+                <option>
+                    SELECT PROJECT TYPE
+                </option>
+
+                <option>
+                    STONE APPLICATION
+                </option>
+
+                <option>
+                    TEXTILE EMBELLISHMENT
+                </option>
+
+                <option>
+                    CUSTOM DESIGN
+                </option>
+
+                <option>
+                    OTHER
+                </option>
+
+            </select>
+
+
+            <textarea
+                placeholder="TELL US ABOUT YOUR PROJECT"
+            ></textarea>
+
+
+            <button type="submit">
+                SEND REQUEST →
+            </button>
+
+        </form>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div>
+        <strong>AB AYCAM</strong>
+        <br>
+        Premium Stone & Textile Embellishment Solutions.
     </div>
 
 
+    <div>
+        © 2026 AB AYCAM. ALL RIGHTS RESERVED.
+    </div>
 
-    <script src="script.js"></script>
+</footer>
+
+
+
+<!-- =====================================================
+     PRODUCT DETAIL MODAL
+===================================================== -->
+
+<div class="modal" id="productModal">
+
+    <div class="modal-content">
+
+        <button class="modal-close" id="modalClose">
+            ×
+        </button>
+
+
+        <div class="modal-image">
+
+            <img
+                id="modalImage"
+                src=""
+                alt=""
+            >
+
+        </div>
+
+
+        <div class="modal-info">
+
+            <small id="modalNumber"></small>
+
+            <h2 id="modalName"></h2>
+
+            <p id="modalDescription"></p>
+
+
+            <div class="specifications">
+
+
+                <div class="specification">
+
+                    <span>PATTERN NAME</span>
+
+                    <strong id="modalPattern"></strong>
+
+                </div>
+
+
+                <div class="specification">
+
+                    <span>COLOR</span>
+
+                    <strong id="modalColor"></strong>
+
+                </div>
+
+
+                <div class="specification">
+
+                    <span>QUALITY CODE</span>
+
+                    <strong id="modalQuality"></strong>
+
+                </div>
+
+
+                <div class="specification">
+
+                    <span>APPLICATION</span>
+
+                    <strong id="modalApplication"></strong>
+
+                </div>
+
+
+                <div class="specification">
+
+                    <span>COLLECTION</span>
+
+                    <strong>
+                        AB AYCAM 2026
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =========================================================
+   MENU
+========================================================= */
+
+const menuButton =
+document.getElementById("menuButton");
+
+const sideMenu =
+document.getElementById("sideMenu");
+
+const closeMenu =
+document.getElementById("closeMenu");
+
+const menuOverlay =
+document.getElementById("menuOverlay");
+
+
+function openMenu() {
+
+    sideMenu.classList.add("open");
+
+    menuOverlay.classList.add("open");
+
+}
+
+
+function closeSideMenu() {
+
+    sideMenu.classList.remove("open");
+
+    menuOverlay.classList.remove("open");
+
+}
+
+
+menuButton.addEventListener(
+    "click",
+    openMenu
+);
+
+
+closeMenu.addEventListener(
+    "click",
+    closeSideMenu
+);
+
+
+menuOverlay.addEventListener(
+    "click",
+    closeSideMenu
+);
+
+
+document
+.querySelectorAll(".menu-link")
+.forEach(function(link) {
+
+    link.addEventListener(
+        "click",
+        closeSideMenu
+    );
+
+});
+
+
+
+/* =========================================================
+   LANGUAGE MENU
+========================================================= */
+
+const languageBox =
+document.getElementById("languageBox");
+
+const languageButton =
+document.getElementById("languageButton");
+
+const currentLanguage =
+document.getElementById("currentLanguage");
+
+
+languageButton.addEventListener(
+    "click",
+    function(event) {
+
+        event.stopPropagation();
+
+        languageBox.classList.toggle("open");
+
+    }
+);
+
+
+document
+.querySelectorAll("[data-language]")
+.forEach(function(button) {
+
+    button.addEventListener(
+        "click",
+        function() {
+
+            const language =
+            this.getAttribute("data-language");
+
+            currentLanguage.textContent =
+            language;
+
+            languageBox.classList.remove(
+                "open"
+            );
+
+        }
+    );
+
+});
+
+
+document.addEventListener(
+    "click",
+    function() {
+
+        languageBox.classList.remove(
+            "open"
+        );
+
+    }
+);
+
+
+
+/* =========================================================
+   PRODUCT DATA
+========================================================= */
+
+const products = [
+
+    {
+        number: "01",
+        image: "images/1.jpeg",
+
+        code: "AB-DSN-001",
+
+        name: "CRYSTAL BLOOM",
+
+        pattern:
+        "Floral Crystal Pattern",
+
+        color:
+        "Silver / Ice Blue",
+
+        quality:
+        "QY-CR-2401",
+
+        application:
+        "Stone & Crystal Embellishment",
+
+        description:
+        "A refined floral inspired design created with premium stones for elegant textile applications.",
+
+        colorHex:
+        "#b8c4cc"
+    },
+
+
+    {
+        number: "02",
+        image: "images/2.jpeg",
+
+        code: "AB-DSN-002",
+
+        name: "MIDNIGHT FLOW",
+
+        pattern:
+        "Organic Flow Pattern",
+
+        color:
+        "Midnight Blue",
+
+        quality:
+        "QY-MB-2402",
+
+        application:
+        "Premium Stone Application",
+
+        description:
+        "A bold and expressive design developed for modern fashion collections and statement garments.",
+
+        colorHex:
+        "#1d2c4c"
+    },
+
+
+    {
+        number: "03",
+        image: "images/3.jpeg",
+
+        code: "AB-DSN-003",
+
+        name: "URBAN BLOOM",
+
+        pattern:
+        "Contemporary Floral",
+
+        color:
+        "Deep Blue",
+
+        quality:
+        "QY-UB-2403",
+
+        application:
+        "Textile Decoration",
+
+        description:
+        "A contemporary interpretation of floral motifs designed for creative and modern apparel.",
+
+        colorHex:
+        "#274f83"
+    },
+
+
+    {
+        number: "04",
+        image: "images/4.jpeg",
+
+        code: "AB-DSN-004",
+
+        name: "ROYAL DOT",
+
+        pattern:
+        "Crystal Dot Structure",
+
+        color:
+        "Royal Blue",
+
+        quality:
+        "QY-RD-2404",
+
+        application:
+        "Stone Transfer",
+
+        description:
+        "A structured premium pattern designed to create a strong visual impact on textile surfaces.",
+
+        colorHex:
+        "#143b76"
+    },
+
+
+    {
+        number: "05",
+        image: "images/5.jpeg",
+
+        code: "AB-DSN-005",
+
+        name: "SILVER GARDEN",
+
+        pattern:
+        "Decorative Botanical",
+
+        color:
+        "Silver Grey",
+
+        quality:
+        "QY-SG-2405",
+
+        application:
+        "Crystal Embellishment",
+
+        description:
+        "An elegant botanical inspired design combining subtle details with premium embellishment.",
+
+        colorHex:
+        "#9da0a3"
+    },
+
+
+    {
+        number: "06",
+        image: "images/6.jpeg",
+
+        code: "AB-DSN-006",
+
+        name: "NIGHT PETAL",
+
+        pattern:
+        "Abstract Petal",
+
+        color:
+        "Dark Navy",
+
+        quality:
+        "QY-NP-2406",
+
+        application:
+        "Stone & Textile Design",
+
+        description:
+        "An expressive petal composition designed for collections requiring strong character and depth.",
+
+        colorHex:
+        "#101d38"
+    },
+
+
+    {
+        number: "07",
+        image: "images/7.jpeg",
+
+        code: "AB-DSN-007",
+
+        name: "ICE MOTIF",
+
+        pattern:
+        "Geometric Floral",
+
+        color:
+        "Ice Blue",
+
+        quality:
+        "QY-IM-2407",
+
+        application:
+        "Heat Transfer Stone",
+
+        description:
+        "A clean and contemporary motif suitable for premium fashion and textile decoration.",
+
+        colorHex:
+        "#9cc4d4"
+    },
+
+
+    {
+        number: "08",
+        image: "images/8.jpeg",
+
+        code: "AB-DSN-008",
+
+        name: "BLUE SIGNATURE",
+
+        pattern:
+        "Signature Crystal Design",
+
+        color:
+        "Ocean Blue",
+
+        quality:
+        "QY-BS-2408",
+
+        application:
+        "Premium Crystal Application",
+
+        description:
+        "A signature AB AYCAM design developed to create an elegant and recognizable visual identity.",
+
+        colorHex:
+        "#24509a"
+    },
+
+
+    {
+        number: "09",
+        image: "images/9.jpeg",
+
+        code: "AB-DSN-009",
+
+        name: "MODERN FLOWER",
+
+        pattern:
+        "Modern Botanical",
+
+        color:
+        "Soft Blue",
+
+        quality:
+        "QY-MF-2409",
+
+        application:
+        "Decorative Stone Pattern",
+
+        description:
+        "A modern botanical design combining contemporary styling with detailed embellishment.",
+
+        colorHex:
+        "#759bb1"
+    },
+
+
+    {
+        number: "10",
+        image: "images/10.jpeg",
+
+        code: "AB-DSN-010",
+
+        name: "AB SIGNATURE",
+
+        pattern:
+        "Exclusive Custom Pattern",
+
+        color:
+        "Premium Blue",
+
+        quality:
+        "QY-AS-2410",
+
+        application:
+        "Custom Design",
+
+        description:
+        "An exclusive design created for premium collections and custom AB AYCAM applications.",
+
+        colorHex:
+        "#182d5c"
+    }
+
+];
+
+
+
+/* =========================================================
+   CREATE COLLECTION CARDS
+========================================================= */
+
+const collectionGrid =
+document.getElementById("collectionGrid");
+
+
+products.forEach(function(product, index) {
+
+
+    const card =
+    document.createElement("article");
+
+
+    card.className =
+    "product-card";
+
+
+    card.innerHTML = `
+
+        <div class="product-image">
+
+            <img
+                src="${product.image}"
+                alt="${product.name}"
+            >
+
+            <div class="product-number">
+                ${product.number}
+            </div>
+
+        </div>
+
+
+        <div class="product-info">
+
+            <div class="product-code">
+                ${product.code}
+            </div>
+
+
+            <h3 class="product-name">
+                ${product.name}
+            </h3>
+
+
+            <p class="product-description">
+                ${product.description}
+            </p>
+
+
+            <div class="product-details">
+
+                <div class="color-info">
+
+                    <span
+                        class="color-dot"
+                        style="background:${product.colorHex}"
+                    ></span>
+
+                    ${product.color}
+
+                </div>
+
+
+                <button
+                    class="view-detail"
+                >
+                    VIEW DETAILS
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    card.addEventListener(
+        "click",
+        function() {
+
+            openProduct(
+                index
+            );
+
+        }
+    );
+
+
+    collectionGrid.appendChild(
+        card
+    );
+
+
+});
+
+
+
+/* =========================================================
+   PRODUCT MODAL
+========================================================= */
+
+const productModal =
+document.getElementById(
+    "productModal"
+);
+
+const modalClose =
+document.getElementById(
+    "modalClose"
+);
+
+
+function openProduct(index) {
+
+
+    const product =
+    products[index];
+
+
+    document
+    .getElementById("modalImage")
+    .src =
+    product.image;
+
+
+    document
+    .getElementById("modalNumber")
+    .textContent =
+    product.number +
+    " · " +
+    product.code;
+
+
+    document
+    .getElementById("modalName")
+    .textContent =
+    product.name;
+
+
+    document
+    .getElementById("modalDescription")
+    .textContent =
+    product.description;
+
+
+    document
+    .getElementById("modalPattern")
+    .textContent =
+    product.pattern;
+
+
+    document
+    .getElementById("modalColor")
+    .textContent =
+    product.color;
+
+
+    document
+    .getElementById("modalQuality")
+    .textContent =
+    product.quality;
+
+
+    document
+    .getElementById("modalApplication")
+    .textContent =
+    product.application;
+
+
+    productModal
+    .classList
+    .add("open");
+
+
+    document
+    .body
+    .classList
+    .add("modal-open");
+
+}
+
+
+
+function closeProduct() {
+
+
+    productModal
+    .classList
+    .remove("open");
+
+
+    document
+    .body
+    .classList
+    .remove("modal-open");
+
+}
+
+
+modalClose.addEventListener(
+    "click",
+    closeProduct
+);
+
+
+productModal.addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            event.target === productModal
+        ) {
+
+            closeProduct();
+
+        }
+
+    }
+);
+
+
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            closeProduct();
+
+            closeSideMenu();
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   CONTACT FORM
+========================================================= */
+
+const contactForm =
+document.getElementById(
+    "contactForm"
+);
+
+
+contactForm.addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+        alert(
+            "Thank you! Your request has been received."
+        );
+
+        contactForm.reset();
+
+    }
+);
+
+
+
+/* =========================================================
+   IMAGE ERROR FALLBACK
+========================================================= */
+
+document
+.querySelectorAll("img")
+.forEach(function(image) {
+
+    image.addEventListener(
+        "error",
+        function() {
+
+            console.log(
+                "Image could not be loaded:",
+                this.src
+            );
+
+        }
+    );
+
+});
+
+
+</script>
 
 </body>
 </html>
