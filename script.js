@@ -1,29 +1,198 @@
-/* ========================================================= */
-/* ELEMENTS */
-/* ========================================================= */
+/* =========================
+   LOADER
+========================= */
 
-const slides = document.querySelectorAll(".hero-slide");
+window.addEventListener("load", function () {
 
-const dots = document.querySelectorAll(".slider-dot");
+    const loader = document.getElementById("loader");
 
-const nextButton = document.getElementById("nextSlide");
+    setTimeout(function () {
 
-const prevButton = document.getElementById("prevSlide");
+        loader.style.opacity = "0";
+
+        loader.style.transition = "opacity 0.5s ease";
+
+        setTimeout(function () {
+
+            loader.style.display = "none";
+
+        }, 500);
+
+    }, 600);
+
+});
 
 
 
-/* ========================================================= */
-/* SLIDER */
-/* ========================================================= */
+/* =========================
+   SIDE MENU
+========================= */
+
+const menuButton = document.getElementById("menuButton");
+
+const sideMenu = document.getElementById("sideMenu");
+
+const closeMenu = document.getElementById("closeMenu");
+
+const menuOverlay = document.getElementById("menuOverlay");
+
+const menuLinks = document.querySelectorAll(".menu-link");
+
+
+function openMenu() {
+
+    sideMenu.classList.add("active");
+
+    menuOverlay.classList.add("active");
+
+    document.body.style.overflow = "hidden";
+
+}
+
+
+function hideMenu() {
+
+    sideMenu.classList.remove("active");
+
+    menuOverlay.classList.remove("active");
+
+    document.body.style.overflow = "";
+
+}
+
+
+menuButton.addEventListener("click", openMenu);
+
+closeMenu.addEventListener("click", hideMenu);
+
+menuOverlay.addEventListener("click", hideMenu);
+
+
+menuLinks.forEach(function (link) {
+
+    link.addEventListener("click", function () {
+
+        hideMenu();
+
+    });
+
+});
+
+
+
+/* =========================
+   LANGUAGE SELECTOR
+========================= */
+
+const languageButton =
+    document.getElementById("languageButton");
+
+const languageDropdown =
+    document.getElementById("languageDropdown");
+
+const currentLanguage =
+    document.getElementById("currentLanguage");
+
+const languageOptions =
+    document.querySelectorAll(".language-option");
+
+
+languageButton.addEventListener("click", function (event) {
+
+    event.stopPropagation();
+
+    languageDropdown.classList.toggle("active");
+
+});
+
+
+languageOptions.forEach(function (option) {
+
+    option.addEventListener("click", function () {
+
+        const language = this.dataset.lang;
+
+        if (language === "tr") {
+            currentLanguage.textContent = "TR";
+        }
+
+        if (language === "en") {
+            currentLanguage.textContent = "EN";
+        }
+
+        if (language === "ar") {
+            currentLanguage.textContent = "AR";
+        }
+
+        languageDropdown.classList.remove("active");
+
+    });
+
+});
+
+
+document.addEventListener("click", function () {
+
+    languageDropdown.classList.remove("active");
+
+});
+
+
+
+/* =========================
+   HERO SLIDER
+========================= */
+
+const slides =
+    document.querySelectorAll(".slide");
+
+const nextButton =
+    document.getElementById("nextSlide");
+
+const prevButton =
+    document.getElementById("prevSlide");
+
+const sliderDots =
+    document.getElementById("sliderDots");
+
 
 let currentSlide = 0;
 
 let sliderInterval;
 
 
+/* CREATE DOTS */
+
+slides.forEach(function (slide, index) {
+
+    const dot = document.createElement("button");
+
+    dot.classList.add("slider-dot");
+
+    if (index === 0) {
+        dot.classList.add("active");
+    }
+
+    dot.addEventListener("click", function () {
+
+        showSlide(index);
+
+        restartSlider();
+
+    });
+
+    sliderDots.appendChild(dot);
+
+});
+
+
+const dots =
+    document.querySelectorAll(".slider-dot");
+
+
+/* SHOW SLIDE */
 
 function showSlide(index) {
-
 
     slides.forEach(function (slide) {
 
@@ -39,23 +208,20 @@ function showSlide(index) {
     });
 
 
-
     slides[index].classList.add("active");
 
     dots[index].classList.add("active");
-
 
     currentSlide = index;
 
 }
 
 
+/* NEXT */
 
 function nextSlide() {
 
-
     currentSlide++;
-
 
     if (currentSlide >= slides.length) {
 
@@ -63,51 +229,60 @@ function nextSlide() {
 
     }
 
-
     showSlide(currentSlide);
 
 }
 
 
+/* PREVIOUS */
 
 function previousSlide() {
 
-
     currentSlide--;
-
 
     if (currentSlide < 0) {
 
-        currentSlide = slides.length - 1;
+        currentSlide =
+            slides.length - 1;
 
     }
-
 
     showSlide(currentSlide);
 
 }
 
 
+/* BUTTONS */
 
-/* ========================================================= */
+nextButton.addEventListener("click", function () {
+
+    nextSlide();
+
+    restartSlider();
+
+});
+
+
+prevButton.addEventListener("click", function () {
+
+    previousSlide();
+
+    restartSlider();
+
+});
+
+
 /* AUTO SLIDER */
-/* ========================================================= */
 
 function startSlider() {
 
-
-    sliderInterval = setInterval(function () {
-
-        nextSlide();
-
-    }, 4500);
+    sliderInterval =
+        setInterval(nextSlide, 4500);
 
 }
 
 
-
-function resetSlider() {
-
+function restartSlider() {
 
     clearInterval(sliderInterval);
 
@@ -116,539 +291,207 @@ function resetSlider() {
 }
 
 
-
-/* ========================================================= */
-/* BUTTON EVENTS */
-/* ========================================================= */
-
-if (nextButton) {
-
-
-    nextButton.addEventListener("click", function () {
-
-        nextSlide();
-
-        resetSlider();
-
-    });
-
-}
-
-
-
-if (prevButton) {
-
-
-    prevButton.addEventListener("click", function () {
-
-        previousSlide();
-
-        resetSlider();
-
-    });
-
-}
-
-
-
-/* ========================================================= */
-/* DOT EVENTS */
-/* ========================================================= */
-
-dots.forEach(function (dot, index) {
-
-
-    dot.addEventListener("click", function () {
-
-        showSlide(index);
-
-        resetSlider();
-
-    });
-
-
-});
-
-
-
 startSlider();
 
 
 
+/* =========================
+   PRODUCT DATA
+========================= */
 
+const products = {
 
-/* ========================================================= */
-/* LANGUAGE MENU */
-/* ========================================================= */
-
-const languageButton =
-    document.getElementById("languageButton");
-
-
-const languageDropdown =
-    document.getElementById("languageDropdown");
-
-
-const currentLanguage =
-    document.getElementById("currentLanguage");
-
-
-const languageOptions =
-    document.querySelectorAll(".language-option");
-
-
-
-languageButton.addEventListener("click", function () {
-
-
-    languageDropdown.classList.toggle("show");
-
-
-});
-
-
-
-languageOptions.forEach(function (option) {
-
-
-    option.addEventListener("click", function () {
-
-
-        const selectedLanguage =
-            option.dataset.language;
-
-
-
-        if (selectedLanguage === "tr") {
-
-            currentLanguage.textContent = "TR";
-
-        }
-
-
-        if (selectedLanguage === "en") {
-
-            currentLanguage.textContent = "EN";
-
-        }
-
-
-        if (selectedLanguage === "ar") {
-
-            currentLanguage.textContent = "AR";
-
-        }
-
-
-
-        languageDropdown.classList.remove("show");
-
-
-        changeLanguage(selectedLanguage);
-
-
-    });
-
-
-});
-
-
-
-/* ========================================================= */
-/* TRANSLATIONS */
-/* ========================================================= */
-
-const translations = {
-
-
-    tr: {
-
-        home: "ANA SAYFA",
-
-        collection: "KOLEKSİYON",
-
-        about: "HAKKIMIZDA",
-
-        applications: "UYGULAMALAR",
-
-        contact: "İLETİŞİM"
-
+    1: {
+        image: "images/1.png",
+        code: "01 · AB-SLV-001",
+        title: "SILVER HOTFIX",
+        subtitle: "Crystal Silver"
     },
 
-
-    en: {
-
-        home: "HOME",
-
-        collection: "COLLECTION",
-
-        about: "ABOUT US",
-
-        applications: "APPLICATIONS",
-
-        contact: "CONTACT"
-
+    2: {
+        image: "images/2.png",
+        code: "02 · AB-LS-002",
+        title: "LIGHT SIAM",
+        subtitle: "Light Siam Red"
     },
 
+    3: {
+        image: "images/3.png",
+        code: "03 · AB-SM-003",
+        title: "SIAM RED",
+        subtitle: "Deep Red Crystal"
+    },
 
-    ar: {
+    4: {
+        image: "images/4.png",
+        code: "04 · AB-RS-004",
+        title: "ROSE CRYSTAL",
+        subtitle: "Premium Rose Tone"
+    },
 
-        home: "الرئيسية",
+    5: {
+        image: "images/5.png",
+        code: "05 · AB-CH-005",
+        title: "CHAMPAGNE GOLD",
+        subtitle: "Warm Golden Crystal"
+    },
 
-        collection: "المجموعة",
+    6: {
+        image: "images/6.png",
+        code: "06 · AB-AB-006",
+        title: "AURORA CRYSTAL",
+        subtitle: "Multicolor Reflection"
+    },
 
-        about: "من نحن",
+    7: {
+        image: "images/7.png",
+        code: "07 · AB-CR-007",
+        title: "CRYSTAL CLEAR",
+        subtitle: "Brilliant Clear Effect"
+    },
 
-        applications: "الاستخدامات",
+    8: {
+        image: "images/8.png",
+        code: "08 · AB-GL-008",
+        title: "GOLDEN LIGHT",
+        subtitle: "Bright Gold Tone"
+    },
 
-        contact: "اتصل بنا"
+    9: {
+        image: "images/9.png",
+        code: "09 · AB-LX-009",
+        title: "LUXURY MIX",
+        subtitle: "Premium Mixed Crystal"
+    },
 
+    10: {
+        image: "images/10.png",
+        code: "10 · AB-PR-010",
+        title: "PREMIUM SHINE",
+        subtitle: "Signature Collection"
     }
-
 
 };
 
 
 
-function changeLanguage(language) {
-
-
-    const elements =
-        document.querySelectorAll("[data-i18n]");
-
-
-
-    elements.forEach(function (element) {
-
-
-        const key =
-            element.dataset.i18n;
-
-
-
-        if (
-            translations[language]
-            &&
-            translations[language][key]
-        ) {
-
-            element.textContent =
-                translations[language][key];
-
-        }
-
-
-    });
-
-
-
-    if (language === "ar") {
-
-        document.body.dir = "rtl";
-
-    } else {
-
-        document.body.dir = "ltr";
-
-    }
-
-
-}
-
-
-
-
-
-/* ========================================================= */
-/* CLOSE LANGUAGE MENU */
-/* ========================================================= */
-
-document.addEventListener("click", function (event) {
-
-
-    if (
-        !languageButton.contains(event.target)
-        &&
-        !languageDropdown.contains(event.target)
-    ) {
-
-        languageDropdown.classList.remove("show");
-
-    }
-
-
-});
-
-
-
-
-
-/* ========================================================= */
-/* PRODUCT MODAL */
-/* ========================================================= */
+/* =========================
+   PRODUCT MODAL
+========================= */
 
 const productCards =
     document.querySelectorAll(".product-card");
 
-
 const productModal =
     document.getElementById("productModal");
 
+const closeModal =
+    document.getElementById("closeModal");
 
 const modalOverlay =
     document.getElementById("modalOverlay");
 
-
-const modalClose =
-    document.getElementById("modalClose");
-
-
 const modalProductImage =
     document.getElementById("modalProductImage");
 
+const modalCode =
+    document.getElementById("modalCode");
 
-const modalProductCode =
-    document.getElementById("modalProductCode");
+const modalTitle =
+    document.getElementById("modalTitle");
 
-
-const modalProductName =
-    document.getElementById("modalProductName");
-
-
-const modalProductColor =
-    document.getElementById("modalProductColor");
+const modalSubtitle =
+    document.getElementById("modalSubtitle");
 
 
+function openProduct(productId) {
 
-productCards.forEach(function (card) {
+    const product = products[productId];
 
-
-    card.addEventListener("click", function () {
-
-
-        const image =
-            card.dataset.image;
+    if (!product) {
+        return;
+    }
 
 
-        const name =
-            card.dataset.name;
+    modalProductImage.src =
+        product.image;
+
+    modalProductImage.alt =
+        product.title;
 
 
-        const code =
-            card.dataset.code;
+    modalCode.textContent =
+        product.code;
+
+    modalTitle.textContent =
+        product.title;
+
+    modalSubtitle.textContent =
+        product.subtitle;
 
 
-        const color =
-            card.dataset.color;
+    productModal.classList.add("active");
 
-
-
-        modalProductImage.src =
-            image;
-
-
-        modalProductImage.alt =
-            name;
-
-
-        modalProductName.textContent =
-            name;
-
-
-        modalProductCode.textContent =
-            code;
-
-
-        modalProductColor.textContent =
-            color;
-
-
-
-        productModal.classList.add("show");
-
-
-        document.body.style.overflow =
-            "hidden";
-
-
-    });
-
-
-});
-
-
-
-
-
-/* ========================================================= */
-/* CLOSE MODAL */
-/* ========================================================= */
-
-function closeModal() {
-
-
-    productModal.classList.remove("show");
-
-
-    document.body.style.overflow =
-        "auto";
-
+    document.body.style.overflow = "hidden";
 
 }
 
 
+function hideProduct() {
 
-modalClose.addEventListener("click", closeModal);
+    productModal.classList.remove("active");
 
+    document.body.style.overflow = "";
 
-modalOverlay.addEventListener("click", closeModal);
-
-
-
-document.addEventListener("keydown", function (event) {
+}
 
 
-    if (event.key === "Escape") {
+productCards.forEach(function (card) {
 
-        closeModal();
+    card.addEventListener("click", function () {
 
-    }
+        const productId =
+            this.dataset.product;
 
-
-});
-
-
-
-
-
-/* ========================================================= */
-/* MOBILE MENU */
-/* ========================================================= */
-
-const mobileMenuButton =
-    document.getElementById("mobileMenuButton");
-
-
-const sidebar =
-    document.getElementById("sidebar");
-
-
-
-mobileMenuButton.addEventListener("click", function () {
-
-
-    sidebar.classList.toggle("open");
-
-
-});
-
-
-
-/* ========================================================= */
-/* MOBILE MENU CLOSE AFTER CLICK */
-/* ========================================================= */
-
-const navigationLinks =
-    document.querySelectorAll(".nav-link");
-
-
-navigationLinks.forEach(function (link) {
-
-
-    link.addEventListener("click", function () {
-
-
-        if (
-            window.innerWidth <= 768
-        ) {
-
-            sidebar.classList.remove("open");
-
-        }
-
+        openProduct(productId);
 
     });
 
-
 });
 
 
+closeModal.addEventListener(
+    "click",
+    hideProduct
+);
+
+
+modalOverlay.addEventListener(
+    "click",
+    hideProduct
+);
 
 
 
-/* ========================================================= */
-/* ACTIVE MENU ON SCROLL */
-/* ========================================================= */
+/* =========================
+   ESC KEY
+========================= */
 
-const sections =
-    document.querySelectorAll(
-        "section[id]"
-    );
+document.addEventListener(
+    "keydown",
+    function (event) {
 
+        if (event.key === "Escape") {
 
+            hideMenu();
 
-window.addEventListener(
-    "scroll",
-    function () {
+            hideProduct();
 
+            languageDropdown.classList.remove(
+                "active"
+            );
 
-        let current = "";
-
-
-
-        sections.forEach(function (section) {
-
-
-            const sectionTop =
-                section.offsetTop - 150;
-
-
-            const sectionHeight =
-                section.offsetHeight;
-
-
-
-            if (
-                window.scrollY >= sectionTop
-                &&
-                window.scrollY <
-                sectionTop + sectionHeight
-            ) {
-
-                current =
-                    section.getAttribute("id");
-
-            }
-
-
-        });
-
-
-
-        navigationLinks.forEach(
-            function (link) {
-
-
-                link.classList.remove(
-                    "active"
-                );
-
-
-                if (
-                    link.getAttribute("href")
-                    === "#" + current
-                ) {
-
-                    link.classList.add(
-                        "active"
-                    );
-
-                }
-
-
-            }
-        );
-
+        }
 
     }
 );
