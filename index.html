@@ -1,742 +1,1465 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>AB AYCAM | Stone Design</title>
+    <title>AB AYCAM | Stone & Textile Embellishment</title>
 
-  <meta
-    name="description"
-    content="AB AYCAM - Premium stone printing, marble design and decorative stone collections."
-  />
+    <meta name="description"
+        content="AB AYCAM - Premium stone, crystal and textile embellishment solutions.">
 
-  <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- LOADING SCREEN -->
-  <div id="preloader">
-    <div class="loader-content">
-      <div class="loader-logo">
-        <strong>AB</strong> AYCAM
-      </div>
+    <!-- =========================
+         LOADING SCREEN
+    ========================== -->
 
-      <div class="loader-line">
-        <span></span>
-      </div>
+    <div id="loader">
+        <div class="loader-logo">
+            <span>AB</span> AYCAM
+        </div>
 
-      <p>CREATING BRILLIANCE</p>
-    </div>
-  </div>
+        <div class="loader-line">
+            <div></div>
+        </div>
 
-
-  <!-- BACKGROUND -->
-  <div class="background-glow"></div>
-
-
-  <!-- SIDE MENU -->
-  <aside class="sidebar" id="sidebar">
-
-    <div class="sidebar-logo">
-      <span class="logo-ab">AB</span>
-      <span>AYCAM</span>
+        <p>CREATING BRILLIANCE</p>
     </div>
 
-    <nav>
 
-      <a href="#home" class="nav-link active">
-        <span class="nav-number">01</span>
-        <span data-i18n="menuHome">Ana Sayfa</span>
-      </a>
+    <!-- =========================
+         LEFT SIDEBAR
+    ========================== -->
 
-      <a href="#collections" class="nav-link">
-        <span class="nav-number">02</span>
-        <span data-i18n="menuCollection">Koleksiyonlar</span>
-      </a>
+    <aside class="sidebar">
 
-      <a href="#process" class="nav-link">
-        <span class="nav-number">03</span>
-        <span data-i18n="menuProcess">Üretim</span>
-      </a>
-
-      <a href="#about" class="nav-link">
-        <span class="nav-number">04</span>
-        <span data-i18n="menuAbout">Hakkımızda</span>
-      </a>
-
-      <a href="#contact" class="nav-link">
-        <span class="nav-number">05</span>
-        <span data-i18n="menuContact">İletişim</span>
-      </a>
-
-    </nav>
+        <div class="brand">
+            <span>AB</span>
+            <strong>AYCAM</strong>
+        </div>
 
 
-    <div class="sidebar-bottom">
+        <nav class="side-menu">
 
-      <div class="sidebar-line"></div>
+            <a href="#home" class="nav-link active">
+                <span>01</span>
+                <b data-i18n="home">HOME</b>
+            </a>
 
-      <p>
-        PREMIUM<br />
-        STONE DESIGN
-      </p>
+            <a href="#collection" class="nav-link">
+                <span>02</span>
+                <b data-i18n="collection">COLLECTION</b>
+            </a>
 
-      <span>© 2026 AB AYCAM</span>
+            <a href="#process" class="nav-link">
+                <span>03</span>
+                <b data-i18n="process">OUR PROCESS</b>
+            </a>
 
-    </div>
+            <a href="#applications" class="nav-link">
+                <span>04</span>
+                <b data-i18n="applications">APPLICATIONS</b>
+            </a>
 
-  </aside>
+            <a href="#custom" class="nav-link">
+                <span>05</span>
+                <b data-i18n="custom">CUSTOM DESIGN</b>
+            </a>
+
+            <a href="#contact" class="nav-link">
+                <span>06</span>
+                <b data-i18n="contact">CONTACT</b>
+            </a>
+
+        </nav>
 
 
-  <!-- MOBILE MENU BUTTON -->
-  <button class="mobile-menu-btn" id="mobileMenuBtn">
-    ☰
-  </button>
+        <div class="sidebar-bottom">
+            <small>© 2026 AB AYCAM</small>
+
+            <a href="#contact">
+                GET IN TOUCH
+            </a>
+        </div>
+
+    </aside>
 
 
-  <!-- MAIN -->
-  <main>
+    <!-- =========================
+         MOBILE HEADER
+    ========================== -->
+
+    <header class="mobile-header">
+
+        <button id="mobileMenuButton" class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="mobile-brand">
+            <span>AB</span> AYCAM
+        </div>
+
+    </header>
 
 
-    <!-- LANGUAGE -->
+    <!-- =========================
+         LANGUAGE SELECTOR
+    ========================== -->
+
     <div class="language-selector">
 
-      <button class="language-btn active" data-lang="tr">
-        TR
-      </button>
+        <button id="languageButton">
 
-      <button class="language-btn" data-lang="ar">
-        AR
-      </button>
+            <span id="currentLanguage">TR</span>
 
-      <button class="language-btn" data-lang="en">
-        EN
-      </button>
+            <span class="arrow">⌄</span>
+
+        </button>
+
+
+        <div class="language-dropdown">
+
+            <button data-lang="tr">
+                TR — Türkçe
+            </button>
+
+            <button data-lang="ar">
+                AR — العربية المصرية
+            </button>
+
+            <button data-lang="en">
+                EN — English
+            </button>
+
+        </div>
 
     </div>
 
 
-    <!-- HERO -->
-    <section id="home" class="hero-section">
+    <!-- =========================
+         MAIN
+    ========================== -->
 
-      <div class="hero-background">
-
-        <div class="hero-slide active">
-          <img src="images/1.jpeg" alt="AB AYCAM Stone Collection 1" />
-        </div>
-
-        <div class="hero-slide">
-          <img src="images/2.jpeg" alt="AB AYCAM Stone Collection 2" />
-        </div>
-
-        <div class="hero-slide">
-          <img src="images/3.jpeg" alt="AB AYCAM Stone Collection 3" />
-        </div>
-
-      </div>
+    <main>
 
 
-      <div class="hero-overlay"></div>
+        <!-- =========================
+             HOME
+        ========================== -->
+
+        <section id="home" class="hero">
 
 
-      <div class="hero-content">
+            <!-- HERO SLIDER -->
 
-        <p class="hero-eyebrow">
-          AB AYCAM
-        </p>
-
-        <h1 data-i18n="heroTitle">
-          Taşa Yeni Bir<br />
-          <span>Karakter</span> Veriyoruz.
-        </h1>
-
-        <p class="hero-description" data-i18n="heroDescription">
-          Yüksek kaliteli taş baskı teknolojisi ile mekanlara,
-          projelere ve tasarımlara benzersiz bir görünüm kazandırıyoruz.
-        </p>
+            <div class="hero-slider">
 
 
-        <a href="#collections" class="hero-button">
+                <div class="hero-slide active"
+                     data-image="images/1.jpeg">
 
-          <span data-i18n="discover">
-            KOLEKSİYONU KEŞFET
-          </span>
+                    <img src="images/1.jpeg" alt="AB AYCAM Stone Design">
 
-          <span class="arrow">
-            ↓
-          </span>
-
-        </a>
-
-      </div>
+                </div>
 
 
-      <div class="hero-slider-dots">
+                <div class="hero-slide"
+                     data-image="images/2.jpeg">
 
-        <button class="slider-dot active" data-slide="0"></button>
-        <button class="slider-dot" data-slide="1"></button>
-        <button class="slider-dot" data-slide="2"></button>
+                    <img src="images/2.jpeg" alt="AB AYCAM Textile Design">
 
-      </div>
-
-
-      <div class="scroll-indicator">
-
-        <span>SCROLL</span>
-
-        <div class="scroll-line"></div>
-
-      </div>
-
-    </section>
+                </div>
 
 
+                <div class="hero-slide"
+                     data-image="images/3.jpeg">
 
-    <!-- INTRO -->
-    <section class="intro-section">
+                    <img src="images/3.jpeg" alt="AB AYCAM Crystal Design">
 
-      <div class="section-label">
-        <span>01</span>
-        <span data-i18n="introLabel">AB AYCAM EXPERIENCE</span>
-      </div>
+                </div>
 
 
-      <div class="intro-grid">
+                <div class="hero-slide"
+                     data-image="images/4.jpeg">
 
-        <h2 data-i18n="introTitle">
-          Doğal görünüm.<br />
-          <span>Sınırsız tasarım.</span>
-        </h2>
+                    <img src="images/4.jpeg" alt="AB AYCAM Collection">
 
-
-        <p data-i18n="introText">
-          AB AYCAM olarak taş yüzeyleri modern baskı teknolojisi
-          ile birleştiriyor, projeleriniz için güçlü, estetik ve
-          dikkat çekici yüzeyler üretiyoruz.
-        </p>
-
-      </div>
-
-    </section>
+                </div>
 
 
-
-    <!-- COLLECTIONS -->
-    <section id="collections" class="collections-section">
-
-      <div class="section-header">
-
-        <div>
-
-          <div class="section-label">
-            <span>02</span>
-            <span data-i18n="collectionLabel">
-              COLLECTIONS
-            </span>
-          </div>
-
-          <h2 data-i18n="collectionTitle">
-            Taş Koleksiyonlarımız
-          </h2>
-
-        </div>
+            </div>
 
 
-        <p data-i18n="collectionDescription">
-          Her taş farklı bir karakter taşır.
-          Koleksiyonlarımızı keşfedin.
-        </p>
-
-      </div>
+            <div class="hero-overlay"></div>
 
 
-      <div class="collection-grid" id="collectionGrid">
+            <div class="hero-content">
+
+                <div class="hero-eyebrow">
+                    PREMIUM STONE & TEXTILE DESIGN
+                </div>
 
 
-        <div class="collection-card" data-image="images/1.jpeg">
+                <h1>
+                    WHERE DETAILS
+                    <br>
+                    <span>CREATE BRILLIANCE.</span>
+                </h1>
 
-          <img src="images/1.jpeg" alt="Stone Collection 01" />
 
-          <div class="collection-overlay">
+                <p data-i18n="heroText">
 
-            <span>01</span>
+                    Premium stone, crystal and textile embellishment
+                    solutions designed to make every surface shine.
 
-            <h3>STONE COLLECTION</h3>
+                </p>
 
-            <button class="view-stone">
-              <span>VIEW</span>
-              <span>+</span>
+
+                <a href="#collection" class="hero-button">
+
+                    <span data-i18n="explore">
+                        EXPLORE COLLECTION
+                    </span>
+
+                    <span>→</span>
+
+                </a>
+
+
+            </div>
+
+
+            <!-- SLIDER CONTROLS -->
+
+            <div class="slider-controls">
+
+                <div class="slider-count">
+
+                    <span id="currentSlideNumber">01</span>
+
+                    <span>/</span>
+
+                    <span>04</span>
+
+                </div>
+
+
+                <div class="slider-progress">
+
+                    <div id="sliderProgress"></div>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="scroll-indicator">
+
+                <span>SCROLL TO DISCOVER</span>
+
+                <div class="scroll-line"></div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             MACHINE ANIMATION
+        ========================== -->
+
+        <section id="process" class="machine-section">
+
+
+            <div class="machine-intro">
+
+                <span class="section-number">
+                    01 / THE PROCESS
+                </span>
+
+                <h2>
+                    FROM DESIGN
+                    <br>
+                    <span>TO BRILLIANCE.</span>
+                </h2>
+
+                <p>
+
+                    Scroll down and follow the transformation.
+                    Every design begins with an idea and becomes
+                    a detailed stone application.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- STICKY MACHINE AREA -->
+
+            <div class="machine-sticky">
+
+
+                <div class="machine-stage">
+
+
+                    <!-- MACHINE IMAGE -->
+
+                    <div class="machine-image-wrapper">
+
+                        <img
+                            src="images/machine.png"
+                            alt="AB AYCAM Stone Application Machine"
+                            class="machine-image"
+                        >
+
+                    </div>
+
+
+                    <!-- FABRIC COMING OUT -->
+
+                    <div class="fabric-output">
+
+
+                        <div class="fabric fabric-1">
+
+                            <img
+                                src="images/1.jpeg"
+                                alt="Stone Design"
+                            >
+
+                        </div>
+
+
+                        <div class="fabric fabric-2">
+
+                            <img
+                                src="images/2.jpeg"
+                                alt="Stone Design"
+                            >
+
+                        </div>
+
+
+                        <div class="fabric fabric-3">
+
+                            <img
+                                src="images/3.jpeg"
+                                alt="Stone Design"
+                            >
+
+                        </div>
+
+
+                        <div class="fabric fabric-4">
+
+                            <img
+                                src="images/4.jpeg"
+                                alt="Stone Design"
+                            >
+
+                        </div>
+
+
+                        <div class="fabric fabric-5">
+
+                            <img
+                                src="images/5.jpeg"
+                                alt="Stone Design"
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- MACHINE LIGHT -->
+
+                    <div class="machine-glow"></div>
+
+
+                    <!-- PROCESS TEXT -->
+
+                    <div class="machine-status">
+
+                        <span id="processNumber">
+                            01
+                        </span>
+
+                        <div>
+
+                            <strong id="processTitle">
+                                DESIGN SELECTED
+                            </strong>
+
+                            <p id="processText">
+                                Preparing the pattern for precision application.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             COLLECTION
+        ========================== -->
+
+        <section id="collection" class="collection-section">
+
+
+            <div class="collection-header">
+
+                <div>
+
+                    <span class="section-number">
+                        02 / COLLECTION
+                    </span>
+
+                    <h2>
+                        DESIGNS THAT
+                        <br>
+                        <span>MAKE AN IMPACT.</span>
+                    </h2>
+
+                </div>
+
+
+                <p>
+
+                    Explore our selected stone and textile
+                    embellishment designs. Click on any design
+                    to view its detailed information.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- COLLECTION GRID -->
+
+            <div class="collection-grid">
+
+
+                <!-- CARD 1 -->
+
+                <article
+                    class="collection-card"
+                    data-id="1"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="images/1.jpeg"
+                            alt="Stone Design 01"
+                        >
+
+                        <div class="card-overlay">
+
+                            <span>VIEW DETAILS</span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="card-info">
+
+                        <span class="design-number">
+                            01
+                        </span>
+
+                        <h3>
+                            SIGNATURE DESIGN
+                        </h3>
+
+                        <div class="card-meta">
+
+                            <span>
+                                STONE
+                            </span>
+
+                            <span>
+                                PREMIUM
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- CARD 2 -->
+
+                <article
+                    class="collection-card"
+                    data-id="2"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="images/2.jpeg"
+                            alt="Stone Design 02"
+                        >
+
+                        <div class="card-overlay">
+                            <span>VIEW DETAILS</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="card-info">
+
+                        <span class="design-number">
+                            02
+                        </span>
+
+                        <h3>
+                            BLUE CRYSTAL
+                        </h3>
+
+                        <div class="card-meta">
+
+                            <span>
+                                CRYSTAL
+                            </span>
+
+                            <span>
+                                PREMIUM
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- CARD 3 -->
+
+                <article
+                    class="collection-card"
+                    data-id="3"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="images/3.jpeg"
+                            alt="Stone Design 03"
+                        >
+
+                        <div class="card-overlay">
+                            <span>VIEW DETAILS</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="card-info">
+
+                        <span class="design-number">
+                            03
+                        </span>
+
+                        <h3>
+                            MODERN FLORAL
+                        </h3>
+
+                        <div class="card-meta">
+
+                            <span>
+                                STONE
+                            </span>
+
+                            <span>
+                                TEXTILE
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- CARD 4 -->
+
+                <article
+                    class="collection-card"
+                    data-id="4"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="images/4.jpeg"
+                            alt="Stone Design 04"
+                        >
+
+                        <div class="card-overlay">
+                            <span>VIEW DETAILS</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="card-info">
+
+                        <span class="design-number">
+                            04
+                        </span>
+
+                        <h3>
+                            CLASSIC SHINE
+                        </h3>
+
+                        <div class="card-meta">
+
+                            <span>
+                                CRYSTAL
+                            </span>
+
+                            <span>
+                                HIGH SHINE
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- CARD 5 -->
+
+                <article
+                    class="collection-card"
+                    data-id="5"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="images/5.jpeg"
+                            alt="Stone Design 05"
+                        >
+
+                        <div class="card-overlay">
+                            <span>VIEW DETAILS</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="card-info">
+
+                        <span class="design-number">
+                            05
+                        </span>
+
+                        <h3>
+                            GEOMETRIC DETAIL
+                        </h3>
+
+                        <div class="card-meta">
+
+                            <span>
+                                STONE
+                            </span>
+
+                            <span>
+                                CUSTOM
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- CARD 6 -->
+
+                <article
+                    class="collection-card"
+                    data-id="6"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="images/6.jpeg"
+                            alt="Stone Design 06"
+                        >
+
+                        <div class="card-overlay">
+                            <span>VIEW DETAILS</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="card-info">
+
+                        <span class="design-number">
+                            06
+                        </span>
+
+                        <h3>
+                            LUXE PATTERN
+                        </h3>
+
+                        <div class="card-meta">
+
+                            <span>
+                                PREMIUM
+                            </span>
+
+                            <span>
+                                STONE
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- CARD 7 -->
+
+                <article
+                    class="collection-card"
+                    data-id="7"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="images/7.jpeg"
+                            alt="Stone Design 07"
+                        >
+
+                        <div class="card-overlay">
+                            <span>VIEW DETAILS</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="card-info">
+
+                        <span class="design-number">
+                            07
+                        </span>
+
+                        <h3>
+                            ARTISTIC FLOW
+                        </h3>
+
+                        <div class="card-meta">
+
+                            <span>
+                                TEXTILE
+                            </span>
+
+                            <span>
+                                STONE
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- CARD 8 -->
+
+                <article
+                    class="collection-card"
+                    data-id="8"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="images/8.jpeg"
+                            alt="Stone Design 08"
+                        >
+
+                        <div class="card-overlay">
+                            <span>VIEW DETAILS</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="card-info">
+
+                        <span class="design-number">
+                            08
+                        </span>
+
+                        <h3>
+                            CRYSTAL MOTION
+                        </h3>
+
+                        <div class="card-meta">
+
+                            <span>
+                                CRYSTAL
+                            </span>
+
+                            <span>
+                                DETAIL
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- CARD 9 -->
+
+                <article
+                    class="collection-card"
+                    data-id="9"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="images/9.jpeg"
+                            alt="Stone Design 09"
+                        >
+
+                        <div class="card-overlay">
+                            <span>VIEW DETAILS</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="card-info">
+
+                        <span class="design-number">
+                            09
+                        </span>
+
+                        <h3>
+                            PREMIUM LINE
+                        </h3>
+
+                        <div class="card-meta">
+
+                            <span>
+                                STONE
+                            </span>
+
+                            <span>
+                                FASHION
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- CARD 10 -->
+
+                <article
+                    class="collection-card"
+                    data-id="10"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="images/10.jpeg"
+                            alt="Stone Design 10"
+                        >
+
+                        <div class="card-overlay">
+                            <span>VIEW DETAILS</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="card-info">
+
+                        <span class="design-number">
+                            10
+                        </span>
+
+                        <h3>
+                            SIGNATURE LUXE
+                        </h3>
+
+                        <div class="card-meta">
+
+                            <span>
+                                PREMIUM
+                            </span>
+
+                            <span>
+                                CUSTOM
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             APPLICATIONS
+        ========================== -->
+
+        <section id="applications" class="applications-section">
+
+
+            <div class="applications-header">
+
+                <span class="section-number">
+                    03 / APPLICATIONS
+                </span>
+
+                <h2>
+                    MADE TO
+                    <br>
+                    <span>STAND OUT.</span>
+                </h2>
+
+            </div>
+
+
+            <div class="application-list">
+
+
+                <div class="application-item">
+
+                    <span>01</span>
+
+                    <h3>T-SHIRTS</h3>
+
+                    <p>
+                        Premium fashion embellishment.
+                    </p>
+
+                </div>
+
+
+                <div class="application-item">
+
+                    <span>02</span>
+
+                    <h3>SWEATSHIRTS</h3>
+
+                    <p>
+                        Bold and expressive designs.
+                    </p>
+
+                </div>
+
+
+                <div class="application-item">
+
+                    <span>03</span>
+
+                    <h3>HOODIES</h3>
+
+                    <p>
+                        High-impact stone applications.
+                    </p>
+
+                </div>
+
+
+                <div class="application-item">
+
+                    <span>04</span>
+
+                    <h3>DRESSES</h3>
+
+                    <p>
+                        Elegant crystal detailing.
+                    </p>
+
+                </div>
+
+
+                <div class="application-item">
+
+                    <span>05</span>
+
+                    <h3>DENIM</h3>
+
+                    <p>
+                        Modern textile decoration.
+                    </p>
+
+                </div>
+
+
+                <div class="application-item">
+
+                    <span>06</span>
+
+                    <h3>BRANDING</h3>
+
+                    <p>
+                        Custom logo and identity applications.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             CUSTOM DESIGN
+        ========================== -->
+
+        <section id="custom" class="custom-section">
+
+
+            <div class="custom-image">
+
+                <img
+                    src="images/10.jpeg"
+                    alt="Custom Stone Design"
+                >
+
+            </div>
+
+
+            <div class="custom-content">
+
+                <span class="section-number">
+                    04 / CUSTOM DESIGN
+                </span>
+
+
+                <h2>
+                    YOUR IDEA.
+                    <br>
+                    <span>LET'S MAKE IT SHINE.</span>
+                </h2>
+
+
+                <p>
+
+                    Send us your artwork, sketch or idea.
+                    Our team can transform it into a professional
+                    stone and textile application.
+
+                </p>
+
+
+                <a href="#contact" class="outline-button">
+
+                    START YOUR PROJECT
+
+                    <span>→</span>
+
+                </a>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             CONTACT
+        ========================== -->
+
+        <section id="contact" class="contact-section">
+
+
+            <div class="contact-left">
+
+                <span class="section-number">
+                    05 / CONTACT
+                </span>
+
+
+                <h2>
+                    READY TO CREATE
+                    <br>
+                    <span>SOMETHING BRILLIANT?</span>
+                </h2>
+
+
+                <div class="contact-details">
+
+
+                    <a href="tel:+201039812810">
+
+                        <span>PHONE</span>
+
+                        +20 103 981 2810
+
+                    </a>
+
+
+                    <a href="mailto:levent.aslan@abaycam.com">
+
+                        <span>EMAIL</span>
+
+                        levent.aslan@abaycam.com
+
+                    </a>
+
+
+                    <a
+                        href="https://maps.app.goo.gl/fuM3JiKSK4K6LEa98"
+                        target="_blank"
+                    >
+
+                        <span>LOCATION</span>
+
+                        VIEW OUR LOCATION
+
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <form class="contact-form" id="contactForm">
+
+
+                <input
+                    type="text"
+                    placeholder="YOUR NAME"
+                    required
+                >
+
+
+                <input
+                    type="text"
+                    placeholder="COMPANY NAME"
+                >
+
+
+                <input
+                    type="email"
+                    placeholder="EMAIL"
+                    required
+                >
+
+
+                <input
+                    type="tel"
+                    placeholder="PHONE / WHATSAPP"
+                >
+
+
+                <select>
+
+                    <option value="">
+                        SELECT PROJECT TYPE
+                    </option>
+
+                    <option>
+                        STONE APPLICATION
+                    </option>
+
+                    <option>
+                        CRYSTAL APPLICATION
+                    </option>
+
+                    <option>
+                        CUSTOM DESIGN
+                    </option>
+
+                    <option>
+                        BULK PRODUCTION
+                    </option>
+
+                </select>
+
+
+                <textarea
+                    placeholder="TELL US ABOUT YOUR PROJECT"
+                ></textarea>
+
+
+                <button type="submit">
+
+                    SEND REQUEST
+
+                    <span>→</span>
+
+                </button>
+
+
+            </form>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             FOOTER
+        ========================== -->
+
+        <footer>
+
+            <div class="footer-brand">
+
+                <strong>
+                    <span>AB</span> AYCAM
+                </strong>
+
+                <p>
+                    Premium Stone & Textile
+                    Embellishment Solutions.
+                </p>
+
+            </div>
+
+
+            <div class="footer-copy">
+
+                © 2026 AB AYCAM
+
+                <br>
+
+                ALL RIGHTS RESERVED.
+
+            </div>
+
+
+        </footer>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         PRODUCT MODAL
+    ========================== -->
+
+    <div id="designModal" class="design-modal">
+
+
+        <div class="modal-backdrop"></div>
+
+
+        <div class="modal-content">
+
+
+            <button
+                id="closeModal"
+                class="close-modal"
+            >
+                ×
             </button>
 
-          </div>
+
+            <div class="modal-image">
+
+                <img
+                    id="modalImage"
+                    src=""
+                    alt="Design"
+                >
+
+            </div>
+
+
+            <div class="modal-details">
+
+
+                <span id="modalNumber">
+                    DESIGN 01
+                </span>
+
+
+                <h2 id="modalTitle">
+                    SIGNATURE DESIGN
+                </h2>
+
+
+                <div class="modal-specs">
+
+
+                    <div>
+
+                        <span>
+                            DESIGN CODE
+                        </span>
+
+                        <strong id="modalCode">
+                            AB-001
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            STONE TYPE
+                        </span>
+
+                        <strong id="modalStone">
+                            PREMIUM CRYSTAL
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            COLOR
+                        </span>
+
+                        <strong id="modalColor">
+                            CUSTOM
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            QUALITY CODE
+                        </span>
+
+                        <strong id="modalQuality">
+                            AB-Q01
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            APPLICATION
+                        </span>
+
+                        <strong id="modalApplication">
+                            TEXTILE / FASHION
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            CUSTOMIZATION
+                        </span>
+
+                        <strong>
+                            AVAILABLE
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+                <p id="modalDescription">
+
+                    This design can be customized according to
+                    your fabric, color palette and production requirements.
+
+                </p>
+
+
+                <a
+                    href="#contact"
+                    id="modalContactButton"
+                    class="modal-button"
+                >
+
+                    REQUEST THIS DESIGN
+
+                    <span>→</span>
+
+                </a>
+
+
+            </div>
+
 
         </div>
 
 
-        <div class="collection-card" data-image="images/2.jpeg">
+    </div>
 
-          <img src="images/2.jpeg" alt="Stone Collection 02" />
 
-          <div class="collection-overlay">
 
-            <span>02</span>
-
-            <h3>MARBLE SERIES</h3>
-
-            <button class="view-stone">
-              <span>VIEW</span>
-              <span>+</span>
-            </button>
-
-          </div>
-
-        </div>
-
-
-        <div class="collection-card" data-image="images/3.jpeg">
-
-          <img src="images/3.jpeg" alt="Stone Collection 03" />
-
-          <div class="collection-overlay">
-
-            <span>03</span>
-
-            <h3>TEXTURE SERIES</h3>
-
-            <button class="view-stone">
-              <span>VIEW</span>
-              <span>+</span>
-            </button>
-
-          </div>
-
-        </div>
-
-
-        <div class="collection-card" data-image="images/4.jpeg">
-
-          <img src="images/4.jpeg" alt="Stone Collection 04" />
-
-          <div class="collection-overlay">
-
-            <span>04</span>
-
-            <h3>PREMIUM STONE</h3>
-
-            <button class="view-stone">
-              <span>VIEW</span>
-              <span>+</span>
-            </button>
-
-          </div>
-
-        </div>
-
-
-        <div class="collection-card" data-image="images/5.jpeg">
-
-          <img src="images/5.jpeg" alt="Stone Collection 05" />
-
-          <div class="collection-overlay">
-
-            <span>05</span>
-
-            <h3>DESIGN SERIES</h3>
-
-            <button class="view-stone">
-              <span>VIEW</span>
-              <span>+</span>
-            </button>
-
-          </div>
-
-        </div>
-
-
-        <div class="collection-card" data-image="images/6.jpeg">
-
-          <img src="images/6.jpeg" alt="Stone Collection 06" />
-
-          <div class="collection-overlay">
-
-            <span>06</span>
-
-            <h3>MODERN SURFACE</h3>
-
-            <button class="view-stone">
-              <span>VIEW</span>
-              <span>+</span>
-            </button>
-
-          </div>
-
-        </div>
-
-
-        <div class="collection-card" data-image="images/7.jpeg">
-
-          <img src="images/7.jpeg" alt="Stone Collection 07" />
-
-          <div class="collection-overlay">
-
-            <span>07</span>
-
-            <h3>ART STONE</h3>
-
-            <button class="view-stone">
-              <span>VIEW</span>
-              <span>+</span>
-            </button>
-
-          </div>
-
-        </div>
-
-
-        <div class="collection-card" data-image="images/8.jpeg">
-
-          <img src="images/8.jpeg" alt="Stone Collection 08" />
-
-          <div class="collection-overlay">
-
-            <span>08</span>
-
-            <h3>LUXURY SERIES</h3>
-
-            <button class="view-stone">
-              <span>VIEW</span>
-              <span>+</span>
-            </button>
-
-          </div>
-
-        </div>
-
-
-        <div class="collection-card" data-image="images/9.jpeg">
-
-          <img src="images/9.jpeg" alt="Stone Collection 09" />
-
-          <div class="collection-overlay">
-
-            <span>09</span>
-
-            <h3>URBAN STONE</h3>
-
-            <button class="view-stone">
-              <span>VIEW</span>
-              <span>+</span>
-            </button>
-
-          </div>
-
-        </div>
-
-
-        <div class="collection-card" data-image="images/10.jpeg">
-
-          <img src="images/10.jpeg" alt="Stone Collection 10" />
-
-          <div class="collection-overlay">
-
-            <span>10</span>
-
-            <h3>SIGNATURE SERIES</h3>
-
-            <button class="view-stone">
-              <span>VIEW</span>
-              <span>+</span>
-            </button>
-
-          </div>
-
-        </div>
-
-
-      </div>
-
-    </section>
-
-
-
-    <!-- MACHINE ANIMATION -->
-    <section id="process" class="machine-section">
-
-      <div class="machine-background"></div>
-
-
-      <div class="machine-content">
-
-        <div class="section-label light">
-
-          <span>03</span>
-
-          <span data-i18n="processLabel">
-            OUR TECHNOLOGY
-          </span>
-
-        </div>
-
-
-        <h2 data-i18n="processTitle">
-          Tasarımın<br />
-          <span>üretime dönüştüğü</span><br />
-          yer.
-        </h2>
-
-
-        <p data-i18n="processText">
-          Aşağıya doğru ilerledikçe teknolojimizin
-          tasarımlarınızı nasıl hayata geçirdiğini keşfedin.
-        </p>
-
-      </div>
-
-
-      <div class="machine-stage">
-
-        <div class="machine-image-wrap">
-
-          <img
-            src="images/machine.png"
-            alt="AB AYCAM Stone Printing Machine"
-            class="machine-image"
-          />
-
-        </div>
-
-
-        <div class="stone-output">
-
-          <div class="stone-strip strip-1">
-            <img src="images/4.jpeg" alt="" />
-          </div>
-
-          <div class="stone-strip strip-2">
-            <img src="images/6.jpeg" alt="" />
-          </div>
-
-          <div class="stone-strip strip-3">
-            <img src="images/8.jpeg" alt="" />
-          </div>
-
-          <div class="stone-strip strip-4">
-            <img src="images/10.jpeg" alt="" />
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ABOUT -->
-    <section id="about" class="about-section">
-
-      <div class="about-image">
-
-        <img src="images/7.jpeg" alt="AB AYCAM Design" />
-
-      </div>
-
-
-      <div class="about-content">
-
-        <div class="section-label">
-
-          <span>04</span>
-
-          <span data-i18n="aboutLabel">
-            ABOUT AB AYCAM
-          </span>
-
-        </div>
-
-
-        <h2 data-i18n="aboutTitle">
-          Her yüzey,<br />
-          bir <span>hikaye</span> anlatır.
-        </h2>
-
-
-        <p data-i18n="aboutText">
-          AB AYCAM, kaliteli üretim, modern teknoloji ve
-          yaratıcı tasarımı bir araya getirerek müşterilerine
-          fark yaratan taş yüzey çözümleri sunar.
-        </p>
-
-
-        <div class="about-stats">
-
-          <div>
-
-            <strong>10+</strong>
-
-            <span data-i18n="statCollection">
-              COLLECTIONS
-            </span>
-
-          </div>
-
-
-          <div>
-
-            <strong>∞</strong>
-
-            <span data-i18n="statDesign">
-              DESIGN POSSIBILITIES
-            </span>
-
-          </div>
-
-
-          <div>
-
-            <strong>100%</strong>
-
-            <span data-i18n="statQuality">
-              QUALITY FOCUS
-            </span>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- CONTACT -->
-    <section id="contact" class="contact-section">
-
-      <div class="contact-top">
-
-        <div>
-
-          <div class="section-label light">
-
-            <span>05</span>
-
-            <span data-i18n="contactLabel">
-              CONTACT
-            </span>
-
-          </div>
-
-
-          <h2 data-i18n="contactTitle">
-            Bir sonraki projenizi<br />
-            birlikte <span>tasarlayalım.</span>
-          </h2>
-
-        </div>
-
-
-        <a
-          class="contact-button"
-          href="mailto:levent.aslan@abaycam.com"
-        >
-
-          <span data-i18n="contactButton">
-            BİZE ULAŞIN
-          </span>
-
-          <span>↗</span>
-
-        </a>
-
-      </div>
-
-
-      <div class="contact-grid">
-
-        <div class="contact-item">
-
-          <span class="contact-label">
-            PHONE
-          </span>
-
-          <a href="tel:+201039812810">
-            +20 103 981 2810
-          </a>
-
-        </div>
-
-
-        <div class="contact-item">
-
-          <span class="contact-label">
-            EMAIL
-          </span>
-
-          <a href="mailto:levent.aslan@abaycam.com">
-            levent.aslan@abaycam.com
-          </a>
-
-        </div>
-
-
-        <div class="contact-item">
-
-          <span class="contact-label">
-            LOCATION
-          </span>
-
-          <a
-            href="https://maps.app.goo.gl/fuM3JiKSK4K6LEa98"
-            target="_blank"
-            rel="noopener"
-          >
-            VIEW LOCATION ↗
-          </a>
-
-        </div>
-
-      </div>
-
-
-      <div class="footer">
-
-        <div class="footer-logo">
-
-          <strong>AB</strong> AYCAM
-
-        </div>
-
-
-        <span>
-          © 2026 AB AYCAM. ALL RIGHTS RESERVED.
-        </span>
-
-      </div>
-
-    </section>
-
-
-  </main>
-
-
-
-  <!-- IMAGE MODAL -->
-  <div class="image-modal" id="imageModal">
-
-    <button class="modal-close" id="modalClose">
-      ×
-    </button>
-
-
-    <img id="modalImage" src="" alt="Stone Collection Preview" />
-
-  </div>
-
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
