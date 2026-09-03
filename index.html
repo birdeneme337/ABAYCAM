@@ -2,1439 +2,1077 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>AB AYCAM | Premium Rhinestone & Crystal</title>
+    <title>AB AYCAM | Premium Rhinestone & Textile Embellishment</title>
 
     <link rel="stylesheet" href="style.css">
-
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
-        rel="stylesheet"
-    >
 </head>
-
 
 <body>
 
+    <!-- =========================
+         LOADING SCREEN
+    ========================== -->
 
-<!-- ========================================================= -->
-<!-- MOBILE MENU BUTTON -->
-<!-- ========================================================= -->
-
-<button
-    class="mobile-menu-button"
-    id="mobileMenuButton"
-    aria-label="Menüyü Aç"
->
-    ☰
-</button>
-
-
-
-<!-- ========================================================= -->
-<!-- LEFT SIDE MENU -->
-<!-- ========================================================= -->
-
-<aside class="sidebar" id="sidebar">
-
-
-    <!-- LOGO -->
-
-    <div class="sidebar-logo">
-
-        <div class="logo-main">
-            AB
-            <span>AYCAM</span>
+    <div id="loader">
+        <div class="loader-logo">
+            <span>AB</span> AYCAM
         </div>
 
-        <div class="logo-subtitle">
-            CREATING BRILLIANCE
-        </div>
+        <div class="loader-line"></div>
 
+        <p>CREATING BRILLIANCE</p>
     </div>
 
 
+    <!-- =========================
+         SIDE MENU
+    ========================== -->
 
-    <!-- MENU -->
+    <div id="menuOverlay"></div>
 
-    <nav class="side-navigation">
+    <aside id="sideMenu">
 
-        <a href="#home" class="nav-link active">
-            <span>01</span>
-            <span data-i18n="home">ANA SAYFA</span>
-        </a>
+        <div class="menu-top">
 
+            <div class="menu-brand">
+                <strong>AB</strong>
+                <span>AYCAM</span>
+            </div>
 
-        <a href="#collection" class="nav-link">
-            <span>02</span>
-            <span data-i18n="collection">KOLEKSİYON</span>
-        </a>
+            <button id="closeMenu" class="close-menu">
+                ×
+            </button>
 
+        </div>
 
-        <a href="#about" class="nav-link">
-            <span>03</span>
-            <span data-i18n="about">HAKKIMIZDA</span>
-        </a>
-
-
-        <a href="#applications" class="nav-link">
-            <span>04</span>
-            <span data-i18n="applications">UYGULAMALAR</span>
-        </a>
+        <div class="menu-tagline">
+            CREATING<br>
+            BRILLIANCE
+        </div>
 
 
-        <a href="#contact" class="nav-link">
-            <span>05</span>
-            <span data-i18n="contact">İLETİŞİM</span>
-        </a>
+        <nav class="menu-links">
 
-    </nav>
+            <a href="#home" class="menu-link">
+                <span>01</span>
+                ANA SAYFA
+            </a>
+
+            <a href="#collection" class="menu-link">
+                <span>02</span>
+                KOLEKSİYON
+            </a>
+
+            <a href="#about" class="menu-link">
+                <span>03</span>
+                HAKKIMIZDA
+            </a>
+
+            <a href="#applications" class="menu-link">
+                <span>04</span>
+                UYGULAMALAR
+            </a>
+
+            <a href="#contact" class="menu-link">
+                <span>05</span>
+                İLETİŞİM
+            </a>
+
+        </nav>
 
 
-
-    <!-- SIDEBAR FOOTER -->
-
-    <div class="sidebar-footer">
-
-        <p>
+        <div class="menu-bottom">
             © 2026 AB AYCAM
-        </p>
+        </div>
 
-        <span>
-            Premium Rhinestone Solutions
-        </span>
-
-    </div>
+    </aside>
 
 
-</aside>
-
-
-
-<!-- ========================================================= -->
-<!-- MAIN WEBSITE -->
-<!-- ========================================================= -->
-
-<main class="main-content">
-
-
-
-    <!-- ========================================================= -->
-    <!-- TOP BAR -->
-    <!-- ========================================================= -->
+    <!-- =========================
+         TOP NAVBAR
+    ========================== -->
 
     <header class="topbar">
 
+        <button id="menuButton" class="hamburger" aria-label="Menü">
 
-        <div class="topbar-left">
+            <span></span>
+            <span></span>
+            <span></span>
 
-            <div class="topbar-title">
-                PREMIUM RHINESTONE & TEXTILE EMBELLISHMENT
-            </div>
-
-        </div>
-
+        </button>
 
 
-        <!-- LANGUAGE SELECTOR -->
+        <a href="#home" class="top-logo">
+
+            <strong>AB</strong>
+            <span>AYCAM</span>
+
+        </a>
+
 
         <div class="language-selector">
 
-            <button
-                class="language-button"
-                id="languageButton"
-            >
-
-                <span id="currentLanguage">
-                    TR
-                </span>
-
-                <span class="language-arrow">
-                    ▾
-                </span>
-
+            <button id="languageButton" class="language-button">
+                <span id="currentLanguage">TR</span>
+                <span class="arrow">⌄</span>
             </button>
 
+            <div id="languageDropdown" class="language-dropdown">
 
-
-            <div
-                class="language-dropdown"
-                id="languageDropdown"
-            >
-
-                <button
-                    class="language-option"
-                    data-language="tr"
-                >
+                <button class="language-option" data-lang="tr">
                     Türkçe
                 </button>
 
-
-                <button
-                    class="language-option"
-                    data-language="en"
-                >
+                <button class="language-option" data-lang="en">
                     English
                 </button>
 
-
-                <button
-                    class="language-option"
-                    data-language="ar"
-                >
-                    العربية
+                <button class="language-option" data-lang="ar">
+                    العربية المصرية
                 </button>
 
             </div>
 
         </div>
-
 
     </header>
 
 
 
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
 
-    <!-- ========================================================= -->
-    <!-- HOME / HERO -->
-    <!-- ========================================================= -->
-
-    <section
-        class="hero-section"
-        id="home"
-    >
+    <main>
 
 
-        <!-- SLIDER -->
+        <!-- =========================
+             HERO / SLIDER
+        ========================== -->
 
-        <div
-            class="hero-slider"
-            id="heroSlider"
-        >
+        <section id="home" class="hero">
 
-
-            <!-- SLIDE 1 -->
-
-            <div
-                class="hero-slide active"
-                style="background-image: url('images/1.png');"
-            >
-
-                <div class="hero-overlay"></div>
+            <div class="hero-slider">
 
 
-                <div class="hero-text">
+                <!-- IMAGE 1 -->
 
-                    <span class="hero-small">
-                        PREMIUM HOTFIX COLLECTION
+                <div class="slide active">
+
+                    <img src="images/1.png"
+                         alt="Premium Rhinestone Collection 1">
+
+                    <div class="slide-overlay"></div>
+
+                    <div class="hero-content">
+
+                        <div class="hero-label">
+                            PREMIUM RHINESTONE COLLECTION
+                        </div>
+
+                        <h1>
+                            MAKE EVERY DESIGN
+                            <span>SHINE.</span>
+                        </h1>
+
+                        <p>
+                            Premium hotfix rhinestones and textile embellishment
+                            solutions designed to make fashion, garments and
+                            creative products stand out.
+                        </p>
+
+                        <a href="#collection" class="hero-button">
+                            EXPLORE COLLECTION
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- IMAGE 2 -->
+
+                <div class="slide">
+
+                    <img src="images/2.png"
+                         alt="Premium Rhinestone Collection 2">
+
+                    <div class="slide-overlay"></div>
+
+                    <div class="hero-content">
+
+                        <div class="hero-label">
+                            COLOR · LIGHT · BRILLIANCE
+                        </div>
+
+                        <h1>
+                            DETAILS THAT
+                            <span>MAKE A DIFFERENCE.</span>
+                        </h1>
+
+                        <p>
+                            Discover premium stones developed for textile,
+                            fashion and creative production.
+                        </p>
+
+                        <a href="#collection" class="hero-button">
+                            VIEW STONES
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- IMAGE 3 -->
+
+                <div class="slide">
+
+                    <img src="images/3.png"
+                         alt="Premium Rhinestone Collection 3">
+
+                    <div class="slide-overlay"></div>
+
+                    <div class="hero-content">
+
+                        <div class="hero-label">
+                            TEXTILE EMBELLISHMENT
+                        </div>
+
+                        <h1>
+                            BRILLIANCE FOR
+                            <span>YOUR COLLECTION.</span>
+                        </h1>
+
+                        <p>
+                            Premium quality rhinestones for fashion brands,
+                            manufacturers and creative designers.
+                        </p>
+
+                        <a href="#collection" class="hero-button">
+                            DISCOVER MORE
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- IMAGE 4 -->
+
+                <div class="slide">
+
+                    <img src="images/4.png"
+                         alt="Premium Rhinestone Collection 4">
+
+                    <div class="slide-overlay"></div>
+
+                    <div class="hero-content">
+
+                        <div class="hero-label">
+                            PREMIUM QUALITY
+                        </div>
+
+                        <h1>
+                            CREATED FOR
+                            <span>EXCEPTIONAL DESIGNS.</span>
+                        </h1>
+
+                        <p>
+                            Reliable quality, striking colors and premium
+                            appearance for every production.
+                        </p>
+
+                        <a href="#contact" class="hero-button">
+                            CONTACT US
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SLIDER CONTROLS -->
+
+                <button id="prevSlide" class="slider-arrow left">
+                    ←
+                </button>
+
+                <button id="nextSlide" class="slider-arrow right">
+                    →
+                </button>
+
+
+                <div id="sliderDots" class="slider-dots"></div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             INTRO
+        ========================== -->
+
+        <section class="intro-section">
+
+            <div class="section-number">
+                01
+            </div>
+
+            <div class="intro-grid">
+
+                <div>
+
+                    <span class="eyebrow">
+                        AB AYCAM
                     </span>
 
+                    <h2>
+                        BRILLIANCE IN
+                        <span>EVERY DETAIL.</span>
+                    </h2>
 
-                    <h1>
-                        MAKE YOUR DESIGNS
-                        <br>
-                        <strong>SHINE.</strong>
-                    </h1>
+                </div>
 
+
+                <div class="intro-text">
 
                     <p>
-                        Premium rhinestones and textile embellishment
-                        solutions designed to make every collection
-                        more valuable, more visible and unforgettable.
+                        AB AYCAM provides premium rhinestone and textile
+                        embellishment solutions for fashion brands,
+                        manufacturers and designers.
                     </p>
 
-
-                    <a
-                        href="#collection"
-                        class="hero-button"
-                    >
-                        EXPLORE COLLECTION
-                    </a>
+                    <p>
+                        From sparkling crystal effects to strong and vivid
+                        colors, our collection is designed to give every
+                        product a more distinctive appearance.
+                    </p>
 
                 </div>
 
             </div>
 
+        </section>
 
 
 
-            <!-- SLIDE 2 -->
+        <!-- =========================
+             COLLECTION
+        ========================== -->
 
-            <div
-                class="hero-slide"
-                style="background-image: url('images/2.png');"
-            >
+        <section id="collection" class="collection-section">
 
-                <div class="hero-overlay"></div>
+            <div class="section-header">
 
+                <div>
 
-                <div class="hero-text">
-
-                    <span class="hero-small">
-                        COLOR THAT ATTRACTS ATTENTION
+                    <span class="eyebrow">
+                        OUR COLLECTION
                     </span>
 
-
-                    <h1>
-                        BRILLIANCE
-                        <br>
-                        <strong>IN EVERY DETAIL.</strong>
-                    </h1>
-
-
-                    <p>
-                        Discover carefully selected colors,
-                        premium quality stones and powerful
-                        solutions for fashion and textile brands.
-                    </p>
-
-
-                    <a
-                        href="#collection"
-                        class="hero-button"
-                    >
-                        DISCOVER PRODUCTS
-                    </a>
+                    <h2>
+                        FIND YOUR
+                        <span>PERFECT SHINE.</span>
+                    </h2>
 
                 </div>
 
-            </div>
 
-
-
-
-            <!-- SLIDE 3 -->
-
-            <div
-                class="hero-slide"
-                style="background-image: url('images/3.png');"
-            >
-
-                <div class="hero-overlay"></div>
-
-
-                <div class="hero-text">
-
-                    <span class="hero-small">
-                        HIGH QUALITY • STRONG IMPACT
-                    </span>
-
-
-                    <h1>
-                        TURN IDEAS
-                        <br>
-                        <strong>INTO BRILLIANCE.</strong>
-                    </h1>
-
-
-                    <p>
-                        From classic crystal colors to bold
-                        fashion tones, AB AYCAM brings your
-                        creative ideas to life.
-                    </p>
-
-
-                    <a
-                        href="#contact"
-                        class="hero-button"
-                    >
-                        REQUEST INFORMATION
-                    </a>
-
-                </div>
+                <p>
+                    Select a rhinestone to explore colors, product details
+                    and available options.
+                </p>
 
             </div>
 
 
-
-        </div>
-
+            <div class="product-grid">
 
 
-        <!-- SLIDER CONTROLS -->
+                <!-- PRODUCT 1 -->
 
-        <div class="slider-controls">
+                <article class="product-card"
+                         data-product="1">
+
+                    <div class="product-image">
+
+                        <img src="images/1.png"
+                             alt="Silver Hotfix Rhinestones">
+
+                        <div class="product-hover">
+                            <span>VIEW DETAILS</span>
+                        </div>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-code">
+                            01 · AB-SLV-001
+                        </span>
+
+                        <h3>
+                            SILVER HOTFIX
+                        </h3>
+
+                        <p>
+                            Crystal Silver
+                        </p>
+
+                    </div>
+
+                </article>
 
 
-            <button
-                class="slider-arrow"
-                id="prevSlide"
-            >
-                ←
-            </button>
+
+                <!-- PRODUCT 2 -->
+
+                <article class="product-card"
+                         data-product="2">
+
+                    <div class="product-image">
+
+                        <img src="images/2.png"
+                             alt="Light Siam Hotfix">
+
+                        <div class="product-hover">
+                            <span>VIEW DETAILS</span>
+                        </div>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-code">
+                            02 · AB-LS-002
+                        </span>
+
+                        <h3>
+                            LIGHT SIAM
+                        </h3>
+
+                        <p>
+                            Light Siam Red
+                        </p>
+
+                    </div>
+
+                </article>
 
 
-            <div class="slider-dots">
 
-                <button
-                    class="slider-dot active"
-                    data-slide="0"
-                ></button>
+                <!-- PRODUCT 3 -->
+
+                <article class="product-card"
+                         data-product="3">
+
+                    <div class="product-image">
+
+                        <img src="images/3.png"
+                             alt="Siam Red Hotfix">
+
+                        <div class="product-hover">
+                            <span>VIEW DETAILS</span>
+                        </div>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-code">
+                            03 · AB-SM-003
+                        </span>
+
+                        <h3>
+                            SIAM RED
+                        </h3>
+
+                        <p>
+                            Deep Red Crystal
+                        </p>
+
+                    </div>
+
+                </article>
 
 
-                <button
-                    class="slider-dot"
-                    data-slide="1"
-                ></button>
+
+                <!-- PRODUCT 4 -->
+
+                <article class="product-card"
+                         data-product="4">
+
+                    <div class="product-image">
+
+                        <img src="images/4.png"
+                             alt="Rose Hotfix">
+
+                        <div class="product-hover">
+                            <span>VIEW DETAILS</span>
+                        </div>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-code">
+                            04 · AB-RS-004
+                        </span>
+
+                        <h3>
+                            ROSE CRYSTAL
+                        </h3>
+
+                        <p>
+                            Premium Rose Tone
+                        </p>
+
+                    </div>
+
+                </article>
 
 
-                <button
-                    class="slider-dot"
-                    data-slide="2"
-                ></button>
+
+                <!-- PRODUCT 5 -->
+
+                <article class="product-card"
+                         data-product="5">
+
+                    <div class="product-image">
+
+                        <img src="images/5.png"
+                             alt="Champagne Hotfix">
+
+                        <div class="product-hover">
+                            <span>VIEW DETAILS</span>
+                        </div>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-code">
+                            05 · AB-CH-005
+                        </span>
+
+                        <h3>
+                            CHAMPAGNE GOLD
+                        </h3>
+
+                        <p>
+                            Warm Golden Crystal
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- PRODUCT 6 -->
+
+                <article class="product-card"
+                         data-product="6">
+
+                    <div class="product-image">
+
+                        <img src="images/6.png"
+                             alt="Aurora Crystal">
+
+                        <div class="product-hover">
+                            <span>VIEW DETAILS</span>
+                        </div>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-code">
+                            06 · AB-AB-006
+                        </span>
+
+                        <h3>
+                            AURORA CRYSTAL
+                        </h3>
+
+                        <p>
+                            Multicolor Reflection
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- PRODUCT 7 -->
+
+                <article class="product-card"
+                         data-product="7">
+
+                    <div class="product-image">
+
+                        <img src="images/7.png"
+                             alt="Premium Crystal 7">
+
+                        <div class="product-hover">
+                            <span>VIEW DETAILS</span>
+                        </div>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-code">
+                            07 · AB-CR-007
+                        </span>
+
+                        <h3>
+                            CRYSTAL CLEAR
+                        </h3>
+
+                        <p>
+                            Brilliant Clear Effect
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- PRODUCT 8 -->
+
+                <article class="product-card"
+                         data-product="8">
+
+                    <div class="product-image">
+
+                        <img src="images/8.png"
+                             alt="Premium Crystal 8">
+
+                        <div class="product-hover">
+                            <span>VIEW DETAILS</span>
+                        </div>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-code">
+                            08 · AB-GL-008
+                        </span>
+
+                        <h3>
+                            GOLDEN LIGHT
+                        </h3>
+
+                        <p>
+                            Bright Gold Tone
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- PRODUCT 9 -->
+
+                <article class="product-card"
+                         data-product="9">
+
+                    <div class="product-image">
+
+                        <img src="images/9.png"
+                             alt="Premium Crystal 9">
+
+                        <div class="product-hover">
+                            <span>VIEW DETAILS</span>
+                        </div>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-code">
+                            09 · AB-LX-009
+                        </span>
+
+                        <h3>
+                            LUXURY MIX
+                        </h3>
+
+                        <p>
+                            Premium Mixed Crystal
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- PRODUCT 10 -->
+
+                <article class="product-card"
+                         data-product="10">
+
+                    <div class="product-image">
+
+                        <img src="images/10.png"
+                             alt="Premium Crystal 10">
+
+                        <div class="product-hover">
+                            <span>VIEW DETAILS</span>
+                        </div>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-code">
+                            10 · AB-PR-010
+                        </span>
+
+                        <h3>
+                            PREMIUM SHINE
+                        </h3>
+
+                        <p>
+                            Signature Collection
+                        </p>
+
+                    </div>
+
+                </article>
+
 
             </div>
 
-
-            <button
-                class="slider-arrow"
-                id="nextSlide"
-            >
-                →
-            </button>
-
-
-        </div>
-
-
-    </section>
+        </section>
 
 
 
+        <!-- =========================
+             ABOUT
+        ========================== -->
 
+        <section id="about" class="about-section">
 
-    <!-- ========================================================= -->
-    <!-- INTRODUCTION -->
-    <!-- ========================================================= -->
+            <div class="about-content">
 
-    <section class="intro-section">
-
-
-        <div class="section-label">
-            AB AYCAM COLLECTION
-        </div>
-
-
-        <h2>
-            SMALL DETAILS.
-            <br>
-            <span>POWERFUL IMPACT.</span>
-        </h2>
-
-
-        <p>
-            We supply premium rhinestones and decorative solutions
-            for textile, fashion and apparel applications.
-            Our goal is simple: help brands create products
-            that attract attention.
-        </p>
-
-
-    </section>
-
-
-
-
-
-    <!-- ========================================================= -->
-    <!-- COLLECTION -->
-    <!-- ========================================================= -->
-
-    <section
-        class="collection-section"
-        id="collection"
-    >
-
-
-        <div class="section-header">
-
-
-            <div>
-
-                <span class="section-label">
-                    PRODUCT COLLECTION
+                <span class="eyebrow">
+                    ABOUT AB AYCAM
                 </span>
 
-
                 <h2>
-                    FIND YOUR PERFECT
-                    <span>BRILLIANCE.</span>
+                    PREMIUM STONES.
+                    <span>STRONGER IMPACT.</span>
                 </h2>
 
-            </div>
-
-
-            <p>
-                Select a stone to explore its color,
-                quality and product details.
-            </p>
-
-
-        </div>
-
-
-
-
-        <!-- PRODUCT GRID -->
-
-        <div
-            class="product-grid"
-            id="productGrid"
-        >
-
-
-
-            <!-- PRODUCT 1 -->
-
-            <article
-                class="product-card"
-                data-id="1"
-                data-name="Silver Hotfix Rhinestones"
-                data-code="AB-SLV-001"
-                data-color="Silver"
-                data-image="images/1.png"
-            >
-
-                <div class="product-image">
-
-                    <img
-                        src="images/1.png"
-                        alt="Silver Hotfix Rhinestones"
-                    >
-
-                    <div class="product-hover">
-                        VIEW DETAILS
-                    </div>
-
-                </div>
-
-
-                <div class="product-info">
-
-                    <span>
-                        01 · AB-SLV-001
-                    </span>
-
-                    <h3>
-                        SILVER HOTFIX
-                    </h3>
-
-                    <p>
-                        Crystal Silver
-                    </p>
-
-                </div>
-
-            </article>
-
-
-
-
-            <!-- PRODUCT 2 -->
-
-            <article
-                class="product-card"
-                data-id="2"
-                data-name="Light Siam Hotfix Rhinestones"
-                data-code="AB-LS-002"
-                data-color="Light Siam Red"
-                data-image="images/2.png"
-            >
-
-                <div class="product-image">
-
-                    <img
-                        src="images/2.png"
-                        alt="Light Siam Hotfix Rhinestones"
-                    >
-
-                    <div class="product-hover">
-                        VIEW DETAILS
-                    </div>
-
-                </div>
-
-
-                <div class="product-info">
-
-                    <span>
-                        02 · AB-LS-002
-                    </span>
-
-                    <h3>
-                        LIGHT SIAM
-                    </h3>
-
-                    <p>
-                        Light Siam Red
-                    </p>
-
-                </div>
-
-            </article>
-
-
-
-
-            <!-- PRODUCT 3 -->
-
-            <article
-                class="product-card"
-                data-id="3"
-                data-name="Siam Hotfix Rhinestones"
-                data-code="AB-SM-003"
-                data-color="Siam Red"
-                data-image="images/3.png"
-            >
-
-                <div class="product-image">
-
-                    <img
-                        src="images/3.png"
-                        alt="Siam Hotfix Rhinestones"
-                    >
-
-                    <div class="product-hover">
-                        VIEW DETAILS
-                    </div>
-
-                </div>
-
-
-                <div class="product-info">
-
-                    <span>
-                        03 · AB-SM-003
-                    </span>
-
-                    <h3>
-                        SIAM RED
-                    </h3>
-
-                    <p>
-                        Deep Red Crystal
-                    </p>
-
-                </div>
-
-            </article>
-
-
-
-
-            <!-- PRODUCT 4 -->
-
-            <article
-                class="product-card"
-                data-id="4"
-                data-name="Rose Hotfix Rhinestones"
-                data-code="AB-RS-004"
-                data-color="Rose Pink"
-                data-image="images/4.png"
-            >
-
-                <div class="product-image">
-
-                    <img
-                        src="images/4.png"
-                        alt="Rose Hotfix Rhinestones"
-                    >
-
-                    <div class="product-hover">
-                        VIEW DETAILS
-                    </div>
-
-                </div>
-
-
-                <div class="product-info">
-
-                    <span>
-                        04 · AB-RS-004
-                    </span>
-
-                    <h3>
-                        ROSE PINK
-                    </h3>
-
-                    <p>
-                        Soft Pink Crystal
-                    </p>
-
-                </div>
-
-            </article>
-
-
-
-
-            <!-- PRODUCT 5 -->
-
-            <article
-                class="product-card"
-                data-id="5"
-                data-name="Golden Hotfix Rhinestones"
-                data-code="AB-GD-005"
-                data-color="Golden"
-                data-image="images/5.png"
-            >
-
-                <div class="product-image">
-
-                    <img
-                        src="images/5.png"
-                        alt="Golden Hotfix Rhinestones"
-                    >
-
-                    <div class="product-hover">
-                        VIEW DETAILS
-                    </div>
-
-                </div>
-
-
-                <div class="product-info">
-
-                    <span>
-                        05 · AB-GD-005
-                    </span>
-
-                    <h3>
-                        GOLDEN SHINE
-                    </h3>
-
-                    <p>
-                        Golden Crystal
-                    </p>
-
-                </div>
-
-            </article>
-
-
-
-
-            <!-- PRODUCT 6 -->
-
-            <article
-                class="product-card"
-                data-id="6"
-                data-name="Aurora Hotfix Rhinestones"
-                data-code="AB-AR-006"
-                data-color="Aurora"
-                data-image="images/6.png"
-            >
-
-                <div class="product-image">
-
-                    <img
-                        src="images/6.png"
-                        alt="Aurora Hotfix Rhinestones"
-                    >
-
-                    <div class="product-hover">
-                        VIEW DETAILS
-                    </div>
-
-                </div>
-
-
-                <div class="product-info">
-
-                    <span>
-                        06 · AB-AR-006
-                    </span>
-
-                    <h3>
-                        AURORA AB
-                    </h3>
-
-                    <p>
-                        Multicolor Reflection
-                    </p>
-
-                </div>
-
-            </article>
-
-
-
-
-            <!-- PRODUCT 7 -->
-
-            <article
-                class="product-card"
-                data-id="7"
-                data-name="Emerald Hotfix Rhinestones"
-                data-code="AB-EM-007"
-                data-color="Emerald Green"
-                data-image="images/7.png"
-            >
-
-                <div class="product-image">
-
-                    <img
-                        src="images/7.png"
-                        alt="Emerald Hotfix Rhinestones"
-                    >
-
-                    <div class="product-hover">
-                        VIEW DETAILS
-                    </div>
-
-                </div>
-
-
-                <div class="product-info">
-
-                    <span>
-                        07 · AB-EM-007
-                    </span>
-
-                    <h3>
-                        EMERALD
-                    </h3>
-
-                    <p>
-                        Deep Green Crystal
-                    </p>
-
-                </div>
-
-            </article>
-
-
-
-
-            <!-- PRODUCT 8 -->
-
-            <article
-                class="product-card"
-                data-id="8"
-                data-name="Sapphire Hotfix Rhinestones"
-                data-code="AB-SP-008"
-                data-color="Sapphire Blue"
-                data-image="images/8.png"
-            >
-
-                <div class="product-image">
-
-                    <img
-                        src="images/8.png"
-                        alt="Sapphire Hotfix Rhinestones"
-                    >
-
-                    <div class="product-hover">
-                        VIEW DETAILS
-                    </div>
-
-                </div>
-
-
-                <div class="product-info">
-
-                    <span>
-                        08 · AB-SP-008
-                    </span>
-
-                    <h3>
-                        SAPPHIRE BLUE
-                    </h3>
-
-                    <p>
-                        Premium Blue Crystal
-                    </p>
-
-                </div>
-
-            </article>
-
-
-
-
-            <!-- PRODUCT 9 -->
-
-            <article
-                class="product-card"
-                data-id="9"
-                data-name="Black Diamond Rhinestones"
-                data-code="AB-BD-009"
-                data-color="Black Diamond"
-                data-image="images/9.png"
-            >
-
-                <div class="product-image">
-
-                    <img
-                        src="images/9.png"
-                        alt="Black Diamond Rhinestones"
-                    >
-
-                    <div class="product-hover">
-                        VIEW DETAILS
-                    </div>
-
-                </div>
-
-
-                <div class="product-info">
-
-                    <span>
-                        09 · AB-BD-009
-                    </span>
-
-                    <h3>
-                        BLACK DIAMOND
-                    </h3>
-
-                    <p>
-                        Luxury Dark Crystal
-                    </p>
-
-                </div>
-
-            </article>
-
-
-
-
-            <!-- PRODUCT 10 -->
-
-            <article
-                class="product-card"
-                data-id="10"
-                data-name="Premium Crystal Collection"
-                data-code="AB-PR-010"
-                data-color="Premium Mix"
-                data-image="images/10.png"
-            >
-
-                <div class="product-image">
-
-                    <img
-                        src="images/10.png"
-                        alt="Premium Crystal Collection"
-                    >
-
-                    <div class="product-hover">
-                        VIEW DETAILS
-                    </div>
-
-                </div>
-
-
-                <div class="product-info">
-
-                    <span>
-                        10 · AB-PR-010
-                    </span>
-
-                    <h3>
-                        PREMIUM MIX
-                    </h3>
-
-                    <p>
-                        Selected Crystal Collection
-                    </p>
-
-                </div>
-
-            </article>
-
-
-        </div>
-
-
-    </section>
-
-
-
-
-
-    <!-- ========================================================= -->
-    <!-- ABOUT -->
-    <!-- ========================================================= -->
-
-    <section
-        class="about-section"
-        id="about"
-    >
-
-
-        <div class="about-content">
-
-
-            <div class="about-text">
-
-                <span class="section-label">
-                    WHY AB AYCAM
-                </span>
-
-
-                <h2>
-                    DESIGNED TO
-                    <span>STAND OUT.</span>
-                </h2>
-
-
                 <p>
-                    Fashion is built on details. A single rhinestone
-                    can transform an ordinary garment into a product
-                    that captures attention.
+                    We focus on delivering rhinestone solutions that combine
+                    visual impact, production usability and premium quality.
                 </p>
 
-
                 <p>
-                    AB AYCAM provides premium rhinestone and
-                    embellishment solutions for brands, manufacturers
-                    and textile professionals who want more impact
-                    from their collections.
-                </p>
-
-
-            </div>
-
-
-
-            <div class="about-features">
-
-
-                <div class="feature-box">
-
-                    <span>01</span>
-
-                    <h3>
-                        PREMIUM QUALITY
-                    </h3>
-
-                    <p>
-                        Carefully selected materials
-                        and consistent product quality.
-                    </p>
-
-                </div>
-
-
-
-                <div class="feature-box">
-
-                    <span>02</span>
-
-                    <h3>
-                        COLOR VARIETY
-                    </h3>
-
-                    <p>
-                        A wide range of colors
-                        for different collections.
-                    </p>
-
-                </div>
-
-
-
-                <div class="feature-box">
-
-                    <span>03</span>
-
-                    <h3>
-                        TEXTILE FOCUSED
-                    </h3>
-
-                    <p>
-                        Solutions developed for
-                        fashion and garment applications.
-                    </p>
-
-                </div>
-
-
-            </div>
-
-
-        </div>
-
-
-    </section>
-
-
-
-
-
-    <!-- ========================================================= -->
-    <!-- APPLICATIONS -->
-    <!-- ========================================================= -->
-
-    <section
-        class="applications-section"
-        id="applications"
-    >
-
-
-        <span class="section-label">
-            APPLICATION AREAS
-        </span>
-
-
-        <h2>
-            WHERE BRILLIANCE
-            <span>MEETS DESIGN.</span>
-        </h2>
-
-
-
-        <div class="applications-grid">
-
-
-            <div class="application-item">
-
-                <span>01</span>
-
-                <h3>
-                    FASHION
-                </h3>
-
-                <p>
-                    Dresses, shirts, denim,
-                    outerwear and collections.
+                    Whether you are producing garments, accessories, dresses,
+                    denim, promotional products or custom fashion designs,
+                    AB AYCAM helps bring more brilliance to your ideas.
                 </p>
 
             </div>
 
 
+            <div class="about-image">
 
-            <div class="application-item">
-
-                <span>02</span>
-
-                <h3>
-                    EVENING WEAR
-                </h3>
-
-                <p>
-                    Premium decorative details
-                    for special collections.
-                </p>
+                <img src="images/7.png"
+                     alt="AB AYCAM Premium Rhinestones">
 
             </div>
 
-
-
-            <div class="application-item">
-
-                <span>03</span>
-
-                <h3>
-                    DENIM
-                </h3>
-
-                <p>
-                    Strong visual impact
-                    for modern denim designs.
-                </p>
-
-            </div>
+        </section>
 
 
 
-            <div class="application-item">
+        <!-- =========================
+             APPLICATIONS
+        ========================== -->
 
-                <span>04</span>
+        <section id="applications"
+                 class="applications-section">
 
-                <h3>
-                    CUSTOM DESIGN
-                </h3>
-
-                <p>
-                    Creative solutions
-                    developed around your idea.
-                </p>
-
-            </div>
-
-
-        </div>
-
-
-    </section>
-
-
-
-
-
-    <!-- ========================================================= -->
-    <!-- CONTACT -->
-    <!-- ========================================================= -->
-
-    <section
-        class="contact-section"
-        id="contact"
-    >
-
-
-        <div class="contact-left">
-
-
-            <span class="section-label">
-                LET'S WORK TOGETHER
+            <span class="eyebrow">
+                APPLICATIONS
             </span>
 
-
             <h2>
-                READY TO MAKE
-                <span>YOUR DESIGNS SHINE?</span>
+                DESIGNED TO
+                <span>STAND OUT.</span>
             </h2>
 
 
-            <p>
-                Contact us for product information,
-                color options and business enquiries.
-            </p>
+            <div class="application-grid">
+
+                <div class="application-item">
+                    <span>01</span>
+                    <h3>T-SHIRTS</h3>
+                    <p>Premium fashion embellishment.</p>
+                </div>
+
+                <div class="application-item">
+                    <span>02</span>
+                    <h3>HOODIES</h3>
+                    <p>Bold and expressive designs.</p>
+                </div>
+
+                <div class="application-item">
+                    <span>03</span>
+                    <h3>DRESSES</h3>
+                    <p>Elegant crystal detailing.</p>
+                </div>
+
+                <div class="application-item">
+                    <span>04</span>
+                    <h3>DENIM</h3>
+                    <p>Modern textile decoration.</p>
+                </div>
+
+                <div class="application-item">
+                    <span>05</span>
+                    <h3>ACCESSORIES</h3>
+                    <p>Premium decorative elements.</p>
+                </div>
+
+                <div class="application-item">
+                    <span>06</span>
+                    <h3>CUSTOM DESIGN</h3>
+                    <p>Create your own unique idea.</p>
+                </div>
+
+            </div>
+
+        </section>
 
 
-        </div>
 
+        <!-- =========================
+             CONTACT
+        ========================== -->
 
+        <section id="contact" class="contact-section">
 
-        <div class="contact-details">
+            <div class="contact-left">
 
-
-            <div class="contact-item">
-
-                <span>
-                    PHONE / WHATSAPP
+                <span class="eyebrow">
+                    LET'S WORK TOGETHER
                 </span>
 
-                <a href="tel:+201039812810">
-                    +20 103 981 2810
-                </a>
+                <h2>
+                    READY TO CREATE
+                    <span>SOMETHING BRILLIANT?</span>
+                </h2>
+
+                <p>
+                    Contact AB AYCAM for product information,
+                    wholesale inquiries and custom textile
+                    embellishment solutions.
+                </p>
 
             </div>
 
 
+            <div class="contact-right">
 
-            <div class="contact-item">
+                <div class="contact-item">
 
-                <span>
-                    EMAIL
-                </span>
+                    <span>PHONE / WHATSAPP</span>
 
-                <a href="mailto:levent.aslan@abaycam.com">
-                    levent.aslan@abaycam.com
-                </a>
+                    <a href="tel:+201039812810">
+                        +20 103 981 2810
+                    </a>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <span>EMAIL</span>
+
+                    <a href="mailto:levent.aslan@abaycam.com">
+                        levent.aslan@abaycam.com
+                    </a>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <span>LOCATION</span>
+
+                    <a href="https://maps.app.goo.gl/fuM3JiKSK4K6LEa98"
+                       target="_blank">
+
+                        VIEW OUR LOCATION →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         PRODUCT MODAL
+    ========================== -->
+
+    <div id="productModal"
+         class="product-modal">
+
+        <div id="modalOverlay"
+             class="modal-overlay"></div>
+
+
+        <div class="modal-content">
+
+            <button id="closeModal"
+                    class="modal-close">
+
+                ×
+
+            </button>
+
+
+            <div class="modal-image">
+
+                <img id="modalProductImage"
+                     src=""
+                     alt="Product Image">
 
             </div>
 
 
+            <div class="modal-details">
 
-            <div class="contact-item">
+                <span id="modalCode"
+                      class="product-code">
 
-                <span>
-                    LOCATION
                 </span>
 
-                <a
-                    href="https://maps.app.goo.gl/fuM3JiKSK4K6LEa98"
-                    target="_blank"
-                >
-                    VIEW OUR LOCATION →
+
+                <h2 id="modalTitle">
+
+                </h2>
+
+
+                <p id="modalSubtitle"
+                   class="modal-subtitle">
+
+                </p>
+
+
+                <div class="modal-description">
+
+                    Premium rhinestone solution designed for
+                    textile and fashion embellishment applications.
+
+                </div>
+
+
+                <div class="product-specs">
+
+                    <div>
+
+                        <span>PRODUCT TYPE</span>
+
+                        <strong>HOTFIX RHINESTONE</strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>QUALITY</span>
+
+                        <strong>PREMIUM</strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>APPLICATION</span>
+
+                        <strong>TEXTILE & FASHION</strong>
+
+                    </div>
+
+                </div>
+
+
+                <a href="#contact"
+                   id="requestButton"
+                   class="request-button">
+
+                    REQUEST INFORMATION
+
                 </a>
 
             </div>
 
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="footer-brand">
+
+            <strong>AB</strong>
+            AYCAM
 
         </div>
 
 
-    </section>
+        <div class="footer-text">
 
-
-
-
-
-    <!-- ========================================================= -->
-    <!-- FOOTER -->
-    <!-- ========================================================= -->
-
-    <footer class="footer">
-
-
-        <div>
-
-            <strong>
-                AB AYCAM
-            </strong>
-
-            <span>
-                Premium Rhinestone & Textile Embellishment
-            </span>
+            Premium Rhinestone & Textile
+            Embellishment Solutions.
 
         </div>
 
 
-        <p>
-            © 2026 AB AYCAM. ALL RIGHTS RESERVED.
-        </p>
+        <div class="footer-copy">
 
+            © 2026 AB AYCAM.
+            ALL RIGHTS RESERVED.
+
+        </div>
 
     </footer>
 
 
 
-</main>
-
-
-
-
-
-<!-- ========================================================= -->
-<!-- PRODUCT MODAL -->
-<!-- ========================================================= -->
-
-<div
-    class="product-modal"
-    id="productModal"
->
-
-
-    <div class="modal-overlay" id="modalOverlay"></div>
-
-
-
-    <div class="modal-content">
-
-
-        <button
-            class="modal-close"
-            id="modalClose"
-        >
-            ×
-        </button>
-
-
-
-        <div class="modal-image">
-
-            <img
-                id="modalProductImage"
-                src=""
-                alt=""
-            >
-
-        </div>
-
-
-
-        <div class="modal-details">
-
-
-            <span
-                class="modal-code"
-                id="modalProductCode"
-            >
-            </span>
-
-
-            <h2
-                id="modalProductName"
-            >
-            </h2>
-
-
-            <div class="modal-line"></div>
-
-
-
-            <div class="modal-info-row">
-
-                <span>
-                    COLOR
-                </span>
-
-                <strong
-                    id="modalProductColor"
-                ></strong>
-
-            </div>
-
-
-
-            <div class="modal-info-row">
-
-                <span>
-                    QUALITY
-                </span>
-
-                <strong>
-                    PREMIUM HOTFIX
-                </strong>
-
-            </div>
-
-
-
-            <div class="modal-info-row">
-
-                <span>
-                    APPLICATION
-                </span>
-
-                <strong>
-                    TEXTILE / FASHION
-                </strong>
-
-            </div>
-
-
-
-            <p class="modal-description">
-
-                Premium quality rhinestone solution
-                developed for textile and fashion
-                applications. Contact AB AYCAM for
-                detailed specifications and availability.
-
-            </p>
-
-
-
-            <a
-                href="mailto:levent.aslan@abaycam.com"
-                class="modal-button"
-            >
-                REQUEST INFORMATION
-            </a>
-
-
-        </div>
-
-
-    </div>
-
-
-</div>
-
-
-
-
-<script src="script.js"></script>
-
+    <script src="script.js"></script>
 
 </body>
 </html>
