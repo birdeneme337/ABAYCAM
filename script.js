@@ -1,1070 +1,708 @@
-/* =========================================================
-   AB AYCAM WEBSITE
-========================================================= */
+/* =========================
+   AB AYCAM JAVASCRIPT
+========================= */
 
 
-/* =========================================================
-   LOADER
-========================================================= */
+/* PRELOADER */
 
-window.addEventListener("load", () => {
+const preloader = document.getElementById("preloader");
 
-    const loader = document.querySelector(".loader");
-
-    setTimeout(() => {
-
-        loader.classList.add("hide");
-
-    }, 1800);
-
-});
-
-
-/* =========================================================
-   CUSTOM CURSOR
-========================================================= */
-
-const cursorDot = document.querySelector(".cursor-dot");
-const cursorOutline = document.querySelector(".cursor-outline");
-
-
-window.addEventListener("mousemove", (e) => {
-
-    cursorDot.style.left = e.clientX + "px";
-    cursorDot.style.top = e.clientY + "px";
-
-
-    cursorOutline.animate(
-        {
-
-            left: e.clientX + "px",
-            top: e.clientY + "px"
-
-        },
-        {
-
-            duration: 250,
-            fill: "forwards"
-
-        }
-    );
-
-});
-
-
-const hoverElements = document.querySelectorAll(
-    "a, button"
-);
-
-
-hoverElements.forEach((element) => {
-
-    element.addEventListener("mouseenter", () => {
-
-        cursorOutline.style.width = "55px";
-        cursorOutline.style.height = "55px";
-
-        cursorOutline.style.background =
-            "rgba(255,255,255,.08)";
-
-    });
-
-
-    element.addEventListener("mouseleave", () => {
-
-        cursorOutline.style.width = "34px";
-        cursorOutline.style.height = "34px";
-
-        cursorOutline.style.background =
-            "transparent";
-
-    });
-
-});
-
-
-/* =========================================================
-   MOBILE MENU
-========================================================= */
-
-const menuToggle =
-    document.querySelector(".menu-toggle");
-
-const sidebar =
-    document.querySelector(".sidebar");
-
-
-if (menuToggle) {
-
-    menuToggle.addEventListener("click", () => {
-
-        sidebar.classList.toggle("mobile-open");
-
-    });
-
+function hidePreloader() {
+  if (preloader) {
+    preloader.classList.add("hidden");
+  }
 }
 
 
-document
-    .querySelectorAll(".side-nav a")
-    .forEach((link) => {
+/* Site tamamen yüklendiğinde kapat */
 
-        link.addEventListener("click", () => {
-
-            sidebar.classList.remove("mobile-open");
-
-        });
-
-    });
+window.addEventListener("load", () => {
+  setTimeout(hidePreloader, 700);
+});
 
 
-/* =========================================================
+/* Çok önemli:
+   Görsellerden biri hata verse bile
+   loading ekranında takılı kalmaması için */
+
+setTimeout(hidePreloader, 3000);
+
+
+
+/* =========================
    HERO SLIDER
-========================================================= */
+========================= */
 
-const slides =
-    document.querySelectorAll(".hero-slide");
-
-const nextSlideButton =
-    document.querySelector(".next-slide");
-
-const prevSlideButton =
-    document.querySelector(".prev-slide");
-
-const currentSlideElement =
-    document.querySelector(".current-slide");
-
-const progressBar =
-    document.querySelector(".progress-line span");
-
+const slides = document.querySelectorAll(".hero-slide");
+const dots = document.querySelectorAll(".slider-dot");
 
 let currentSlide = 0;
-
-const totalSlides = slides.length;
-
-
-function updateSlider() {
-
-    slides.forEach((slide, index) => {
-
-        slide.classList.remove("active");
-
-        if (index === currentSlide) {
-
-            slide.classList.add("active");
-
-        }
-
-    });
+let sliderInterval;
 
 
-    currentSlideElement.textContent =
-        String(currentSlide + 1)
-            .padStart(2, "0");
+function showSlide(index) {
+
+  slides.forEach((slide) => {
+    slide.classList.remove("active");
+  });
 
 
-    const progress =
-        ((currentSlide + 1) / totalSlides) * 100;
+  dots.forEach((dot) => {
+    dot.classList.remove("active");
+  });
 
 
-    progressBar.style.width =
-        progress + "%";
+  slides[index].classList.add("active");
+  dots[index].classList.add("active");
 
+  currentSlide = index;
 }
 
 
 function nextSlide() {
 
-    currentSlide =
-        (currentSlide + 1) % totalSlides;
+  currentSlide++;
 
-    updateSlider();
+  if (currentSlide >= slides.length) {
+    currentSlide = 0;
+  }
+
+  showSlide(currentSlide);
+}
+
+
+function startSlider() {
+
+  sliderInterval = setInterval(() => {
+    nextSlide();
+  }, 5000);
 
 }
 
 
-function previousSlide() {
+if (slides.length > 0) {
 
-    currentSlide =
-        (currentSlide - 1 + totalSlides)
-        % totalSlides;
-
-    updateSlider();
+  startSlider();
 
 }
 
 
-nextSlideButton.addEventListener(
-    "click",
-    nextSlide
-);
+dots.forEach((dot, index) => {
 
+  dot.addEventListener("click", () => {
 
-prevSlideButton.addEventListener(
-    "click",
-    previousSlide
-);
+    clearInterval(sliderInterval);
 
+    showSlide(index);
 
-/* AUTO SLIDER */
+    startSlider();
 
-let sliderInterval =
-    setInterval(nextSlide, 6000);
-
-
-document
-    .querySelector(".hero")
-    .addEventListener("mouseenter", () => {
-
-        clearInterval(sliderInterval);
-
-    });
-
-
-document
-    .querySelector(".hero")
-    .addEventListener("mouseleave", () => {
-
-        sliderInterval =
-            setInterval(nextSlide, 6000);
-
-    });
-
-
-/* =========================================================
-   ACTIVE MENU
-========================================================= */
-
-const sections =
-    document.querySelectorAll("section[id]");
-
-const navLinks =
-    document.querySelectorAll(".side-nav a");
-
-
-window.addEventListener("scroll", () => {
-
-    let current = "";
-
-
-    sections.forEach((section) => {
-
-        const sectionTop =
-            section.offsetTop;
-
-        const sectionHeight =
-            section.offsetHeight;
-
-
-        if (
-            window.scrollY >=
-            sectionTop - sectionHeight * 0.35
-        ) {
-
-            current =
-                section.getAttribute("id");
-
-        }
-
-    });
-
-
-    navLinks.forEach((link) => {
-
-        link.classList.remove("active");
-
-
-        if (
-            link.getAttribute("href") ===
-            "#" + current
-        ) {
-
-            link.classList.add("active");
-
-        }
-
-    });
+  });
 
 });
 
 
-/* =========================================================
-   COLLECTION FILTER
-========================================================= */
 
-const filterButtons =
-    document.querySelectorAll(".filter-btn");
+/* =========================
+   COLLECTION IMAGE MODAL
+========================= */
 
 const collectionCards =
-    document.querySelectorAll(".collection-card");
+  document.querySelectorAll(".collection-card");
+
+const imageModal =
+  document.getElementById("imageModal");
+
+const modalImage =
+  document.getElementById("modalImage");
+
+const modalClose =
+  document.getElementById("modalClose");
 
 
-filterButtons.forEach((button) => {
+collectionCards.forEach((card) => {
 
-    button.addEventListener("click", () => {
+  card.addEventListener("click", () => {
 
-        filterButtons.forEach((btn) => {
+    const imagePath =
+      card.getAttribute("data-image");
 
-            btn.classList.remove("active");
+    if (modalImage && imagePath) {
 
-        });
+      modalImage.src = imagePath;
 
+      imageModal.classList.add("active");
 
-        button.classList.add("active");
+      document.body.style.overflow = "hidden";
 
+    }
 
-        const filter =
-            button.dataset.filter;
-
-
-        collectionCards.forEach((card) => {
-
-            const category =
-                card.dataset.category;
-
-
-            if (
-                filter === "all" ||
-                category === filter
-            ) {
-
-                card.classList.remove("hide");
-
-            }
-
-            else {
-
-                card.classList.add("hide");
-
-            }
-
-        });
-
-    });
+  });
 
 });
 
 
-/* =========================================================
-   COLLECTION MODAL
-========================================================= */
+if (modalClose) {
 
-const designModal =
-    document.querySelector(".design-modal");
+  modalClose.addEventListener("click", () => {
 
-const modalImage =
-    document.querySelector(".modal-main-image");
+    imageModal.classList.remove("active");
 
-const modalTitle =
-    document.querySelector(".modal-title");
+    document.body.style.overflow = "";
 
-const modalClose =
-    document.querySelector(".modal-close");
-
-const modalPrev =
-    document.querySelector(".modal-prev");
-
-const modalNext =
-    document.querySelector(".modal-next");
-
-const modalCurrent =
-    document.querySelector(".modal-current");
-
-const modalTotal =
-    document.querySelector(".modal-total");
-
-
-let modalImages = [];
-let modalIndex = 0;
-
-
-/* OPEN DESIGN */
-
-document
-    .querySelectorAll(".view-design")
-    .forEach((button) => {
-
-        button.addEventListener("click", () => {
-
-            modalImages =
-                button.dataset.images.split(",");
-
-            modalIndex = 0;
-
-
-            modalTitle.textContent =
-                button.dataset.title;
-
-
-            modalTotal.textContent =
-                String(modalImages.length)
-                    .padStart(2, "0");
-
-
-            updateModalImage();
-
-
-            designModal.classList.add("active");
-
-            document.body.classList.add(
-                "no-scroll"
-            );
-
-        });
-
-    });
-
-
-function updateModalImage() {
-
-    modalImage.style.opacity = 0;
-
-
-    setTimeout(() => {
-
-        modalImage.src =
-            modalImages[modalIndex];
-
-
-        modalImage.onload = () => {
-
-            modalImage.style.opacity = 1;
-
-        };
-
-
-        modalCurrent.textContent =
-            String(modalIndex + 1)
-                .padStart(2, "0");
-
-    }, 200);
+  });
 
 }
 
 
-/* NEXT IMAGE */
+if (imageModal) {
 
-modalNext.addEventListener(
-    "click",
-    () => {
+  imageModal.addEventListener("click", (event) => {
 
-        modalIndex =
-            (modalIndex + 1)
-            % modalImages.length;
+    if (event.target === imageModal) {
 
-        updateModalImage();
+      imageModal.classList.remove("active");
+
+      document.body.style.overflow = "";
 
     }
-);
 
-
-/* PREVIOUS IMAGE */
-
-modalPrev.addEventListener(
-    "click",
-    () => {
-
-        modalIndex =
-            (
-                modalIndex - 1
-                + modalImages.length
-            )
-            % modalImages.length;
-
-        updateModalImage();
-
-    }
-);
-
-
-/* CLOSE MODAL */
-
-modalClose.addEventListener(
-    "click",
-    closeModal
-);
-
-
-designModal.addEventListener(
-    "click",
-    (event) => {
-
-        if (
-            event.target === designModal
-        ) {
-
-            closeModal();
-
-        }
-
-    }
-);
-
-
-function closeModal() {
-
-    designModal.classList.remove(
-        "active"
-    );
-
-    document.body.classList.remove(
-        "no-scroll"
-    );
+  });
 
 }
 
 
-/* ESC KEY */
 
-document.addEventListener(
-    "keydown",
-    (event) => {
-
-        if (
-            event.key === "Escape"
-        ) {
-
-            closeModal();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
+/* =========================
    MACHINE SCROLL ANIMATION
-========================================================= */
+========================= */
 
-const processSection =
-    document.querySelector(".process-section");
-
-const processSteps =
-    document.querySelectorAll(".process-step");
-
-const fabrics =
-    document.querySelectorAll(".fabric");
-
-const particles =
-    document.querySelector(
-        ".stone-particles"
-    );
-
-const machineHead =
-    document.querySelector(
-        ".machine-head"
-    );
+const machineSection =
+  document.querySelector(".machine-section");
 
 
-function updateProcessAnimation() {
+function checkMachineAnimation() {
 
-    if (!processSection) return;
+  if (!machineSection) return;
 
+  const sectionTop =
+    machineSection.getBoundingClientRect().top;
 
-    const rect =
-        processSection.getBoundingClientRect();
-
-
-    const sectionHeight =
-        processSection.offsetHeight
-        - window.innerHeight;
+  const windowHeight =
+    window.innerHeight;
 
 
-    let progress =
-        -rect.top / sectionHeight;
+  if (sectionTop < windowHeight * 0.55) {
 
+    machineSection.classList.add("active");
 
-    progress =
-        Math.max(
-            0,
-            Math.min(1, progress)
-        );
-
-
-    const step =
-        Math.min(
-            3,
-            Math.floor(progress * 4)
-        );
-
-
-    /* ACTIVE STEP */
-
-    processSteps.forEach(
-        (item, index) => {
-
-            item.classList.toggle(
-                "active",
-                index === step
-            );
-
-        }
-    );
-
-
-    /* FABRIC CHANGE */
-
-    fabrics.forEach(
-        (fabric, index) => {
-
-            fabric.classList.toggle(
-                "active",
-                index === step
-            );
-
-        }
-    );
-
-
-    /* MACHINE HEAD MOVEMENT */
-
-    const moveX =
-        Math.sin(progress * Math.PI * 4)
-        * 80;
-
-
-    machineHead.style.transform =
-        `translateX(calc(-50% + ${moveX}px))`;
-
-
-    /* PARTICLES */
-
-    if (
-        Math.floor(progress * 20) %
-        2 === 0
-    ) {
-
-        particles.classList.remove(
-            "animate"
-        );
-
-
-        void particles.offsetWidth;
-
-
-        particles.classList.add(
-            "animate"
-        );
-
-    }
+  }
 
 }
 
 
 window.addEventListener(
-    "scroll",
-    updateProcessAnimation
+  "scroll",
+  checkMachineAnimation
 );
 
 
-updateProcessAnimation();
+checkMachineAnimation();
 
 
-/* =========================================================
-   SCROLL REVEAL
-========================================================= */
 
-const observer =
-    new IntersectionObserver(
+/* =========================
+   ACTIVE MENU
+========================= */
 
-        (entries) => {
-
-            entries.forEach((entry) => {
-
-                if (
-                    entry.isIntersecting
-                ) {
-
-                    entry.target.classList.add(
-                        "visible"
-                    );
-
-                }
-
-            });
-
-        },
-
-        {
-
-            threshold: 0.15
-
-        }
-
-    );
+const navLinks =
+  document.querySelectorAll(".nav-link");
 
 
-document
-    .querySelectorAll(
-        ".intro-content, .collection-card, .application-item"
-    )
-    .forEach((element) => {
-
-        element.classList.add(
-            "reveal"
-        );
-
-        observer.observe(element);
-
-    });
+const sections =
+  document.querySelectorAll("section[id]");
 
 
-/* =========================================================
-   CONTACT FORM
-========================================================= */
+function updateActiveMenu() {
 
-const contactForm =
-    document.querySelector(".contact-form");
+  let currentSection = "";
 
 
-contactForm.addEventListener(
-    "submit",
-    (event) => {
+  sections.forEach((section) => {
 
-        event.preventDefault();
+    const sectionTop =
+      section.offsetTop;
 
-
-        alert(
-            "Thank you! Your request has been received."
-        );
+    const sectionHeight =
+      section.offsetHeight;
 
 
-        contactForm.reset();
+    if (
+      window.scrollY >=
+      sectionTop - sectionHeight * 0.25
+    ) {
+
+      currentSection =
+        section.getAttribute("id");
 
     }
+
+  });
+
+
+  navLinks.forEach((link) => {
+
+    link.classList.remove("active");
+
+
+    if (
+      link.getAttribute("href") ===
+      "#" + currentSection
+    ) {
+
+      link.classList.add("active");
+
+    }
+
+  });
+
+}
+
+
+window.addEventListener(
+  "scroll",
+  updateActiveMenu
 );
 
 
-/* =========================================================
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+const mobileMenuBtn =
+  document.getElementById("mobileMenuBtn");
+
+const sidebar =
+  document.getElementById("sidebar");
+
+
+if (mobileMenuBtn && sidebar) {
+
+  mobileMenuBtn.addEventListener(
+    "click",
+    () => {
+
+      sidebar.classList.toggle(
+        "mobile-open"
+      );
+
+    }
+  );
+
+}
+
+
+navLinks.forEach((link) => {
+
+  link.addEventListener("click", () => {
+
+    if (window.innerWidth <= 900) {
+
+      sidebar.classList.remove(
+        "mobile-open"
+      );
+
+    }
+
+  });
+
+});
+
+
+
+/* =========================
    LANGUAGES
-========================================================= */
+========================= */
 
 const translations = {
 
-    en: {
+  tr: {
 
-        navHome: "HOME",
-        navCollection: "COLLECTION",
-        navProcess: "OUR PROCESS",
-        navApplications: "APPLICATIONS",
-        navCustom: "CUSTOM DESIGN",
-        navContact: "CONTACT",
+    menuHome: "Ana Sayfa",
 
-        heroTitle1:
-            "TURNING FABRIC INTO <span>BRILLIANCE.</span>",
+    menuCollection: "Koleksiyonlar",
 
-        heroText1:
-            "Premium rhinestone and crystal applications designed to make every garment unforgettable.",
+    menuProcess: "Üretim",
 
-        heroTitle2:
-            "EVERY STONE <span>TELLS A STORY.</span>",
+    menuAbout: "Hakkımızda",
 
-        heroText2:
-            "Transform your fashion collection with exceptional crystal stone designs.",
+    menuContact: "İletişim",
 
-        heroTitle3:
-            "YOUR IDEA. <span>OUR CRAFT.</span>",
 
-        heroText3:
-            "From your concept to premium stone application production.",
+    heroTitle:
+      "Taşa Yeni Bir<br><span>Karakter</span> Veriyoruz.",
 
-        exploreCollection:
-            "EXPLORE COLLECTION",
 
-        createDesign:
-            "CREATE YOUR DESIGN",
+    heroDescription:
+      "Yüksek kaliteli taş baskı teknolojisi ile mekanlara, projelere ve tasarımlara benzersiz bir görünüm kazandırıyoruz.",
 
-        contactUs:
-            "CONTACT US",
 
-        introTitle:
-            "WE DON'T JUST APPLY STONES. <span>WE CREATE ATTENTION.</span>",
+    discover:
+      "KOLEKSİYONU KEŞFET",
 
-        introText:
-            "We combine creativity, precision and premium rhinestone applications to help fashion brands create garments that stand out.",
 
-        collectionTitle:
-            "STONE COLLECTION",
+    introLabel:
+      "AB AYCAM EXPERIENCE",
 
-        collectionText:
-            "Explore our premium rhinestone and crystal stone designs.",
 
-        processTitle:
-            "WATCH THE <span>DESIGN COME TO LIFE.</span>",
+    introTitle:
+      "Doğal görünüm.<br><span>Sınırsız tasarım.</span>",
 
-        processText:
-            "Scroll down and follow the journey from crystal placement to finished textile brilliance.",
 
-        applicationsTitle:
-            "WHERE YOUR DESIGNS <span>CAN SHINE.</span>",
+    introText:
+      "AB AYCAM olarak taş yüzeyleri modern baskı teknolojisi ile birleştiriyor, projeleriniz için güçlü, estetik ve dikkat çekici yüzeyler üretiyoruz.",
 
-        customTitle:
-            "HAVE AN IDEA? <span>LET'S MAKE IT SHINE.</span>",
 
-        customText:
-            "Send us your logo, artwork or idea. Our team can transform it into a professional stone application.",
+    collectionLabel:
+      "KOLEKSİYONLAR",
 
-        startProject:
-            "START YOUR PROJECT",
 
-        contactTitle:
-            "READY TO CREATE <span>SOMETHING BRILLIANT?</span>",
+    collectionTitle:
+      "Taş Koleksiyonlarımız",
 
-        viewLocation:
-            "VIEW OUR LOCATION"
 
-    },
+    collectionDescription:
+      "Her taş farklı bir karakter taşır. Koleksiyonlarımızı keşfedin.",
 
 
-    tr: {
+    processLabel:
+      "TEKNOLOJİMİZ",
 
-        navHome: "ANA SAYFA",
-        navCollection: "KOLEKSİYON",
-        navProcess: "ÜRETİM SÜRECİ",
-        navApplications: "UYGULAMALAR",
-        navCustom: "ÖZEL TASARIM",
-        navContact: "İLETİŞİM",
 
-        heroTitle1:
-            "KUMAŞI <span>IŞILTIYA DÖNÜŞTÜRÜYORUZ.</span>",
+    processTitle:
+      "Tasarımın<br><span>üretime dönüştüğü</span><br>yer.",
 
-        heroText1:
-            "Her ürünü unutulmaz hale getiren premium taş ve kristal uygulamaları.",
 
-        heroTitle2:
-            "HER TAŞ <span>BİR HİKAYE ANLATIR.</span>",
+    processText:
+      "Aşağıya doğru ilerledikçe teknolojimizin tasarımlarınızı nasıl hayata geçirdiğini keşfedin.",
 
-        heroText2:
-            "Moda koleksiyonunuzu etkileyici kristal taş tasarımlarıyla dönüştürün.",
 
-        heroTitle3:
-            "SİZİN FİKRİNİZ. <span>BİZİM USTALIĞIMIZ.</span>",
+    aboutLabel:
+      "AB AYCAM HAKKINDA",
 
-        heroText3:
-            "Fikrinizden premium taş uygulamasına kadar profesyonel üretim.",
 
-        exploreCollection:
-            "KOLEKSİYONU İNCELE",
+    aboutTitle:
+      "Her yüzey,<br>bir <span>hikaye</span> anlatır.",
 
-        createDesign:
-            "TASARIMINI OLUŞTUR",
 
-        contactUs:
-            "BİZE ULAŞIN",
+    aboutText:
+      "AB AYCAM, kaliteli üretim, modern teknoloji ve yaratıcı tasarımı bir araya getirerek müşterilerine fark yaratan taş yüzey çözümleri sunar.",
 
-        introTitle:
-            "SADECE TAŞ UYGULAMIYORUZ. <span>DİKKAT ÇEKİYORUZ.</span>",
 
-        introText:
-            "Yaratıcılığı, hassas üretimi ve premium taş uygulamalarını birleştirerek moda markalarının fark yaratmasını sağlıyoruz.",
+    statCollection:
+      "KOLEKSİYON",
 
-        collectionTitle:
-            "TAŞ KOLEKSİYONU",
 
-        collectionText:
-            "Premium taş ve kristal tasarımlarımızı keşfedin.",
+    statDesign:
+      "TASARIM OLASILIĞI",
 
-        processTitle:
-            "TASARIMIN <span>HAYATA GELİŞİNİ İZLEYİN.</span>",
 
-        processText:
-            "Aşağı kaydırın ve taşların yerleştirilmesinden tamamlanmış ürüne kadar olan süreci keşfedin.",
+    statQuality:
+      "KALİTE ODAKLI",
 
-        applicationsTitle:
-            "TASARIMLARINIZIN <span>PARLAYACAĞI YERLER.</span>",
 
-        customTitle:
-            "BİR FİKRİNİZ Mİ VAR? <span>HAYDİ PARLATALIM.</span>",
+    contactLabel:
+      "İLETİŞİM",
 
-        customText:
-            "Logo, çizim veya fikrinizi bize gönderin. Ekibimiz bunu profesyonel bir taş tasarımına dönüştürsün.",
 
-        startProject:
-            "PROJENİ BAŞLAT",
+    contactTitle:
+      "Bir sonraki projenizi<br>birlikte <span>tasarlayalım.</span>",
 
-        contactTitle:
-            "BİRLİKTE <span>HARİKA BİR ŞEY YAPALIM.</span>",
 
-        viewLocation:
-            "KONUMUMUZU GÖR"
+    contactButton:
+      "BİZE ULAŞIN"
 
-    },
+  },
 
 
-    ar: {
+  en: {
 
-        navHome: "الرئيسية",
-        navCollection: "المجموعة",
-        navProcess: "طريقة العمل",
-        navApplications: "التطبيقات",
-        navCustom: "تصميم خاص",
-        navContact: "اتصل بنا",
+    menuHome: "Home",
 
-        heroTitle1:
-            "نحوّل القماش إلى <span>بريق.</span>",
+    menuCollection: "Collections",
 
-        heroText1:
-            "تطبيقات احترافية من الأحجار والكريستال تجعل كل قطعة ملابس مميزة.",
+    menuProcess: "Production",
 
-        heroTitle2:
-            "كل حجر <span>يحكي قصة.</span>",
+    menuAbout: "About",
 
-        heroText2:
-            "حوّل مجموعتك إلى مستوى جديد مع تصاميم الكريستال المميزة.",
+    menuContact: "Contact",
 
-        heroTitle3:
-            "فكرتك. <span>حرفتنا.</span>",
 
-        heroText3:
-            "من فكرتك إلى إنتاج احترافي لتطبيقات الأحجار.",
+    heroTitle:
+      "Giving Stone<br>a New <span>Character.</span>",
 
-        exploreCollection:
-            "اكتشف المجموعة",
 
-        createDesign:
-            "اصنع تصميمك",
+    heroDescription:
+      "With advanced stone printing technology, we bring unique character and powerful design to spaces, projects and surfaces.",
 
-        contactUs:
-            "تواصل معنا",
 
-        introTitle:
-            "نحن لا نضع الأحجار فقط. <span>نحن نصنع الانتباه.</span>",
+    discover:
+      "DISCOVER COLLECTION",
 
-        introText:
-            "نجمع بين الإبداع والدقة وتطبيقات الأحجار الفاخرة لمساعدة علامات الأزياء على التميز.",
 
-        collectionTitle:
-            "مجموعة الأحجار",
+    introLabel:
+      "AB AYCAM EXPERIENCE",
 
-        collectionText:
-            "اكتشف مجموعتنا من تصاميم الأحجار والكريستال الفاخرة.",
 
-        processTitle:
-            "شاهد التصميم <span>وهو يتحول إلى حقيقة.</span>",
+    introTitle:
+      "Natural appearance.<br><span>Unlimited design.</span>",
 
-        processText:
-            "انزل للأسفل وتابع رحلة التصميم من وضع الأحجار حتى النتيجة النهائية.",
 
-        applicationsTitle:
-            "حيث يمكن لتصاميمك <span>أن تتألق.</span>",
+    introText:
+      "At AB AYCAM, we combine stone surfaces with modern printing technology to create powerful, aesthetic and remarkable surfaces for your projects.",
 
-        customTitle:
-            "عندك فكرة؟ <span>خلّيها تلمع.</span>",
 
-        customText:
-            "أرسل لنا شعارك أو فكرتك وسنحوّلها إلى تصميم احترافي من الأحجار.",
+    collectionLabel:
+      "COLLECTIONS",
 
-        startProject:
-            "ابدأ مشروعك",
 
-        contactTitle:
-            "جاهز لعمل <span>شيء مميز؟</span>",
+    collectionTitle:
+      "Our Stone Collections",
 
-        viewLocation:
-            "شاهد موقعنا"
 
-    }
+    collectionDescription:
+      "Every stone has its own character. Discover our collections.",
+
+
+    processLabel:
+      "OUR TECHNOLOGY",
+
+
+    processTitle:
+      "Where design<br><span>becomes</span><br>production.",
+
+
+    processText:
+      "Scroll down and discover how our technology brings your designs to life.",
+
+
+    aboutLabel:
+      "ABOUT AB AYCAM",
+
+
+    aboutTitle:
+      "Every surface<br>tells a <span>story.</span>",
+
+
+    aboutText:
+      "AB AYCAM combines quality production, modern technology and creative design to deliver remarkable stone surface solutions.",
+
+
+    statCollection:
+      "COLLECTIONS",
+
+
+    statDesign:
+      "DESIGN POSSIBILITIES",
+
+
+    statQuality:
+      "QUALITY FOCUS",
+
+
+    contactLabel:
+      "CONTACT",
+
+
+    contactTitle:
+      "Let's design<br>your next <span>project together.</span>",
+
+
+    contactButton:
+      "CONTACT US"
+
+  },
+
+
+  ar: {
+
+    menuHome: "الرئيسية",
+
+    menuCollection: "المجموعات",
+
+    menuProcess: "الإنتاج",
+
+    menuAbout: "من نحن",
+
+    menuContact: "اتصل بنا",
+
+
+    heroTitle:
+      "نمنح الحجر<br><span>شخصية جديدة.</span>",
+
+
+    heroDescription:
+      "باستخدام تكنولوجيا الطباعة المتقدمة على الحجر، نقدم تصاميم مميزة وفريدة للمساحات والمشاريع المختلفة.",
+
+
+    discover:
+      "اكتشف المجموعة",
+
+
+    introLabel:
+      "تجربة AB AYCAM",
+
+
+    introTitle:
+      "مظهر طبيعي.<br><span>تصميم بلا حدود.</span>",
+
+
+    introText:
+      "في AB AYCAM نجمع بين أسطح الحجر وتكنولوجيا الطباعة الحديثة لنقدم أسطحاً مميزة وجمالية لمشاريعكم.",
+
+
+    collectionLabel:
+      "المجموعات",
+
+
+    collectionTitle:
+      "مجموعات الحجر",
+
+
+    collectionDescription:
+      "لكل حجر شخصية مختلفة. اكتشف مجموعاتنا.",
+
+
+    processLabel:
+      "تكنولوجيتنا",
+
+
+    processTitle:
+      "حيث يتحول<br><span>التصميم إلى</span><br>إنتاج.",
+
+
+    processText:
+      "اكتشف كيف تحول تقنيتنا تصميماتك إلى واقع.",
+
+
+    aboutLabel:
+      "عن AB AYCAM",
+
+
+    aboutTitle:
+      "كل سطح<br>يروي <span>قصة.</span>",
+
+
+    aboutText:
+      "تجمع AB AYCAM بين الإنتاج عالي الجودة والتكنولوجيا الحديثة والتصميم الإبداعي لتقديم حلول مميزة للأسطح الحجرية.",
+
+
+    statCollection:
+      "مجموعات",
+
+
+    statDesign:
+      "إمكانيات التصميم",
+
+
+    statQuality:
+      "تركيز على الجودة",
+
+
+    contactLabel:
+      "اتصل بنا",
+
+
+    contactTitle:
+      "لنصمم<br><span>مشروعك القادم معاً.</span>",
+
+
+    contactButton:
+      "تواصل معنا"
+
+  }
 
 };
 
 
-/* =========================================================
-   LANGUAGE SWITCH
-========================================================= */
 
 const languageButtons =
-    document.querySelectorAll(
-        ".language-btn"
-    );
+  document.querySelectorAll(".language-btn");
 
 
-languageButtons.forEach(
-    (button) => {
+function changeLanguage(language) {
 
-        button.addEventListener(
-            "click",
-            () => {
-
-                const language =
-                    button.dataset.language;
+  const elements =
+    document.querySelectorAll("[data-i18n]");
 
 
-                languageButtons.forEach(
-                    (btn) => {
+  elements.forEach((element) => {
 
-                        btn.classList.remove(
-                            "active"
-                        );
-
-                    }
-                );
+    const key =
+      element.getAttribute("data-i18n");
 
 
-                button.classList.add(
-                    "active"
-                );
+    if (
+      translations[language] &&
+      translations[language][key]
+    ) {
+
+      element.innerHTML =
+        translations[language][key];
+
+    }
+
+  });
 
 
-                document
-                    .querySelectorAll(
-                        "[data-lang]"
-                    )
-                    .forEach(
-                        (element) => {
+  languageButtons.forEach((button) => {
 
-                            const key =
-                                element.dataset.lang;
+    button.classList.remove("active");
 
 
-                            if (
-                                translations[language][key]
-                            ) {
+    if (
+      button.getAttribute("data-lang") ===
+      language
+    ) {
 
-                                element.innerHTML =
-                                    translations[language][key];
+      button.classList.add("active");
 
-                            }
+    }
 
-                        }
-                    );
-
-
-                if (
-                    language === "ar"
-                ) {
-
-                    document.body.classList.add(
-                        "rtl"
-                    );
-
-                    document.documentElement.lang =
-                        "ar";
-
-                }
-
-                else {
-
-                    document.body.classList.remove(
-                        "rtl"
-                    );
-
-                    document.documentElement.lang =
-                        language;
-
-                }
-
-            }
-        );
-
-    );
+  });
 
 
-/* =========================================================
-   INITIAL STATE
-========================================================= */
+  if (language === "ar") {
 
-updateSlider();
+    document.documentElement.lang = "ar";
 
-fabrics[0].classList.add(
-    "active"
-);
+    document.documentElement.dir = "rtl";
+
+  } else {
+
+    document.documentElement.lang =
+      language;
+
+    document.documentElement.dir = "ltr";
+
+  }
+
+}
+
+
+languageButtons.forEach((button) => {
+
+  button.addEventListener(
+    "click",
+    () => {
+
+      const language =
+        button.getAttribute("data-lang");
+
+      changeLanguage(language);
+
+    }
+  );
+
+});
