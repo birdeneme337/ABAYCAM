@@ -8,171 +8,64 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>AB AYCAM | Premium Textile Embellishment</title>
-
-    <meta
-        name="description"
-        content="AB AYCAM premium textile embellishment and stone application solutions."
-    >
+    <title>AB AYCAM | Creating Brilliance</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
-
 <body>
-
-    <!-- =========================================
-         LOADING SCREEN
-    ========================================== -->
-
-    <div id="loader" class="loader">
-
-        <div class="loader-logo">
-            <span>AB</span>
-            <strong>AYCAM</strong>
-        </div>
-
-        <div class="loader-line"></div>
-
-        <p>CREATING BRILLIANCE</p>
-
-    </div>
-
-
-
-    <!-- =========================================
-         SIDE MENU
-    ========================================== -->
-
-    <aside id="sideMenu" class="side-menu">
-
-        <div class="side-menu-top">
-
-            <div class="menu-brand">
-
-                <span class="brand-small">AB</span>
-
-                <span class="brand-large">AYCAM</span>
-
-            </div>
-
-
-            <button
-                id="closeMenu"
-                class="close-menu"
-                aria-label="Menüyü kapat"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-        <nav class="menu-navigation">
-
-            <a href="#home">
-                <span>01</span>
-                ANA SAYFA
-            </a>
-
-            <a href="#collection">
-                <span>02</span>
-                KOLEKSİYON
-            </a>
-
-            <a href="#process">
-                <span>03</span>
-                ÜRETİM SÜRECİ
-            </a>
-
-            <a href="#applications">
-                <span>04</span>
-                UYGULAMALAR
-            </a>
-
-            <a href="#custom">
-                <span>05</span>
-                ÖZEL TASARIM
-            </a>
-
-            <a href="#contact">
-                <span>06</span>
-                İLETİŞİM
-            </a>
-
-        </nav>
-
-
-        <div class="side-menu-bottom">
-
-            <p>© 2026 AB AYCAM</p>
-
-            <strong>CREATING BRILLIANCE</strong>
-
-        </div>
-
-    </aside>
-
-
-
-    <div id="menuOverlay" class="menu-overlay"></div>
-
-
 
     <!-- =========================================
          HEADER
     ========================================== -->
 
-    <header class="main-header">
+    <header class="top-header">
 
-        <div class="header-left">
-
-            <button
-                id="menuButton"
-                class="hamburger"
-                aria-label="Menüyü aç"
-            >
-
-                <span></span>
-                <span></span>
-                <span></span>
-
-            </button>
-
-        </div>
+        <button
+            class="menu-button"
+            id="menuButton"
+            aria-label="Menüyü Aç"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
 
-        <a href="#home" class="main-logo">
+        <a href="#home" class="logo">
 
             <span class="logo-ab">AB</span>
 
-            <span class="logo-aycam">AYCAM</span>
+            <span class="logo-aycam">
+                AYCAM
+            </span>
 
         </a>
 
 
-        <div class="header-right">
+        <div class="header-actions">
 
-
-            <!-- LANGUAGE -->
-
-            <div class="language-selector">
+            <div class="language-wrapper">
 
                 <button
-                    id="languageButton"
                     class="language-button"
+                    id="languageButton"
                 >
 
-                    <span id="selectedLanguage">TR</span>
+                    <span id="currentLanguage">
+                        TR
+                    </span>
 
-                    <span class="language-arrow">⌄</span>
+                    <span class="language-arrow">
+                        ▾
+                    </span>
 
                 </button>
 
 
                 <div
-                    id="languageDropdown"
-                    class="language-dropdown"
+                    class="language-menu"
+                    id="languageMenu"
                 >
 
                     <button data-lang="TR">
@@ -191,34 +84,6 @@
 
             </div>
 
-
-
-            <!-- INQUIRY -->
-
-            <button
-                id="inquiryButton"
-                class="inquiry-button"
-                aria-label="Teklif talepleri"
-            >
-
-                <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.6"
-                >
-
-                    <path d="M3 6h18l-1 14H4L3 6Z"></path>
-
-                    <path d="M8 6a4 4 0 0 1 8 0"></path>
-
-                </svg>
-
-
-                <span id="inquiryCount">0</span>
-
-            </button>
-
         </div>
 
     </header>
@@ -226,19 +91,136 @@
 
 
     <!-- =========================================
-         MAIN
+         SIDE MENU
+    ========================================== -->
+
+    <aside
+        class="side-menu"
+        id="sideMenu"
+    >
+
+        <div class="side-menu-top">
+
+            <div class="side-logo">
+
+                <span>AB</span>
+
+                <strong>
+                    AYCAM
+                </strong>
+
+            </div>
+
+
+            <button
+                class="close-menu"
+                id="closeMenu"
+                aria-label="Menüyü Kapat"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <nav class="side-navigation">
+
+            <a
+                href="#home"
+                class="nav-link"
+            >
+                <span>01</span>
+                HOME
+            </a>
+
+
+            <a
+                href="#collection"
+                class="nav-link"
+            >
+                <span>02</span>
+                COLLECTION
+            </a>
+
+
+            <a
+                href="#process"
+                class="nav-link"
+            >
+                <span>03</span>
+                OUR PROCESS
+            </a>
+
+
+            <a
+                href="#applications"
+                class="nav-link"
+            >
+                <span>04</span>
+                APPLICATIONS
+            </a>
+
+
+            <a
+                href="#custom"
+                class="nav-link"
+            >
+                <span>05</span>
+                CUSTOM DESIGN
+            </a>
+
+
+            <a
+                href="#contact"
+                class="nav-link"
+            >
+                <span>06</span>
+                CONTACT
+            </a>
+
+        </nav>
+
+
+        <div class="side-footer">
+
+            <p>
+                © 2026 AB AYCAM
+            </p>
+
+            <strong>
+                CREATING BRILLIANCE
+            </strong>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- MENU OVERLAY -->
+
+    <div
+        class="menu-overlay"
+        id="menuOverlay"
+    ></div>
+
+
+
+    <!-- =========================================
+         MAIN CONTENT
     ========================================== -->
 
     <main>
 
 
-
         <!-- =====================================
-             HERO
+             HOME
         ====================================== -->
 
-        <section id="home" class="hero-section">
-
+        <section
+            id="home"
+            class="hero-section"
+        >
 
             <div class="hero-content">
 
@@ -248,21 +230,20 @@
 
 
                 <h1>
-
-                    TEXTILE DESIGNS
-
-                    <span>
-                        MADE TO SHINE
-                    </span>
-
+                    TEXTILE
+                    <br>
+                    DESIGNS
+                    <br>
+                    THAT SHINE.
                 </h1>
 
 
                 <p class="hero-description">
 
-                    Premium stone application, textile
-                    embellishment and custom design solutions
-                    for fashion brands around the world.
+                    Premium crystal stone, hotfix and
+                    textile embellishment solutions
+                    designed for fashion brands and
+                    manufacturers.
 
                 </p>
 
@@ -272,95 +253,25 @@
                     class="hero-button"
                 >
 
-                    EXPLORE COLLECTION
+                    VIEW COLLECTION
 
-                    <span>↓</span>
+                    <span>
+                        →
+                    </span>
 
                 </a>
 
             </div>
 
 
+            <div class="hero-image">
 
-            <div class="hero-slider">
-
-
-                <div class="slider-track" id="sliderTrack">
-
-                    <div class="slider-slide active">
-
-                        <img
-                            src="images/1.png"
-                            alt="AB AYCAM Textile Design"
-                        >
-
-                    </div>
-
-
-                    <div class="slider-slide">
-
-                        <img
-                            src="images/2.png"
-                            alt="AB AYCAM Textile Design"
-                        >
-
-                    </div>
-
-
-                    <div class="slider-slide">
-
-                        <img
-                            src="images/3.png"
-                            alt="AB AYCAM Textile Design"
-                        >
-
-                    </div>
-
-
-                    <div class="slider-slide">
-
-                        <img
-                            src="images/4.png"
-                            alt="AB AYCAM Textile Design"
-                        >
-
-                    </div>
-
-
-                    <div class="slider-slide">
-
-                        <img
-                            src="images/5.png"
-                            alt="AB AYCAM Textile Design"
-                        >
-
-                    </div>
-
-                </div>
-
-
-                <div
-                    id="sliderDots"
-                    class="slider-dots"
-                ></div>
+                <img
+                    src="images/1.png"
+                    alt="AB AYCAM Textile Design"
+                >
 
             </div>
-
-
-            <div class="hero-number">
-
-                <span id="currentSlide">
-                    01
-                </span>
-
-                <span class="number-line"></span>
-
-                <span>
-                    05
-                </span>
-
-            </div>
-
 
         </section>
 
@@ -372,41 +283,37 @@
 
         <section class="intro-section">
 
-            <p class="section-number">
-                01 / OUR EXPERTISE
-            </p>
+            <div class="intro-left">
+
+                <p>
+                    AB AYCAM
+                </p>
+
+                <h2>
+                    CREATING BRILLIANCE
+                    FOR TEXTILE.
+                </h2>
+
+            </div>
 
 
-            <h2>
-
-                DESIGNED WITH DETAIL.
-
-                <br>
-
-                <span>
-                    CREATED TO SHINE.
-                </span>
-
-            </h2>
-
-
-            <div class="intro-text">
+            <div class="intro-right">
 
                 <p>
 
-                    AB AYCAM combines creativity,
-                    craftsmanship and premium textile
-                    embellishment technologies to create
-                    distinctive designs.
+                    We transform fabrics into distinctive
+                    fashion surfaces through crystal,
+                    stone and premium embellishment
+                    applications.
 
                 </p>
 
 
                 <p>
 
-                    From crystal stone applications to
-                    custom textile designs, every project
-                    is developed with attention to detail.
+                    Every design is developed with
+                    production quality, durability and
+                    visual impact in mind.
 
                 </p>
 
@@ -426,88 +333,90 @@
         >
 
 
-            <div class="section-header">
+            <div class="section-heading">
 
                 <div>
 
                     <p class="section-number">
-                        02 / COLLECTION
+                        02
                     </p>
 
-                    <h2>
-                        DISCOVER OUR
-                        <span>DESIGNS.</span>
-                    </h2>
+                    <p class="section-label">
+                        COLLECTION
+                    </p>
 
                 </div>
 
 
-                <p class="section-header-text">
-
-                    Explore our premium textile
-                    embellishment collection.
-
-                    Click any design to view detailed
-                    information.
-
-                </p>
+                <h2>
+                    TEXTILE DESIGNS
+                    <br>
+                    COLLECTION
+                </h2>
 
             </div>
 
 
 
-            <div
-                id="productGrid"
-                class="product-grid"
-            >
+            <!-- COLLECTION GRID -->
+
+            <div class="collection-grid">
 
 
 
-                <!-- PRODUCT 1 -->
+                <!-- 01 -->
 
                 <article
-                    class="product-card"
-                    data-id="1"
-                    data-name="EMERALD LOOP"
-                    data-color="Deep Emerald"
-                    data-code="AB-EM-001"
-                    data-type="Crystal Stone Application"
-                    data-description="Premium crystal stone embellishment design developed for fashion garments, dresses and special textile applications."
+                    class="design-card"
                     data-image="images/1.png"
+                    data-name="EMERALD CRYSTAL"
+                    data-color="Deep Emerald Green"
+                    data-code="AB-CR-001"
+                    data-description="Premium crystal stone pattern designed for elegant fashion applications."
+                    data-application="T-Shirts, Dresses, Blouses"
                 >
 
-                    <div class="product-image">
+                    <div class="card-image">
 
                         <img
                             src="images/1.png"
-                            alt="Emerald Loop"
+                            alt="Emerald Crystal Textile Design"
                         >
 
-                        <div class="product-hover">
-                            VIEW DETAILS
+                        <div class="image-overlay">
+
+                            <span>
+                                VIEW DETAILS
+                            </span>
+
                         </div>
 
                     </div>
 
 
-                    <div class="product-info">
+                    <div class="card-content">
 
-                        <p class="product-code">
-                            01 · AB-EM-001
-                        </p>
+                        <div class="card-code">
+                            01 · AB-CR-001
+                        </div>
+
 
                         <h3>
-                            EMERALD LOOP
+                            EMERALD
+                            CRYSTAL
                         </h3>
 
-                        <div class="product-meta">
+
+                        <div class="card-bottom">
 
                             <span>
                                 DEEP EMERALD
                             </span>
 
-                            <button class="detail-link">
-                                DETAILS →
+                            <button
+                                class="detail-button"
+                            >
+                                +
                             </button>
 
                         </div>
@@ -518,51 +427,51 @@
 
 
 
-                <!-- PRODUCT 2 -->
+                <!-- 02 -->
 
                 <article
-                    class="product-card"
-                    data-id="2"
+                    class="design-card"
+                    data-image="images/2.png"
                     data-name="MIDNIGHT BLOOM"
                     data-color="Midnight Black"
                     data-code="AB-MB-002"
-                    data-type="Premium Stone Embellishment"
-                    data-description="A modern crystal embellishment pattern designed to create a refined and premium appearance on textile surfaces."
-                    data-image="images/2.png"
+                    data-description="A refined crystal pattern with strong visual contrast and premium surface detailing."
+                    data-application="Hoodies, Dresses, Premium Tops"
                 >
 
-                    <div class="product-image">
+                    <div class="card-image">
 
                         <img
                             src="images/2.png"
                             alt="Midnight Bloom"
                         >
 
-                        <div class="product-hover">
-                            VIEW DETAILS
+                        <div class="image-overlay">
+                            <span>VIEW DETAILS</span>
                         </div>
 
                     </div>
 
 
-                    <div class="product-info">
+                    <div class="card-content">
 
-                        <p class="product-code">
+                        <div class="card-code">
                             02 · AB-MB-002
-                        </p>
+                        </div>
 
                         <h3>
-                            MIDNIGHT BLOOM
+                            MIDNIGHT
+                            BLOOM
                         </h3>
 
-                        <div class="product-meta">
+                        <div class="card-bottom">
 
                             <span>
                                 MIDNIGHT BLACK
                             </span>
 
-                            <button class="detail-link">
-                                DETAILS →
+                            <button class="detail-button">
+                                +
                             </button>
 
                         </div>
@@ -573,51 +482,51 @@
 
 
 
-                <!-- PRODUCT 3 -->
+                <!-- 03 -->
 
                 <article
-                    class="product-card"
-                    data-id="3"
-                    data-name="ROYAL SPARK"
-                    data-color="Royal Blue"
-                    data-code="AB-RS-003"
-                    data-type="Crystal Textile Application"
-                    data-description="A bold decorative design featuring premium crystal details for contemporary fashion collections."
+                    class="design-card"
                     data-image="images/3.png"
+                    data-name="ROYAL FLOW"
+                    data-color="Royal Blue"
+                    data-code="AB-RF-003"
+                    data-description="Modern decorative crystal design developed for fashion collections."
+                    data-application="T-Shirts, Denim, Jackets"
                 >
 
-                    <div class="product-image">
+                    <div class="card-image">
 
                         <img
                             src="images/3.png"
-                            alt="Royal Spark"
+                            alt="Royal Flow"
                         >
 
-                        <div class="product-hover">
-                            VIEW DETAILS
+                        <div class="image-overlay">
+                            <span>VIEW DETAILS</span>
                         </div>
 
                     </div>
 
 
-                    <div class="product-info">
+                    <div class="card-content">
 
-                        <p class="product-code">
-                            03 · AB-RS-003
-                        </p>
+                        <div class="card-code">
+                            03 · AB-RF-003
+                        </div>
 
                         <h3>
-                            ROYAL SPARK
+                            ROYAL
+                            FLOW
                         </h3>
 
-                        <div class="product-meta">
+                        <div class="card-bottom">
 
                             <span>
                                 ROYAL BLUE
                             </span>
 
-                            <button class="detail-link">
-                                DETAILS →
+                            <button class="detail-button">
+                                +
                             </button>
 
                         </div>
@@ -628,51 +537,106 @@
 
 
 
-                <!-- PRODUCT 4 -->
+                <!-- 04 -->
 
                 <article
-                    class="product-card"
-                    data-id="4"
-                    data-name="SILVER MOTION"
-                    data-color="Silver Grey"
-                    data-code="AB-SM-004"
-                    data-type="Premium Textile Embellishment"
-                    data-description="Elegant silver-toned crystal composition developed for sophisticated textile applications."
+                    class="design-card"
                     data-image="images/4.png"
+                    data-name="GOLDEN EDGE"
+                    data-color="Warm Gold"
+                    data-code="AB-GE-004"
+                    data-description="Elegant golden embellishment concept suitable for premium collections."
+                    data-application="Dresses, Blouses, Evening Wear"
                 >
 
-                    <div class="product-image">
+                    <div class="card-image">
 
                         <img
                             src="images/4.png"
-                            alt="Silver Motion"
+                            alt="Golden Edge"
                         >
 
-                        <div class="product-hover">
-                            VIEW DETAILS
+                        <div class="image-overlay">
+                            <span>VIEW DETAILS</span>
                         </div>
 
                     </div>
 
 
-                    <div class="product-info">
+                    <div class="card-content">
 
-                        <p class="product-code">
-                            04 · AB-SM-004
-                        </p>
+                        <div class="card-code">
+                            04 · AB-GE-004
+                        </div>
 
                         <h3>
-                            SILVER MOTION
+                            GOLDEN
+                            EDGE
                         </h3>
 
-                        <div class="product-meta">
+                        <div class="card-bottom">
+
+                            <span>
+                                WARM GOLD
+                            </span>
+
+                            <button class="detail-button">
+                                +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 05 -->
+
+                <article
+                    class="design-card"
+                    data-image="images/5.png"
+                    data-name="SILVER LIGHT"
+                    data-color="Silver Grey"
+                    data-code="AB-SL-005"
+                    data-description="Minimal and elegant textile stone application with a refined surface."
+                    data-application="Shirts, Blouses, Premium Basics"
+                >
+
+                    <div class="card-image">
+
+                        <img
+                            src="images/5.png"
+                            alt="Silver Light"
+                        >
+
+                        <div class="image-overlay">
+                            <span>VIEW DETAILS</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="card-content">
+
+                        <div class="card-code">
+                            05 · AB-SL-005
+                        </div>
+
+                        <h3>
+                            SILVER
+                            LIGHT
+                        </h3>
+
+                        <div class="card-bottom">
 
                             <span>
                                 SILVER GREY
                             </span>
 
-                            <button class="detail-link">
-                                DETAILS →
+                            <button class="detail-button">
+                                +
                             </button>
 
                         </div>
@@ -683,106 +647,51 @@
 
 
 
-                <!-- PRODUCT 5 -->
+                <!-- 06 -->
 
                 <article
-                    class="product-card"
-                    data-id="5"
-                    data-name="CRYSTAL GARDEN"
-                    data-color="Pearl White"
-                    data-code="AB-CG-005"
-                    data-type="Crystal Stone Application"
-                    data-description="A delicate stone composition designed for elegant fashion and premium garment collections."
-                    data-image="images/5.png"
-                >
-
-                    <div class="product-image">
-
-                        <img
-                            src="images/5.png"
-                            alt="Crystal Garden"
-                        >
-
-                        <div class="product-hover">
-                            VIEW DETAILS
-                        </div>
-
-                    </div>
-
-
-                    <div class="product-info">
-
-                        <p class="product-code">
-                            05 · AB-CG-005
-                        </p>
-
-                        <h3>
-                            CRYSTAL GARDEN
-                        </h3>
-
-                        <div class="product-meta">
-
-                            <span>
-                                PEARL WHITE
-                            </span>
-
-                            <button class="detail-link">
-                                DETAILS →
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- PRODUCT 6 -->
-
-                <article
-                    class="product-card"
-                    data-id="6"
-                    data-name="GOLDEN LINE"
-                    data-color="Champagne Gold"
-                    data-code="AB-GL-006"
-                    data-type="Luxury Stone Application"
-                    data-description="Premium decorative crystal line developed for luxury fashion and special collections."
+                    class="design-card"
                     data-image="images/6.png"
+                    data-name="CRYSTAL WAVE"
+                    data-color="Ocean Blue"
+                    data-code="AB-CW-006"
+                    data-description="Flowing crystal composition inspired by movement and modern textile design."
+                    data-application="T-Shirts, Dresses, Sportswear"
                 >
 
-                    <div class="product-image">
+                    <div class="card-image">
 
                         <img
                             src="images/6.png"
-                            alt="Golden Line"
+                            alt="Crystal Wave"
                         >
 
-                        <div class="product-hover">
-                            VIEW DETAILS
+                        <div class="image-overlay">
+                            <span>VIEW DETAILS</span>
                         </div>
 
                     </div>
 
 
-                    <div class="product-info">
+                    <div class="card-content">
 
-                        <p class="product-code">
-                            06 · AB-GL-006
-                        </p>
+                        <div class="card-code">
+                            06 · AB-CW-006
+                        </div>
 
                         <h3>
-                            GOLDEN LINE
+                            CRYSTAL
+                            WAVE
                         </h3>
 
-                        <div class="product-meta">
+                        <div class="card-bottom">
 
                             <span>
-                                CHAMPAGNE GOLD
+                                OCEAN BLUE
                             </span>
 
-                            <button class="detail-link">
-                                DETAILS →
+                            <button class="detail-button">
+                                +
                             </button>
 
                         </div>
@@ -793,51 +702,51 @@
 
 
 
-                <!-- PRODUCT 7 -->
+                <!-- 07 -->
 
                 <article
-                    class="product-card"
-                    data-id="7"
-                    data-name="NIGHT FLOW"
-                    data-color="Deep Navy"
-                    data-code="AB-NF-007"
-                    data-type="Premium Embellishment"
-                    data-description="Modern textile design with an expressive pattern suitable for contemporary fashion applications."
+                    class="design-card"
                     data-image="images/7.png"
+                    data-name="NOIR SHINE"
+                    data-color="Noir Black"
+                    data-code="AB-NS-007"
+                    data-description="High-impact premium embellishment for contemporary fashion."
+                    data-application="Hoodies, Denim, Jackets"
                 >
 
-                    <div class="product-image">
+                    <div class="card-image">
 
                         <img
                             src="images/7.png"
-                            alt="Night Flow"
+                            alt="Noir Shine"
                         >
 
-                        <div class="product-hover">
-                            VIEW DETAILS
+                        <div class="image-overlay">
+                            <span>VIEW DETAILS</span>
                         </div>
 
                     </div>
 
 
-                    <div class="product-info">
+                    <div class="card-content">
 
-                        <p class="product-code">
-                            07 · AB-NF-007
-                        </p>
+                        <div class="card-code">
+                            07 · AB-NS-007
+                        </div>
 
                         <h3>
-                            NIGHT FLOW
+                            NOIR
+                            SHINE
                         </h3>
 
-                        <div class="product-meta">
+                        <div class="card-bottom">
 
                             <span>
-                                DEEP NAVY
+                                NOIR BLACK
                             </span>
 
-                            <button class="detail-link">
-                                DETAILS →
+                            <button class="detail-button">
+                                +
                             </button>
 
                         </div>
@@ -848,51 +757,51 @@
 
 
 
-                <!-- PRODUCT 8 -->
+                <!-- 08 -->
 
                 <article
-                    class="product-card"
-                    data-id="8"
-                    data-name="MODERN PETAL"
-                    data-color="Soft Grey"
-                    data-code="AB-MP-008"
-                    data-type="Stone Textile Decoration"
-                    data-description="Contemporary floral-inspired crystal design created for modern textile collections."
+                    class="design-card"
                     data-image="images/8.png"
+                    data-name="PEARL GLOW"
+                    data-color="Soft Pearl"
+                    data-code="AB-PG-008"
+                    data-description="Soft and elegant crystal arrangement with a premium appearance."
+                    data-application="Blouses, Dresses, Womenswear"
                 >
 
-                    <div class="product-image">
+                    <div class="card-image">
 
                         <img
                             src="images/8.png"
-                            alt="Modern Petal"
+                            alt="Pearl Glow"
                         >
 
-                        <div class="product-hover">
-                            VIEW DETAILS
+                        <div class="image-overlay">
+                            <span>VIEW DETAILS</span>
                         </div>
 
                     </div>
 
 
-                    <div class="product-info">
+                    <div class="card-content">
 
-                        <p class="product-code">
-                            08 · AB-MP-008
-                        </p>
+                        <div class="card-code">
+                            08 · AB-PG-008
+                        </div>
 
                         <h3>
-                            MODERN PETAL
+                            PEARL
+                            GLOW
                         </h3>
 
-                        <div class="product-meta">
+                        <div class="card-bottom">
 
                             <span>
-                                SOFT GREY
+                                SOFT PEARL
                             </span>
 
-                            <button class="detail-link">
-                                DETAILS →
+                            <button class="detail-button">
+                                +
                             </button>
 
                         </div>
@@ -903,51 +812,51 @@
 
 
 
-                <!-- PRODUCT 9 -->
+                <!-- 09 -->
 
                 <article
-                    class="product-card"
-                    data-id="9"
-                    data-name="SIGNATURE SHINE"
-                    data-color="Black Crystal"
-                    data-code="AB-SS-009"
-                    data-type="Signature Collection"
-                    data-description="A signature embellishment pattern developed to create strong visual impact."
+                    class="design-card"
                     data-image="images/9.png"
+                    data-name="MIDNIGHT DOTS"
+                    data-color="Dark Navy"
+                    data-code="AB-MD-009"
+                    data-description="Detailed stone pattern suitable for repeat fashion applications."
+                    data-application="T-Shirts, Shirts, Denim"
                 >
 
-                    <div class="product-image">
+                    <div class="card-image">
 
                         <img
                             src="images/9.png"
-                            alt="Signature Shine"
+                            alt="Midnight Dots"
                         >
 
-                        <div class="product-hover">
-                            VIEW DETAILS
+                        <div class="image-overlay">
+                            <span>VIEW DETAILS</span>
                         </div>
 
                     </div>
 
 
-                    <div class="product-info">
+                    <div class="card-content">
 
-                        <p class="product-code">
-                            09 · AB-SS-009
-                        </p>
+                        <div class="card-code">
+                            09 · AB-MD-009
+                        </div>
 
                         <h3>
-                            SIGNATURE SHINE
+                            MIDNIGHT
+                            DOTS
                         </h3>
 
-                        <div class="product-meta">
+                        <div class="card-bottom">
 
                             <span>
-                                BLACK CRYSTAL
+                                DARK NAVY
                             </span>
 
-                            <button class="detail-link">
-                                DETAILS →
+                            <button class="detail-button">
+                                +
                             </button>
 
                         </div>
@@ -958,51 +867,51 @@
 
 
 
-                <!-- PRODUCT 10 -->
+                <!-- 10 -->
 
                 <article
-                    class="product-card"
-                    data-id="10"
-                    data-name="LUMINOUS EDGE"
-                    data-color="Pearl Silver"
-                    data-code="AB-LE-010"
-                    data-type="Premium Crystal Application"
-                    data-description="A refined crystal embellishment design for premium fashion collections."
+                    class="design-card"
                     data-image="images/10.png"
+                    data-name="SIGNATURE STONE"
+                    data-color="Signature Green"
+                    data-code="AB-SS-010"
+                    data-description="Exclusive signature pattern created for premium textile collections."
+                    data-application="Premium Fashion Collections"
                 >
 
-                    <div class="product-image">
+                    <div class="card-image">
 
                         <img
                             src="images/10.png"
-                            alt="Luminous Edge"
+                            alt="Signature Stone"
                         >
 
-                        <div class="product-hover">
-                            VIEW DETAILS
+                        <div class="image-overlay">
+                            <span>VIEW DETAILS</span>
                         </div>
 
                     </div>
 
 
-                    <div class="product-info">
+                    <div class="card-content">
 
-                        <p class="product-code">
-                            10 · AB-LE-010
-                        </p>
+                        <div class="card-code">
+                            10 · AB-SS-010
+                        </div>
 
                         <h3>
-                            LUMINOUS EDGE
+                            SIGNATURE
+                            STONE
                         </h3>
 
-                        <div class="product-meta">
+                        <div class="card-bottom">
 
                             <span>
-                                PEARL SILVER
+                                SIGNATURE GREEN
                             </span>
 
-                            <button class="detail-link">
-                                DETAILS →
+                            <button class="detail-button">
+                                +
                             </button>
 
                         </div>
@@ -1024,87 +933,86 @@
 
         <section
             id="process"
-            class="process-section"
+            class="dark-section"
         >
 
-            <div class="process-content">
+            <div class="process-title">
 
-                <p class="section-number">
-                    03 / OUR PROCESS
+                <p>
+                    03 · OUR PROCESS
                 </p>
 
-
                 <h2>
-                    FROM IDEA TO
-                    <span>APPLICATION.</span>
+                    FROM DESIGN
+                    <br>
+                    TO PRODUCTION.
                 </h2>
 
-
-                <div class="process-grid">
-
-
-                    <div class="process-item">
-
-                        <span>01</span>
-
-                        <h3>
-                            DESIGN
-                        </h3>
-
-                        <p>
-                            We transform your ideas into
-                            production-ready textile designs.
-                        </p>
-
-                    </div>
+            </div>
 
 
-                    <div class="process-item">
+            <div class="process-grid">
 
-                        <span>02</span>
+                <div class="process-item">
 
-                        <h3>
-                            DEVELOPMENT
-                        </h3>
+                    <span>01</span>
 
-                        <p>
-                            Materials, stone quality and
-                            application methods are selected.
-                        </p>
+                    <h3>
+                        DESIGN
+                    </h3>
 
-                    </div>
+                    <p>
+                        Pattern development according to
+                        brand requirements.
+                    </p>
 
-
-                    <div class="process-item">
-
-                        <span>03</span>
-
-                        <h3>
-                            PRODUCTION
-                        </h3>
-
-                        <p>
-                            Premium embellishment applications
-                            are produced with precision.
-                        </p>
-
-                    </div>
+                </div>
 
 
-                    <div class="process-item">
+                <div class="process-item">
 
-                        <span>04</span>
+                    <span>02</span>
 
-                        <h3>
-                            DELIVERY
-                        </h3>
+                    <h3>
+                        DEVELOPMENT
+                    </h3>
 
-                        <p>
-                            Your approved design is prepared
-                            for delivery and production.
-                        </p>
+                    <p>
+                        Material selection and sample
+                        preparation.
+                    </p>
 
-                    </div>
+                </div>
+
+
+                <div class="process-item">
+
+                    <span>03</span>
+
+                    <h3>
+                        PRODUCTION
+                    </h3>
+
+                    <p>
+                        Controlled production with
+                        consistent quality.
+                    </p>
+
+                </div>
+
+
+                <div class="process-item">
+
+                    <span>04</span>
+
+                    <h3>
+                        DELIVERY
+                    </h3>
+
+                    <p>
+                        Ready-to-use embellishment
+                        solutions for your production.
+                    </p>
 
                 </div>
 
@@ -1123,14 +1031,15 @@
             class="applications-section"
         >
 
-            <p class="section-number">
-                04 / APPLICATIONS
+            <p class="section-label">
+                04 · APPLICATIONS
             </p>
 
 
             <h2>
-                WHERE TEXTILE
-                <span>MEETS BRILLIANCE.</span>
+                WHERE DESIGNS
+                <br>
+                BECOME FASHION.
             </h2>
 
 
@@ -1138,43 +1047,32 @@
 
                 <div>
                     <span>01</span>
-                    <strong>T-SHIRTS</strong>
-                    <p>Premium fashion embellishment.</p>
+                    T-SHIRTS
                 </div>
-
 
                 <div>
                     <span>02</span>
-                    <strong>SWEATSHIRTS</strong>
-                    <p>Bold and expressive designs.</p>
+                    SWEATSHIRTS
                 </div>
-
 
                 <div>
                     <span>03</span>
-                    <strong>HOODIES</strong>
-                    <p>High-impact stone applications.</p>
+                    HOODIES
                 </div>
-
 
                 <div>
                     <span>04</span>
-                    <strong>DRESSES</strong>
-                    <p>Elegant crystal detailing.</p>
+                    DRESSES
                 </div>
-
 
                 <div>
                     <span>05</span>
-                    <strong>DENIM</strong>
-                    <p>Modern textile decoration.</p>
+                    DENIM
                 </div>
-
 
                 <div>
                     <span>06</span>
-                    <strong>BRANDING</strong>
-                    <p>Custom logo applications.</p>
+                    CUSTOM BRANDING
                 </div>
 
             </div>
@@ -1184,7 +1082,7 @@
 
 
         <!-- =====================================
-             CUSTOM
+             CUSTOM DESIGN
         ====================================== -->
 
         <section
@@ -1192,41 +1090,30 @@
             class="custom-section"
         >
 
-            <div class="custom-box">
+            <div>
 
                 <p>
-                    YOUR BRAND. YOUR DESIGN.
+                    05 · CUSTOM DESIGN
                 </p>
 
 
                 <h2>
-                    HAVE AN IDEA?
+                    YOUR IDEA.
                     <br>
-                    LET'S MAKE IT SHINE.
+                    OUR EXPERTISE.
                 </h2>
 
-
-                <p class="custom-description">
-
-                    Send us your design, artwork or idea.
-                    Our team can transform it into a
-                    professional stone application.
-
-                </p>
-
-
-                <a
-                    href="#contact"
-                    class="hero-button"
-                >
-
-                    START YOUR PROJECT
-
-                    <span>→</span>
-
-                </a>
-
             </div>
+
+
+            <p class="custom-text">
+
+                Send us your artwork, logo or idea.
+                Our team can transform it into a
+                professional textile embellishment
+                application.
+
+            </p>
 
         </section>
 
@@ -1241,127 +1128,42 @@
             class="contact-section"
         >
 
-            <div class="contact-title">
-
-                <p class="section-number">
-                    06 / CONTACT
-                </p>
+            <p>
+                06 · CONTACT
+            </p>
 
 
-                <h2>
-                    READY TO CREATE
-                    <span>SOMETHING BRILLIANT?</span>
-                </h2>
+            <h2>
+                LET'S CREATE
+                <br>
+                SOMETHING BRILLIANT.
+            </h2>
 
-            </div>
 
-
-            <div class="contact-details">
+            <div class="contact-info">
 
                 <div>
 
-                    <p>
-                        PHONE
-                    </p>
+                    <span>EMAIL</span>
 
-                    <strong>
-                        +20 103 981 2810
-                    </strong>
-
-                </div>
-
-
-                <div>
-
-                    <p>
-                        EMAIL
-                    </p>
-
-                    <strong>
+                    <a href="mailto:levent.aslan@abaycam.com">
                         levent.aslan@abaycam.com
-                    </strong>
+                    </a>
 
                 </div>
 
 
                 <div>
 
-                    <p>
-                        LOCATION
-                    </p>
+                    <span>PHONE</span>
 
-                    <strong>
-                        EGYPT
-                    </strong>
+                    <a href="tel:+201039812810">
+                        +20 103 981 2810
+                    </a>
 
                 </div>
 
             </div>
-
-
-            <form
-                id="contactForm"
-                class="contact-form"
-            >
-
-                <input
-                    type="text"
-                    placeholder="YOUR NAME"
-                    required
-                >
-
-
-                <input
-                    type="text"
-                    placeholder="COMPANY NAME"
-                >
-
-
-                <input
-                    type="tel"
-                    placeholder="PHONE / WHATSAPP"
-                >
-
-
-                <select>
-
-                    <option value="">
-                        SELECT PROJECT TYPE
-                    </option>
-
-                    <option>
-                        Custom Stone Application
-                    </option>
-
-                    <option>
-                        Textile Design
-                    </option>
-
-                    <option>
-                        Sample Development
-                    </option>
-
-                    <option>
-                        Bulk Production
-                    </option>
-
-                </select>
-
-
-                <textarea
-                    placeholder="TELL US ABOUT YOUR PROJECT"
-                ></textarea>
-
-
-                <button type="submit">
-
-                    SEND REQUEST
-
-                    <span>→</span>
-
-                </button>
-
-            </form>
 
         </section>
 
@@ -1371,52 +1173,22 @@
 
 
     <!-- =========================================
-         FOOTER
-    ========================================== -->
-
-    <footer>
-
-        <div class="footer-logo">
-
-            <span>AB</span>
-
-            AYCAM
-
-        </div>
-
-
-        <p>
-            Premium Textile Embellishment Solutions.
-        </p>
-
-
-        <small>
-            © 2026 AB AYCAM.
-            ALL RIGHTS RESERVED.
-        </small>
-
-    </footer>
-
-
-
-    <!-- =========================================
-         PRODUCT MODAL
+         PRODUCT DETAIL MODAL
     ========================================== -->
 
     <div
-        id="productModal"
-        class="product-modal"
+        class="modal"
+        id="designModal"
     >
 
         <div class="modal-overlay"></div>
 
 
-        <div class="modal-content">
-
+        <div class="modal-box">
 
             <button
-                id="modalClose"
                 class="modal-close"
+                id="modalClose"
             >
                 ×
             </button>
@@ -1433,81 +1205,76 @@
             </div>
 
 
-            <div class="modal-info">
+            <div class="modal-details">
+
+                <p
+                    class="modal-code"
+                    id="modalCode"
+                ></p>
 
 
-                <p id="modalCode">
-                    AB-000
-                </p>
+                <h2
+                    id="modalName"
+                ></h2>
 
 
-                <h2 id="modalName">
-                    DESIGN NAME
-                </h2>
+                <div class="detail-row">
 
+                    <span>
+                        COLOR
+                    </span>
 
-                <div class="modal-specifications">
-
-
-                    <div>
-
-                        <span>
-                            COLOR
-                        </span>
-
-                        <strong id="modalColor">
-                            -
-                        </strong>
-
-                    </div>
-
-
-                    <div>
-
-                        <span>
-                            QUALITY CODE
-                        </span>
-
-                        <strong id="modalQuality">
-                            -
-                        </strong>
-
-                    </div>
-
-
-                    <div>
-
-                        <span>
-                            APPLICATION
-                        </span>
-
-                        <strong id="modalType">
-                            -
-                        </strong>
-
-                    </div>
+                    <strong
+                        id="modalColor"
+                    ></strong>
 
                 </div>
 
 
-                <p
-                    id="modalDescription"
-                    class="modal-description"
+                <div class="detail-row">
+
+                    <span>
+                        QUALITY CODE
+                    </span>
+
+                    <strong
+                        id="modalQuality"
+                    ></strong>
+
+                </div>
+
+
+                <div class="detail-row">
+
+                    <span>
+                        APPLICATION
+                    </span>
+
+                    <strong
+                        id="modalApplication"
+                    ></strong>
+
+                </div>
+
+
+                <div class="modal-description">
+
+                    <p
+                        id="modalDescription"
+                    ></p>
+
+                </div>
+
+
+                <a
+                    href="#contact"
+                    id="modalContact"
+                    class="modal-contact-button"
                 >
-                </p>
 
+                    REQUEST INFORMATION
 
-                <button
-                    id="addInquiry"
-                    class="modal-button"
-                >
-
-                    ADD TO INQUIRY
-
-                    <span>+</span>
-
-                </button>
-
+                </a>
 
             </div>
 
@@ -1517,12 +1284,7 @@
 
 
 
-    <!-- =========================================
-         SCRIPT
-    ========================================== -->
-
     <script src="script.js"></script>
 
 </body>
-
 </html>
