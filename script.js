@@ -1,708 +1,1156 @@
-/* =========================
-   AB AYCAM JAVASCRIPT
-========================= */
-
-
-/* PRELOADER */
-
-const preloader = document.getElementById("preloader");
-
-function hidePreloader() {
-  if (preloader) {
-    preloader.classList.add("hidden");
-  }
-}
-
-
-/* Site tamamen yüklendiğinde kapat */
+/* =========================================================
+   LOADER
+========================================================= */
 
 window.addEventListener("load", () => {
-  setTimeout(hidePreloader, 700);
-});
 
+    setTimeout(() => {
 
-/* Çok önemli:
-   Görsellerden biri hata verse bile
-   loading ekranında takılı kalmaması için */
+        document
+            .getElementById("loader")
+            .classList
+            .add("hide");
 
-setTimeout(hidePreloader, 3000);
-
-
-
-/* =========================
-   HERO SLIDER
-========================= */
-
-const slides = document.querySelectorAll(".hero-slide");
-const dots = document.querySelectorAll(".slider-dot");
-
-let currentSlide = 0;
-let sliderInterval;
-
-
-function showSlide(index) {
-
-  slides.forEach((slide) => {
-    slide.classList.remove("active");
-  });
-
-
-  dots.forEach((dot) => {
-    dot.classList.remove("active");
-  });
-
-
-  slides[index].classList.add("active");
-  dots[index].classList.add("active");
-
-  currentSlide = index;
-}
-
-
-function nextSlide() {
-
-  currentSlide++;
-
-  if (currentSlide >= slides.length) {
-    currentSlide = 0;
-  }
-
-  showSlide(currentSlide);
-}
-
-
-function startSlider() {
-
-  sliderInterval = setInterval(() => {
-    nextSlide();
-  }, 5000);
-
-}
-
-
-if (slides.length > 0) {
-
-  startSlider();
-
-}
-
-
-dots.forEach((dot, index) => {
-
-  dot.addEventListener("click", () => {
-
-    clearInterval(sliderInterval);
-
-    showSlide(index);
-
-    startSlider();
-
-  });
+    }, 1200);
 
 });
 
 
+/* =========================================================
+   LANGUAGE SELECTOR
+========================================================= */
 
-/* =========================
-   COLLECTION IMAGE MODAL
-========================= */
+const languageSelector =
+    document.querySelector(".language-selector");
 
-const collectionCards =
-  document.querySelectorAll(".collection-card");
+const languageButton =
+    document.getElementById("languageButton");
 
-const imageModal =
-  document.getElementById("imageModal");
-
-const modalImage =
-  document.getElementById("modalImage");
-
-const modalClose =
-  document.getElementById("modalClose");
+const currentLanguage =
+    document.getElementById("currentLanguage");
 
 
-collectionCards.forEach((card) => {
+languageButton.addEventListener("click", () => {
 
-  card.addEventListener("click", () => {
-
-    const imagePath =
-      card.getAttribute("data-image");
-
-    if (modalImage && imagePath) {
-
-      modalImage.src = imagePath;
-
-      imageModal.classList.add("active");
-
-      document.body.style.overflow = "hidden";
-
-    }
-
-  });
+    languageSelector.classList.toggle("open");
 
 });
 
 
-if (modalClose) {
+document.addEventListener("click", (event) => {
 
-  modalClose.addEventListener("click", () => {
+    if (!languageSelector.contains(event.target)) {
 
-    imageModal.classList.remove("active");
-
-    document.body.style.overflow = "";
-
-  });
-
-}
-
-
-if (imageModal) {
-
-  imageModal.addEventListener("click", (event) => {
-
-    if (event.target === imageModal) {
-
-      imageModal.classList.remove("active");
-
-      document.body.style.overflow = "";
+        languageSelector.classList.remove("open");
 
     }
-
-  });
-
-}
-
-
-
-/* =========================
-   MACHINE SCROLL ANIMATION
-========================= */
-
-const machineSection =
-  document.querySelector(".machine-section");
-
-
-function checkMachineAnimation() {
-
-  if (!machineSection) return;
-
-  const sectionTop =
-    machineSection.getBoundingClientRect().top;
-
-  const windowHeight =
-    window.innerHeight;
-
-
-  if (sectionTop < windowHeight * 0.55) {
-
-    machineSection.classList.add("active");
-
-  }
-
-}
-
-
-window.addEventListener(
-  "scroll",
-  checkMachineAnimation
-);
-
-
-checkMachineAnimation();
-
-
-
-/* =========================
-   ACTIVE MENU
-========================= */
-
-const navLinks =
-  document.querySelectorAll(".nav-link");
-
-
-const sections =
-  document.querySelectorAll("section[id]");
-
-
-function updateActiveMenu() {
-
-  let currentSection = "";
-
-
-  sections.forEach((section) => {
-
-    const sectionTop =
-      section.offsetTop;
-
-    const sectionHeight =
-      section.offsetHeight;
-
-
-    if (
-      window.scrollY >=
-      sectionTop - sectionHeight * 0.25
-    ) {
-
-      currentSection =
-        section.getAttribute("id");
-
-    }
-
-  });
-
-
-  navLinks.forEach((link) => {
-
-    link.classList.remove("active");
-
-
-    if (
-      link.getAttribute("href") ===
-      "#" + currentSection
-    ) {
-
-      link.classList.add("active");
-
-    }
-
-  });
-
-}
-
-
-window.addEventListener(
-  "scroll",
-  updateActiveMenu
-);
-
-
-
-/* =========================
-   MOBILE MENU
-========================= */
-
-const mobileMenuBtn =
-  document.getElementById("mobileMenuBtn");
-
-const sidebar =
-  document.getElementById("sidebar");
-
-
-if (mobileMenuBtn && sidebar) {
-
-  mobileMenuBtn.addEventListener(
-    "click",
-    () => {
-
-      sidebar.classList.toggle(
-        "mobile-open"
-      );
-
-    }
-  );
-
-}
-
-
-navLinks.forEach((link) => {
-
-  link.addEventListener("click", () => {
-
-    if (window.innerWidth <= 900) {
-
-      sidebar.classList.remove(
-        "mobile-open"
-      );
-
-    }
-
-  });
 
 });
 
 
-
-/* =========================
-   LANGUAGES
-========================= */
+/* =========================================================
+   TRANSLATIONS
+========================================================= */
 
 const translations = {
 
-  tr: {
+    tr: {
 
-    menuHome: "Ana Sayfa",
+        home: "ANA SAYFA",
 
-    menuCollection: "Koleksiyonlar",
+        collection: "KOLEKSİYON",
 
-    menuProcess: "Üretim",
+        process: "SÜRECİMİZ",
 
-    menuAbout: "Hakkımızda",
+        applications: "UYGULAMALAR",
 
-    menuContact: "İletişim",
+        custom: "ÖZEL TASARIM",
 
+        contact: "İLETİŞİM",
 
-    heroTitle:
-      "Taşa Yeni Bir<br><span>Karakter</span> Veriyoruz.",
+        heroText:
+            "Kumaş ve tekstil ürünlerinizi öne çıkaran premium taş, kristal ve özel aplikasyon çözümleri.",
 
+        explore:
+            "KOLEKSİYONU KEŞFET"
 
-    heroDescription:
-      "Yüksek kaliteli taş baskı teknolojisi ile mekanlara, projelere ve tasarımlara benzersiz bir görünüm kazandırıyoruz.",
+    },
 
 
-    discover:
-      "KOLEKSİYONU KEŞFET",
+    en: {
 
+        home: "HOME",
 
-    introLabel:
-      "AB AYCAM EXPERIENCE",
+        collection: "COLLECTION",
 
+        process: "OUR PROCESS",
 
-    introTitle:
-      "Doğal görünüm.<br><span>Sınırsız tasarım.</span>",
+        applications: "APPLICATIONS",
 
+        custom: "CUSTOM DESIGN",
 
-    introText:
-      "AB AYCAM olarak taş yüzeyleri modern baskı teknolojisi ile birleştiriyor, projeleriniz için güçlü, estetik ve dikkat çekici yüzeyler üretiyoruz.",
+        contact: "CONTACT",
 
+        heroText:
+            "Premium stone, crystal and textile embellishment solutions designed to make every surface shine.",
 
-    collectionLabel:
-      "KOLEKSİYONLAR",
+        explore:
+            "EXPLORE COLLECTION"
 
+    },
 
-    collectionTitle:
-      "Taş Koleksiyonlarımız",
 
+    ar: {
 
-    collectionDescription:
-      "Her taş farklı bir karakter taşır. Koleksiyonlarımızı keşfedin.",
+        home: "الرئيسية",
 
+        collection: "المجموعة",
 
-    processLabel:
-      "TEKNOLOJİMİZ",
+        process: "عمليتنا",
 
+        applications: "التطبيقات",
 
-    processTitle:
-      "Tasarımın<br><span>üretime dönüştüğü</span><br>yer.",
+        custom: "تصميم خاص",
 
+        contact: "تواصل معنا",
 
-    processText:
-      "Aşağıya doğru ilerledikçe teknolojimizin tasarımlarınızı nasıl hayata geçirdiğini keşfedin.",
+        heroText:
+            "حلول احترافية لتزيين الأقمشة والمنسوجات بالأحجار والكريستال والتصاميم الخاصة.",
 
+        explore:
+            "اكتشف المجموعة"
 
-    aboutLabel:
-      "AB AYCAM HAKKINDA",
-
-
-    aboutTitle:
-      "Her yüzey,<br>bir <span>hikaye</span> anlatır.",
-
-
-    aboutText:
-      "AB AYCAM, kaliteli üretim, modern teknoloji ve yaratıcı tasarımı bir araya getirerek müşterilerine fark yaratan taş yüzey çözümleri sunar.",
-
-
-    statCollection:
-      "KOLEKSİYON",
-
-
-    statDesign:
-      "TASARIM OLASILIĞI",
-
-
-    statQuality:
-      "KALİTE ODAKLI",
-
-
-    contactLabel:
-      "İLETİŞİM",
-
-
-    contactTitle:
-      "Bir sonraki projenizi<br>birlikte <span>tasarlayalım.</span>",
-
-
-    contactButton:
-      "BİZE ULAŞIN"
-
-  },
-
-
-  en: {
-
-    menuHome: "Home",
-
-    menuCollection: "Collections",
-
-    menuProcess: "Production",
-
-    menuAbout: "About",
-
-    menuContact: "Contact",
-
-
-    heroTitle:
-      "Giving Stone<br>a New <span>Character.</span>",
-
-
-    heroDescription:
-      "With advanced stone printing technology, we bring unique character and powerful design to spaces, projects and surfaces.",
-
-
-    discover:
-      "DISCOVER COLLECTION",
-
-
-    introLabel:
-      "AB AYCAM EXPERIENCE",
-
-
-    introTitle:
-      "Natural appearance.<br><span>Unlimited design.</span>",
-
-
-    introText:
-      "At AB AYCAM, we combine stone surfaces with modern printing technology to create powerful, aesthetic and remarkable surfaces for your projects.",
-
-
-    collectionLabel:
-      "COLLECTIONS",
-
-
-    collectionTitle:
-      "Our Stone Collections",
-
-
-    collectionDescription:
-      "Every stone has its own character. Discover our collections.",
-
-
-    processLabel:
-      "OUR TECHNOLOGY",
-
-
-    processTitle:
-      "Where design<br><span>becomes</span><br>production.",
-
-
-    processText:
-      "Scroll down and discover how our technology brings your designs to life.",
-
-
-    aboutLabel:
-      "ABOUT AB AYCAM",
-
-
-    aboutTitle:
-      "Every surface<br>tells a <span>story.</span>",
-
-
-    aboutText:
-      "AB AYCAM combines quality production, modern technology and creative design to deliver remarkable stone surface solutions.",
-
-
-    statCollection:
-      "COLLECTIONS",
-
-
-    statDesign:
-      "DESIGN POSSIBILITIES",
-
-
-    statQuality:
-      "QUALITY FOCUS",
-
-
-    contactLabel:
-      "CONTACT",
-
-
-    contactTitle:
-      "Let's design<br>your next <span>project together.</span>",
-
-
-    contactButton:
-      "CONTACT US"
-
-  },
-
-
-  ar: {
-
-    menuHome: "الرئيسية",
-
-    menuCollection: "المجموعات",
-
-    menuProcess: "الإنتاج",
-
-    menuAbout: "من نحن",
-
-    menuContact: "اتصل بنا",
-
-
-    heroTitle:
-      "نمنح الحجر<br><span>شخصية جديدة.</span>",
-
-
-    heroDescription:
-      "باستخدام تكنولوجيا الطباعة المتقدمة على الحجر، نقدم تصاميم مميزة وفريدة للمساحات والمشاريع المختلفة.",
-
-
-    discover:
-      "اكتشف المجموعة",
-
-
-    introLabel:
-      "تجربة AB AYCAM",
-
-
-    introTitle:
-      "مظهر طبيعي.<br><span>تصميم بلا حدود.</span>",
-
-
-    introText:
-      "في AB AYCAM نجمع بين أسطح الحجر وتكنولوجيا الطباعة الحديثة لنقدم أسطحاً مميزة وجمالية لمشاريعكم.",
-
-
-    collectionLabel:
-      "المجموعات",
-
-
-    collectionTitle:
-      "مجموعات الحجر",
-
-
-    collectionDescription:
-      "لكل حجر شخصية مختلفة. اكتشف مجموعاتنا.",
-
-
-    processLabel:
-      "تكنولوجيتنا",
-
-
-    processTitle:
-      "حيث يتحول<br><span>التصميم إلى</span><br>إنتاج.",
-
-
-    processText:
-      "اكتشف كيف تحول تقنيتنا تصميماتك إلى واقع.",
-
-
-    aboutLabel:
-      "عن AB AYCAM",
-
-
-    aboutTitle:
-      "كل سطح<br>يروي <span>قصة.</span>",
-
-
-    aboutText:
-      "تجمع AB AYCAM بين الإنتاج عالي الجودة والتكنولوجيا الحديثة والتصميم الإبداعي لتقديم حلول مميزة للأسطح الحجرية.",
-
-
-    statCollection:
-      "مجموعات",
-
-
-    statDesign:
-      "إمكانيات التصميم",
-
-
-    statQuality:
-      "تركيز على الجودة",
-
-
-    contactLabel:
-      "اتصل بنا",
-
-
-    contactTitle:
-      "لنصمم<br><span>مشروعك القادم معاً.</span>",
-
-
-    contactButton:
-      "تواصل معنا"
-
-  }
+    }
 
 };
 
 
-
-const languageButtons =
-  document.querySelectorAll(".language-btn");
-
-
-function changeLanguage(language) {
-
-  const elements =
-    document.querySelectorAll("[data-i18n]");
+document
+    .querySelectorAll(".language-dropdown button")
+    .forEach(button => {
 
 
-  elements.forEach((element) => {
-
-    const key =
-      element.getAttribute("data-i18n");
+        button.addEventListener("click", () => {
 
 
-    if (
-      translations[language] &&
-      translations[language][key]
-    ) {
-
-      element.innerHTML =
-        translations[language][key];
-
-    }
-
-  });
+            const lang =
+                button.dataset.lang;
 
 
-  languageButtons.forEach((button) => {
-
-    button.classList.remove("active");
-
-
-    if (
-      button.getAttribute("data-lang") ===
-      language
-    ) {
-
-      button.classList.add("active");
-
-    }
-
-  });
+            currentLanguage.textContent =
+                lang.toUpperCase();
 
 
-  if (language === "ar") {
+            document
+                .querySelectorAll("[data-i18n]")
+                .forEach(element => {
 
-    document.documentElement.lang = "ar";
 
-    document.documentElement.dir = "rtl";
+                    const key =
+                        element.dataset.i18n;
 
-  } else {
 
-    document.documentElement.lang =
-      language;
+                    if (
+                        translations[lang][key]
+                    ) {
 
-    document.documentElement.dir = "ltr";
+                        element.textContent =
+                            translations[lang][key];
 
-  }
+                    }
+
+                });
+
+
+            if (lang === "ar") {
+
+                document.documentElement.dir = "rtl";
+
+            } else {
+
+                document.documentElement.dir = "ltr";
+
+            }
+
+
+            languageSelector
+                .classList
+                .remove("open");
+
+
+        });
+
+
+    });
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const mobileMenuButton =
+    document.getElementById("mobileMenuButton");
+
+const sidebar =
+    document.querySelector(".sidebar");
+
+
+if (mobileMenuButton) {
+
+    mobileMenuButton
+        .addEventListener("click", () => {
+
+            sidebar
+                .classList
+                .toggle("mobile-open");
+
+        });
 
 }
 
 
-languageButtons.forEach((button) => {
+document
+    .querySelectorAll(".nav-link")
+    .forEach(link => {
 
-  button.addEventListener(
+        link.addEventListener("click", () => {
+
+            sidebar
+                .classList
+                .remove("mobile-open");
+
+        });
+
+    });
+
+
+/* =========================================================
+   HERO SLIDER
+========================================================= */
+
+const slides =
+    document.querySelectorAll(".hero-slide");
+
+const currentSlideNumber =
+    document.getElementById(
+        "currentSlideNumber"
+    );
+
+const sliderProgress =
+    document.getElementById(
+        "sliderProgress"
+    );
+
+
+let currentSlide = 0;
+
+
+/* HIZLI SLIDER */
+
+const sliderInterval =
+    2800;
+
+
+function changeSlide() {
+
+
+    slides[currentSlide]
+        .classList
+        .remove("active");
+
+
+    currentSlide++;
+
+
+    if (
+        currentSlide >= slides.length
+    ) {
+
+        currentSlide = 0;
+
+    }
+
+
+    slides[currentSlide]
+        .classList
+        .add("active");
+
+
+    const number =
+        String(currentSlide + 1)
+        .padStart(2, "0");
+
+
+    currentSlideNumber.textContent =
+        number;
+
+
+    const progress =
+        ((currentSlide + 1) /
+        slides.length) * 100;
+
+
+    sliderProgress.style.width =
+        progress + "%";
+
+}
+
+
+setInterval(
+    changeSlide,
+    sliderInterval
+);
+
+
+/* =========================================================
+   MACHINE SCROLL ANIMATION
+========================================================= */
+
+const machineSection =
+    document.querySelector(
+        ".machine-section"
+    );
+
+
+const fabrics =
+    document.querySelectorAll(
+        ".fabric"
+    );
+
+
+const processNumber =
+    document.getElementById(
+        "processNumber"
+    );
+
+
+const processTitle =
+    document.getElementById(
+        "processTitle"
+    );
+
+
+const processText =
+    document.getElementById(
+        "processText"
+    );
+
+
+const machineImage =
+    document.querySelector(
+        ".machine-image-wrapper"
+    );
+
+
+const processSteps = [
+
+    {
+
+        number: "01",
+
+        title:
+            "DESIGN SELECTED",
+
+        text:
+            "Preparing the pattern for precision stone application."
+
+    },
+
+
+    {
+
+        number: "02",
+
+        title:
+            "STONE PLACEMENT",
+
+        text:
+            "Premium stones and crystals are positioned with precision."
+
+    },
+
+
+    {
+
+        number: "03",
+
+        title:
+            "PATTERN APPLICATION",
+
+        text:
+            "The selected design is applied to the textile surface."
+
+    },
+
+
+    {
+
+        number: "04",
+
+        title:
+            "QUALITY CONTROL",
+
+        text:
+            "Every detail is checked for consistency and brilliance."
+
+    },
+
+
+    {
+
+        number: "05",
+
+        title:
+            "READY TO SHINE",
+
+        text:
+            "The finished design is ready for fashion and production."
+
+    }
+
+];
+
+
+function updateMachineAnimation() {
+
+
+    if (!machineSection) return;
+
+
+    const rect =
+        machineSection
+        .getBoundingClientRect();
+
+
+    const sectionHeight =
+        machineSection.offsetHeight;
+
+
+    const viewportHeight =
+        window.innerHeight;
+
+
+    let progress =
+        -rect.top /
+        (sectionHeight - viewportHeight);
+
+
+    progress =
+        Math.max(
+            0,
+            Math.min(
+                1,
+                progress
+            )
+        );
+
+
+    const activeStep =
+        Math.min(
+            4,
+            Math.floor(
+                progress * 5
+            )
+        );
+
+
+    fabrics.forEach(
+        (fabric, index) => {
+
+
+            if (
+                index <= activeStep
+            ) {
+
+                fabric
+                    .classList
+                    .add("active");
+
+            } else {
+
+                fabric
+                    .classList
+                    .remove("active");
+
+            }
+
+
+        }
+    );
+
+
+    const step =
+        processSteps[activeStep];
+
+
+    processNumber.textContent =
+        step.number;
+
+
+    processTitle.textContent =
+        step.title;
+
+
+    processText.textContent =
+        step.text;
+
+
+    const machineMovement =
+        Math.sin(
+            progress * Math.PI * 8
+        ) * 3;
+
+
+    machineImage.style.transform =
+        `translateY(${machineMovement}px)`;
+
+
+}
+
+
+window.addEventListener(
+    "scroll",
+    updateMachineAnimation,
+    {
+        passive: true
+    }
+);
+
+
+window.addEventListener(
+    "resize",
+    updateMachineAnimation
+);
+
+
+updateMachineAnimation();
+
+
+/* =========================================================
+   COLLECTION DATA
+========================================================= */
+
+const designData = {
+
+    1: {
+
+        image:
+            "images/1.jpeg",
+
+        title:
+            "SIGNATURE DESIGN",
+
+        code:
+            "AB-001",
+
+        stone:
+            "PREMIUM STONE",
+
+        color:
+            "CUSTOM COLOR",
+
+        quality:
+            "AB-Q01",
+
+        application:
+            "TEXTILE / FASHION",
+
+        description:
+            "A premium embellishment design created for modern fashion collections. Color, stone density and placement can be customized according to your production requirements."
+
+    },
+
+
+    2: {
+
+        image:
+            "images/2.jpeg",
+
+        title:
+            "BLUE CRYSTAL",
+
+        code:
+            "AB-002",
+
+        stone:
+            "CRYSTAL STONE",
+
+        color:
+            "BLUE",
+
+        quality:
+            "AB-Q02",
+
+        application:
+            "TEXTILE / FASHION",
+
+        description:
+            "A crystal-focused design offering a bright and refined appearance. Suitable for custom fashion and premium textile applications."
+
+    },
+
+
+    3: {
+
+        image:
+            "images/3.jpeg",
+
+        title:
+            "MODERN FLORAL",
+
+        code:
+            "AB-003",
+
+        stone:
+            "PREMIUM STONE",
+
+        color:
+            "MULTI COLOR",
+
+        quality:
+            "AB-Q03",
+
+        application:
+            "TEXTILE DECORATION",
+
+        description:
+            "An artistic pattern developed for collections that require visual impact and detailed stone applications."
+
+    },
+
+
+    4: {
+
+        image:
+            "images/4.jpeg",
+
+        title:
+            "CLASSIC SHINE",
+
+        code:
+            "AB-004",
+
+        stone:
+            "CRYSTAL",
+
+        color:
+            "CUSTOM",
+
+        quality:
+            "AB-Q04",
+
+        application:
+            "PREMIUM TEXTILE",
+
+        description:
+            "A classic and elegant stone application suitable for fashion brands looking for timeless visual impact."
+
+    },
+
+
+    5: {
+
+        image:
+            "images/5.jpeg",
+
+        title:
+            "GEOMETRIC DETAIL",
+
+        code:
+            "AB-005",
+
+        stone:
+            "STONE / CRYSTAL",
+
+        color:
+            "CUSTOM",
+
+        quality:
+            "AB-Q05",
+
+        application:
+            "CUSTOM DESIGN",
+
+        description:
+            "A modern geometric concept developed for custom collections and branded textile projects."
+
+    },
+
+
+    6: {
+
+        image:
+            "images/6.jpeg",
+
+        title:
+            "LUXE PATTERN",
+
+        code:
+            "AB-006",
+
+        stone:
+            "PREMIUM STONE",
+
+        color:
+            "CUSTOM",
+
+        quality:
+            "AB-Q06",
+
+        application:
+            "FASHION",
+
+        description:
+            "A luxury-focused pattern with customizable stone placement, colors and production specifications."
+
+    },
+
+
+    7: {
+
+        image:
+            "images/7.jpeg",
+
+        title:
+            "ARTISTIC FLOW",
+
+        code:
+            "AB-007",
+
+        stone:
+            "STONE DETAIL",
+
+        color:
+            "MULTI COLOR",
+
+        quality:
+            "AB-Q07",
+
+        application:
+            "TEXTILE",
+
+        description:
+            "An expressive design created for artistic and visually distinctive textile collections."
+
+    },
+
+
+    8: {
+
+        image:
+            "images/8.jpeg",
+
+        title:
+            "CRYSTAL MOTION",
+
+        code:
+            "AB-008",
+
+        stone:
+            "CRYSTAL",
+
+        color:
+            "CUSTOM",
+
+        quality:
+            "AB-Q08",
+
+        application:
+            "FASHION DETAIL",
+
+        description:
+            "A premium crystal application developed to create movement, shine and depth across the textile surface."
+
+    },
+
+
+    9: {
+
+        image:
+            "images/9.jpeg",
+
+        title:
+            "PREMIUM LINE",
+
+        code:
+            "AB-009",
+
+        stone:
+            "PREMIUM STONE",
+
+        color:
+            "CUSTOM",
+
+        quality:
+            "AB-Q09",
+
+        application:
+            "FASHION",
+
+        description:
+            "A premium quality design suitable for brands looking for elegant and consistent embellishment applications."
+
+    },
+
+
+    10: {
+
+        image:
+            "images/10.jpeg",
+
+        title:
+            "SIGNATURE LUXE",
+
+        code:
+            "AB-010",
+
+        stone:
+            "PREMIUM CRYSTAL",
+
+        color:
+            "CUSTOM",
+
+        quality:
+            "AB-Q10",
+
+        application:
+            "CUSTOM COLLECTION",
+
+        description:
+            "A signature luxury design developed for premium collections and fully customizable production projects."
+
+    }
+
+};
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+const modal =
+    document.getElementById(
+        "designModal"
+    );
+
+
+const closeModal =
+    document.getElementById(
+        "closeModal"
+    );
+
+
+const modalImage =
+    document.getElementById(
+        "modalImage"
+    );
+
+
+const modalNumber =
+    document.getElementById(
+        "modalNumber"
+    );
+
+
+const modalTitle =
+    document.getElementById(
+        "modalTitle"
+    );
+
+
+const modalCode =
+    document.getElementById(
+        "modalCode"
+    );
+
+
+const modalStone =
+    document.getElementById(
+        "modalStone"
+    );
+
+
+const modalColor =
+    document.getElementById(
+        "modalColor"
+    );
+
+
+const modalQuality =
+    document.getElementById(
+        "modalQuality"
+    );
+
+
+const modalApplication =
+    document.getElementById(
+        "modalApplication"
+    );
+
+
+const modalDescription =
+    document.getElementById(
+        "modalDescription"
+    );
+
+
+document
+    .querySelectorAll(
+        ".collection-card"
+    )
+    .forEach(card => {
+
+
+        card.addEventListener(
+            "click",
+            () => {
+
+
+                const id =
+                    card.dataset.id;
+
+
+                const data =
+                    designData[id];
+
+
+                modalImage.src =
+                    data.image;
+
+
+                modalNumber.textContent =
+                    "DESIGN " +
+                    String(id)
+                    .padStart(
+                        2,
+                        "0"
+                    );
+
+
+                modalTitle.textContent =
+                    data.title;
+
+
+                modalCode.textContent =
+                    data.code;
+
+
+                modalStone.textContent =
+                    data.stone;
+
+
+                modalColor.textContent =
+                    data.color;
+
+
+                modalQuality.textContent =
+                    data.quality;
+
+
+                modalApplication.textContent =
+                    data.application;
+
+
+                modalDescription.textContent =
+                    data.description;
+
+
+                modal
+                    .classList
+                    .add("show");
+
+
+                document.body
+                    .classList
+                    .add("modal-open");
+
+
+            }
+
+        );
+
+
+    });
+
+
+function closeDesignModal() {
+
+
+    modal
+        .classList
+        .remove("show");
+
+
+    document.body
+        .classList
+        .remove("modal-open");
+
+
+}
+
+
+closeModal.addEventListener(
+    "click",
+    closeDesignModal
+);
+
+
+document
+    .querySelector(
+        ".modal-backdrop"
+    )
+    .addEventListener(
+        "click",
+        closeDesignModal
+    );
+
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            closeDesignModal();
+
+        }
+
+
+    }
+);
+
+
+/* =========================================================
+   MODAL CONTACT BUTTON
+========================================================= */
+
+const modalContactButton =
+    document.getElementById(
+        "modalContactButton"
+    );
+
+
+modalContactButton.addEventListener(
     "click",
     () => {
 
-      const language =
-        button.getAttribute("data-lang");
 
-      changeLanguage(language);
+        closeDesignModal();
+
 
     }
-  );
+);
 
-});
+
+/* =========================================================
+   ACTIVE MENU ON SCROLL
+========================================================= */
+
+const sections =
+    document.querySelectorAll(
+        "main section"
+    );
+
+
+const navLinks =
+    document.querySelectorAll(
+        ".nav-link"
+    );
+
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+
+        let current =
+            "";
+
+
+        sections.forEach(
+            section => {
+
+
+                const sectionTop =
+                    section.offsetTop;
+
+
+                if (
+                    window.scrollY >=
+                    sectionTop - 250
+                ) {
+
+                    current =
+                        section.getAttribute("id");
+
+                }
+
+
+            }
+        );
+
+
+        navLinks.forEach(
+            link => {
+
+
+                link
+                    .classList
+                    .remove("active");
+
+
+                if (
+                    link
+                    .getAttribute("href")
+                    === "#" + current
+                ) {
+
+                    link
+                        .classList
+                        .add("active");
+
+                }
+
+
+            }
+        );
+
+
+    },
+    {
+        passive: true
+    }
+);
+
+
+/* =========================================================
+   CONTACT FORM
+========================================================= */
+
+const contactForm =
+    document.getElementById(
+        "contactForm"
+    );
+
+
+contactForm.addEventListener(
+    "submit",
+    event => {
+
+
+        event.preventDefault();
+
+
+        alert(
+            "Thank you! Your request has been received."
+        );
+
+
+        contactForm.reset();
+
+
+    }
+);
