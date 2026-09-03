@@ -1,250 +1,207 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        /* =====================================
+           LOADER
+        ===================================== */
+
+        const loader =
+            document.getElementById("loader");
 
 
-    /* =========================
-       MENU
-    ========================= */
+        window.addEventListener(
+            "load",
+            function () {
 
-    const menuButton =
-        document.getElementById("menuButton");
+                setTimeout(
+                    function () {
 
-    const closeMenu =
-        document.getElementById("closeMenu");
+                        loader.classList.add(
+                            "hidden"
+                        );
 
-    const sideMenu =
-        document.getElementById("sideMenu");
+                    },
+                    600
+                );
 
-    const menuOverlay =
-        document.getElementById("menuOverlay");
-
-
-    function openMenu() {
-
-        sideMenu.classList.add("active");
-
-        menuOverlay.classList.add("active");
-
-        document.body.style.overflow =
-            "hidden";
-    }
+            }
+        );
 
 
-    function closeSideMenu() {
 
-        sideMenu.classList.remove("active");
+        /* =====================================
+           SIDE MENU
+        ===================================== */
 
-        menuOverlay.classList.remove("active");
+        const menuButton =
+            document.getElementById(
+                "menuButton"
+            );
 
-        document.body.style.overflow =
-            "";
-    }
+
+        const closeMenu =
+            document.getElementById(
+                "closeMenu"
+            );
 
 
-    if (menuButton) {
+        const sideMenu =
+            document.getElementById(
+                "sideMenu"
+            );
+
+
+        const menuOverlay =
+            document.getElementById(
+                "menuOverlay"
+            );
+
+
+        function openMenu() {
+
+            sideMenu.classList.add(
+                "active"
+            );
+
+            menuOverlay.classList.add(
+                "active"
+            );
+
+            document.body.classList.add(
+                "menu-open"
+            );
+
+        }
+
+
+        function closeSideMenu() {
+
+            sideMenu.classList.remove(
+                "active"
+            );
+
+            menuOverlay.classList.remove(
+                "active"
+            );
+
+            document.body.classList.remove(
+                "menu-open"
+            );
+
+        }
+
 
         menuButton.addEventListener(
             "click",
             openMenu
         );
 
-    }
-
-
-    if (closeMenu) {
 
         closeMenu.addEventListener(
             "click",
             closeSideMenu
         );
 
-    }
-
-
-    if (menuOverlay) {
 
         menuOverlay.addEventListener(
             "click",
             closeSideMenu
         );
 
-    }
 
+        document
+            .querySelectorAll(
+                ".menu-navigation a"
+            )
+            .forEach(
+                function (link) {
 
-    document.querySelectorAll(
-        ".nav-link"
-    ).forEach(function (link) {
+                    link.addEventListener(
+                        "click",
+                        closeSideMenu
+                    );
 
-        link.addEventListener(
-            "click",
-            function () {
-
-                closeSideMenu();
-
-            }
-        );
-
-    });
+                }
+            );
 
 
 
-    /* =========================
-       LANGUAGE MENU
-    ========================= */
+        /* =====================================
+           LANGUAGE DROPDOWN
+        ===================================== */
 
-    const languageButton =
-        document.getElementById(
-            "languageButton"
-        );
-
-    const languageMenu =
-        document.getElementById(
-            "languageMenu"
-        );
-
-    const currentLanguage =
-        document.getElementById(
-            "currentLanguage"
-        );
+        const languageButton =
+            document.getElementById(
+                "languageButton"
+            );
 
 
-    if (languageButton) {
+        const languageDropdown =
+            document.getElementById(
+                "languageDropdown"
+            );
+
+
+        const selectedLanguage =
+            document.getElementById(
+                "selectedLanguage"
+            );
+
 
         languageButton.addEventListener(
             "click",
-            function () {
+            function (event) {
 
-                languageMenu.classList.toggle(
+                event.stopPropagation();
+
+                languageDropdown.classList.toggle(
                     "active"
                 );
 
             }
         );
 
-    }
+
+        document
+            .querySelectorAll(
+                ".language-dropdown button"
+            )
+            .forEach(
+                function (button) {
+
+                    button.addEventListener(
+                        "click",
+                        function () {
+
+                            const language =
+                                this.dataset.lang;
+
+                            selectedLanguage.textContent =
+                                language;
+
+                            languageDropdown.classList.remove(
+                                "active"
+                            );
+
+                        }
+                    );
+
+                }
+            );
 
 
-
-    document.querySelectorAll(
-        ".language-option"
-    ).forEach(function (button) {
-
-        button.addEventListener(
+        document.addEventListener(
             "click",
-            function () {
-
-                const language =
-                    button.dataset.language;
-
-
-                changeLanguage(
-                    language
-                );
-
-
-                languageMenu.classList.remove(
-                    "active"
-                );
-
-            }
-        );
-
-    });
-
-
-
-    function changeLanguage(
-        language
-    ) {
-
-        currentLanguage.textContent =
-            language.toUpperCase();
-
-
-        document.querySelectorAll(
-            "[data-" + language + "]"
-        ).forEach(function (element) {
-
-            const newText =
-                element.getAttribute(
-                    "data-" + language
-                );
-
-
-            if (newText) {
-
-                element.innerHTML =
-                    newText;
-
-            }
-
-        });
-
-
-        if (
-            language === "ar"
-        ) {
-
-            document.documentElement.dir =
-                "rtl";
-
-            document.body.style.direction =
-                "rtl";
-
-        }
-
-        else {
-
-            document.documentElement.dir =
-                "ltr";
-
-            document.body.style.direction =
-                "ltr";
-
-        }
-
-    }
-
-
-
-    /* =========================
-       HERO SLIDER
-    ========================= */
-
-    const slides =
-        document.querySelectorAll(
-            ".slide"
-        );
-
-
-    const slideNumber =
-        document.getElementById(
-            "slideNumber"
-        );
-
-
-    let currentSlide = 0;
-
-
-    function showSlide(
-        index
-    ) {
-
-        slides.forEach(
-            function (
-                slide,
-                slideIndex
-            ) {
-
-                slide.classList.remove(
-                    "active"
-                );
-
+            function (event) {
 
                 if (
-                    slideIndex === index
+                    !event.target.closest(
+                        ".language-selector"
+                    )
                 ) {
 
-                    slide.classList.add(
+                    languageDropdown.classList.remove(
                         "active"
                     );
 
@@ -254,552 +211,526 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
 
-        if (
-            slideNumber
+
+        /* =====================================
+           HERO SLIDER
+        ===================================== */
+
+        const slides =
+            document.querySelectorAll(
+                ".slider-slide"
+            );
+
+
+        const dotsContainer =
+            document.getElementById(
+                "sliderDots"
+            );
+
+
+        const currentSlideNumber =
+            document.getElementById(
+                "currentSlide"
+            );
+
+
+        let currentSlide = 0;
+
+
+        slides.forEach(
+            function (
+                slide,
+                index
+            ) {
+
+                const dot =
+                    document.createElement(
+                        "button"
+                    );
+
+                dot.className =
+                    "slider-dot";
+
+
+                if (
+                    index === 0
+                ) {
+
+                    dot.classList.add(
+                        "active"
+                    );
+
+                }
+
+
+                dot.addEventListener(
+                    "click",
+                    function () {
+
+                        showSlide(
+                            index
+                        );
+
+                    }
+                );
+
+
+                dotsContainer.appendChild(
+                    dot
+                );
+
+            }
+        );
+
+
+        const dots =
+            document.querySelectorAll(
+                ".slider-dot"
+            );
+
+
+        function showSlide(
+            index
         ) {
 
-            const number =
-                index + 1;
+            slides[
+                currentSlide
+            ].classList.remove(
+                "active"
+            );
 
 
-            slideNumber.textContent =
-                number
-                    .toString()
-                    .padStart(
-                        2,
-                        "0"
-                    );
+            dots[
+                currentSlide
+            ].classList.remove(
+                "active"
+            );
+
+
+            currentSlide =
+                index;
+
+
+            slides[
+                currentSlide
+            ].classList.add(
+                "active"
+            );
+
+
+            dots[
+                currentSlide
+            ].classList.add(
+                "active"
+            );
+
+
+            currentSlideNumber.textContent =
+                String(
+                    currentSlide + 1
+                ).padStart(
+                    2,
+                    "0"
+                );
 
         }
 
-    }
-
-
-    if (
-        slides.length > 1
-    ) {
 
         setInterval(
             function () {
 
-                currentSlide++;
+                let nextSlide =
+                    currentSlide + 1;
 
 
                 if (
-                    currentSlide >=
+                    nextSlide >=
                     slides.length
                 ) {
 
-                    currentSlide = 0;
+                    nextSlide = 0;
 
                 }
 
 
                 showSlide(
-                    currentSlide
+                    nextSlide
                 );
 
             },
-
-            2500
-        );
-
-    }
-
-
-
-    /* =========================
-       PRODUCT DATA
-    ========================= */
-
-    const productData = {
-
-        "1": {
-
-            image:
-                "images/1.jpeg",
-
-            number:
-                "01",
-
-            title:
-                "STONE BLOSSOM",
-
-            pattern:
-                "Floral",
-
-            color:
-                "Blue",
-
-            code:
-                "AB-001"
-
-        },
-
-
-        "2": {
-
-            image:
-                "images/2.jpeg",
-
-            number:
-                "02",
-
-            title:
-                "MIDNIGHT CRYSTAL",
-
-            pattern:
-                "Geometric",
-
-            color:
-                "Navy",
-
-            code:
-                "AB-002"
-
-        },
-
-
-        "3": {
-
-            image:
-                "images/3.jpeg",
-
-            number:
-                "03",
-
-            title:
-                "LUXE FLOW",
-
-            pattern:
-                "Abstract",
-
-            color:
-                "Silver",
-
-            code:
-                "AB-003"
-
-        },
-
-
-        "4": {
-
-            image:
-                "images/4.jpeg",
-
-            number:
-                "04",
-
-            title:
-                "MODERN GLITTER",
-
-            pattern:
-                "Modern",
-
-            color:
-                "Black",
-
-            code:
-                "AB-004"
-
-        },
-
-
-        "5": {
-
-            image:
-                "images/5.jpeg",
-
-            number:
-                "05",
-
-            title:
-                "ELEGANT SHINE",
-
-            pattern:
-                "Classic",
-
-            color:
-                "Gold",
-
-            code:
-                "AB-005"
-
-        },
-
-
-        "6": {
-
-            image:
-                "images/6.jpeg",
-
-            number:
-                "06",
-
-            title:
-                "URBAN SPARK",
-
-            pattern:
-                "Urban",
-
-            color:
-                "Grey",
-
-            code:
-                "AB-006"
-
-        },
-
-
-        "7": {
-
-            image:
-                "images/7.jpeg",
-
-            number:
-                "07",
-
-            title:
-                "CRYSTAL WAVE",
-
-            pattern:
-                "Wave",
-
-            color:
-                "White",
-
-            code:
-                "AB-007"
-
-        },
-
-
-        "8": {
-
-            image:
-                "images/8.jpeg",
-
-            number:
-                "08",
-
-            title:
-                "LUMINOUS ART",
-
-            pattern:
-                "Artistic",
-
-            color:
-                "Champagne",
-
-            code:
-                "AB-008"
-
-        },
-
-
-        "9": {
-
-            image:
-                "images/9.jpeg",
-
-            number:
-                "09",
-
-            title:
-                "SIGNATURE STONE",
-
-            pattern:
-                "Signature",
-
-            color:
-                "Black / Silver",
-
-            code:
-                "AB-009"
-
-        },
-
-
-        "10": {
-
-            image:
-                "images/10.jpeg",
-
-            number:
-                "10",
-
-            title:
-                "INFINITE BRILLIANCE",
-
-            pattern:
-                "Premium",
-
-            color:
-                "Multi Color",
-
-            code:
-                "AB-010"
-
-        }
-
-    };
-
-
-
-    /* =========================
-       PRODUCT MODAL
-    ========================= */
-
-    const productModal =
-        document.getElementById(
-            "productModal"
+            2800
         );
 
 
-    const modalOverlay =
-        document.getElementById(
-            "modalOverlay"
-        );
+
+        /* =====================================
+           PRODUCT MODAL
+        ===================================== */
+
+        const productCards =
+            document.querySelectorAll(
+                ".product-card"
+            );
 
 
-    const modalClose =
-        document.getElementById(
-            "modalClose"
-        );
+        const productModal =
+            document.getElementById(
+                "productModal"
+            );
 
 
-    const modalImage =
-        document.getElementById(
-            "modalImage"
-        );
+        const modalClose =
+            document.getElementById(
+                "modalClose"
+            );
 
 
-    const modalNumber =
-        document.getElementById(
-            "modalNumber"
-        );
+        const modalImage =
+            document.getElementById(
+                "modalImage"
+            );
 
 
-    const modalTitle =
-        document.getElementById(
-            "modalTitle"
-        );
+        const modalCode =
+            document.getElementById(
+                "modalCode"
+            );
 
 
-    const modalPattern =
-        document.getElementById(
-            "modalPattern"
-        );
+        const modalName =
+            document.getElementById(
+                "modalName"
+            );
 
 
-    const modalColor =
-        document.getElementById(
-            "modalColor"
-        );
+        const modalColor =
+            document.getElementById(
+                "modalColor"
+            );
 
 
-    const modalCode =
-        document.getElementById(
-            "modalCode"
-        );
+        const modalQuality =
+            document.getElementById(
+                "modalQuality"
+            );
 
 
-    function openProduct(
-        productId
-    ) {
-
-        const product =
-            productData[
-                productId
-            ];
+        const modalType =
+            document.getElementById(
+                "modalType"
+            );
 
 
-        if (
-            !product
+        const modalDescription =
+            document.getElementById(
+                "modalDescription"
+            );
+
+
+        let selectedProduct =
+            null;
+
+
+        function openProductModal(
+            card
         ) {
 
-            return;
+            selectedProduct =
+                card;
+
+
+            modalImage.src =
+                card.dataset.image;
+
+
+            modalImage.alt =
+                card.dataset.name;
+
+
+            modalCode.textContent =
+                card.dataset.code;
+
+
+            modalName.textContent =
+                card.dataset.name;
+
+
+            modalColor.textContent =
+                card.dataset.color;
+
+
+            modalQuality.textContent =
+                card.dataset.code;
+
+
+            modalType.textContent =
+                card.dataset.type;
+
+
+            modalDescription.textContent =
+                card.dataset.description;
+
+
+            productModal.classList.add(
+                "active"
+            );
+
+
+            document.body.classList.add(
+                "modal-open"
+            );
 
         }
 
 
-        modalImage.src =
-            product.image;
+        function closeProductModal() {
+
+            productModal.classList.remove(
+                "active"
+            );
 
 
-        modalNumber.textContent =
-            product.number;
+            document.body.classList.remove(
+                "modal-open"
+            );
+
+        }
 
 
-        modalTitle.textContent =
-            product.title;
+        productCards.forEach(
+            function (card) {
 
+                card.addEventListener(
+                    "click",
+                    function (
+                        event
+                    ) {
 
-        modalPattern.textContent =
-            product.pattern;
+                        event.preventDefault();
 
+                        openProductModal(
+                            card
+                        );
 
-        modalColor.textContent =
-            product.color;
-
-
-        modalCode.textContent =
-            product.code;
-
-
-        productModal.classList.add(
-            "active"
-        );
-
-
-        document.body.style.overflow =
-            "hidden";
-
-    }
-
-
-
-    function closeProduct() {
-
-        productModal.classList.remove(
-            "active"
-        );
-
-
-        document.body.style.overflow =
-            "";
-
-    }
-
-
-
-    document.querySelectorAll(
-        ".product-card"
-    ).forEach(function (
-        card
-    ) {
-
-        card.addEventListener(
-            "click",
-            function () {
-
-                const productId =
-                    card.dataset.product;
-
-
-                openProduct(
-                    productId
+                    }
                 );
 
             }
         );
 
-    });
-
-
-
-    if (
-        modalClose
-    ) {
 
         modalClose.addEventListener(
             "click",
-            closeProduct
+            closeProductModal
         );
 
-    }
 
-
-    if (
-        modalOverlay
-    ) {
-
-        modalOverlay.addEventListener(
+        productModal.addEventListener(
             "click",
-            closeProduct
-        );
-
-    }
-
-
-
-    /* =========================
-       MODAL CONTACT BUTTON
-    ========================= */
-
-    const modalContact =
-        document.getElementById(
-            "modalContact"
-        );
-
-
-    if (
-        modalContact
-    ) {
-
-        modalContact.addEventListener(
-            "click",
-            function () {
-
-                closeProduct();
-
-            }
-        );
-
-    }
-
-
-
-    /* =========================
-       ESC KEY
-    ========================= */
-
-    document.addEventListener(
-        "keydown",
-        function (
-            event
-        ) {
-
-            if (
-                event.key ===
-                "Escape"
+            function (
+                event
             ) {
 
-                closeProduct();
-
-                closeSideMenu();
-
                 if (
-                    languageMenu
+                    event.target.classList.contains(
+                        "modal-overlay"
+                    )
                 ) {
 
-                    languageMenu.classList.remove(
-                        "active"
-                    );
+                    closeProductModal();
 
                 }
 
             }
-
-        }
-    );
-
-
-
-    /* =========================
-       CONTACT FORM
-    ========================= */
-
-    const contactForm =
-        document.getElementById(
-            "contactForm"
         );
 
 
-    if (
-        contactForm
-    ) {
+        document.addEventListener(
+            "keydown",
+            function (
+                event
+            ) {
+
+                if (
+                    event.key ===
+                    "Escape"
+                ) {
+
+                    closeProductModal();
+
+                }
+
+            }
+        );
+
+
+
+        /* =====================================
+           INQUIRY SYSTEM
+        ===================================== */
+
+        const inquiryButton =
+            document.getElementById(
+                "inquiryButton"
+            );
+
+
+        const inquiryCount =
+            document.getElementById(
+                "inquiryCount"
+            );
+
+
+        const addInquiry =
+            document.getElementById(
+                "addInquiry"
+            );
+
+
+        let inquiryItems =
+            [];
+
+
+        addInquiry.addEventListener(
+            "click",
+            function () {
+
+                if (
+                    !selectedProduct
+                ) {
+
+                    return;
+
+                }
+
+
+                const productCode =
+                    selectedProduct.dataset.code;
+
+
+                const alreadyExists =
+                    inquiryItems.some(
+                        function (
+                            item
+                        ) {
+
+                            return (
+                                item.code ===
+                                productCode
+                            );
+
+                        }
+                    );
+
+
+                if (
+                    !alreadyExists
+                ) {
+
+                    inquiryItems.push(
+                        {
+
+                            name:
+                                selectedProduct.dataset.name,
+
+                            code:
+                                productCode,
+
+                            color:
+                                selectedProduct.dataset.color
+
+                        }
+                    );
+
+                }
+
+
+                inquiryCount.textContent =
+                    inquiryItems.length;
+
+
+                addInquiry.textContent =
+                    "ADDED TO INQUIRY ✓";
+
+
+                setTimeout(
+                    function () {
+
+                        addInquiry.innerHTML =
+                            `
+                            ADD TO INQUIRY
+                            <span>+</span>
+                            `;
+
+                    },
+                    1500
+                );
+
+            }
+        );
+
+
+        inquiryButton.addEventListener(
+            "click",
+            function () {
+
+                if (
+                    inquiryItems.length === 0
+                ) {
+
+                    alert(
+                        "Henüz teklif listenize ürün eklemediniz."
+                    );
+
+                    return;
+
+                }
+
+
+                let message =
+                    "SELECTED AB AYCAM DESIGNS:\\n\\n";
+
+
+                inquiryItems.forEach(
+                    function (
+                        item,
+                        index
+                    ) {
+
+                        message +=
+                            (
+                                index + 1
+                            ) +
+                            ". " +
+                            item.name +
+                            "\\n" +
+                            item.code +
+                            "\\n" +
+                            item.color +
+                            "\\n\\n";
+
+                    }
+                );
+
+
+                alert(
+                    message
+                );
+
+            }
+        );
+
+
+
+        /* =====================================
+           CONTACT FORM
+        ===================================== */
+
+        const contactForm =
+            document.getElementById(
+                "contactForm"
+            );
+
 
         contactForm.addEventListener(
             "submit",
@@ -821,43 +752,4 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
     }
-
-
-
-    /* =========================
-       CLOSE LANGUAGE ON OUTSIDE CLICK
-    ========================= */
-
-    document.addEventListener(
-        "click",
-        function (
-            event
-        ) {
-
-            if (
-                languageMenu &&
-                languageButton
-            ) {
-
-                if (
-                    !languageMenu.contains(
-                        event.target
-                    ) &&
-                    !languageButton.contains(
-                        event.target
-                    )
-                ) {
-
-                    languageMenu.classList.remove(
-                        "active"
-                    );
-
-                }
-
-            }
-
-        }
-    );
-
-
-});
+);
