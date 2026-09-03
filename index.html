@@ -2,262 +2,1439 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AbayCam - Doğaltaş & Mermer Koleksiyonu</title>
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AB AYCAM | Premium Rhinestone & Crystal</title>
+
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
 </head>
+
+
 <body>
 
-    <!-- Sol Yan Menü -->
-    <aside class="sidebar">
-        <div class="logo">
-            <h2>ABAYCAM</h2>
-            <span>STONE & MARBLE</span>
+
+<!-- ========================================================= -->
+<!-- MOBILE MENU BUTTON -->
+<!-- ========================================================= -->
+
+<button
+    class="mobile-menu-button"
+    id="mobileMenuButton"
+    aria-label="Menüyü Aç"
+>
+    ☰
+</button>
+
+
+
+<!-- ========================================================= -->
+<!-- LEFT SIDE MENU -->
+<!-- ========================================================= -->
+
+<aside class="sidebar" id="sidebar">
+
+
+    <!-- LOGO -->
+
+    <div class="sidebar-logo">
+
+        <div class="logo-main">
+            AB
+            <span>AYCAM</span>
         </div>
-        <nav class="nav-links">
-            <a href="#hero" class="active"><i class="fa-solid fa-house"></i> <span data-i18n="nav_home">Ana Sayfa</span></a>
-            <a href="#collection"><i class="fa-solid fa-layer-group"></i> <span data-i18n="nav_collection">Koleksiyon</span></a>
-            <a href="#contact"><i class="fa-solid fa-envelope"></i> <span data-i18n="nav_contact">İletişim</span></a>
-        </nav>
-        <div class="sidebar-footer">
-            <p>&copy; 2026 AbayCam</p>
-        </div>
-    </aside>
 
-    <!-- Ana İçerik Alanı -->
-    <main class="main-content">
-
-        <!-- Sağ Üst Dil Seçeneği -->
-        <div class="top-bar">
-            <div class="language-selector">
-                <i class="fa-solid fa-globe"></i>
-                <select id="langSelect" onchange="changeLanguage(this.value)">
-                    <option value="tr">Türkçe</option>
-                    <option value="ar">العامية المصرية (Mısır Arapçası)</option>
-                    <option value="en">English</option>
-                </select>
-            </div>
+        <div class="logo-subtitle">
+            CREATING BRILLIANCE
         </div>
 
-        <!-- Ana Ekran Slider (Hero) -->
-        <section id="hero" class="hero-slider">
-            <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('1.png');">
-                <div class="slide-content">
-                    <h1 data-i18n="slide1_title">Doğanın Zarafeti, Mimarinin Gücü</h1>
-                    <p data-i18n="slide1_desc">En nadide mermer ve doğaltaş koleksiyonları ile projelerinize değer katıyoruz.</p>
-                    <a href="#collection" class="btn" data-i18n="btn_explore">Koleksiyonu Keşfet</a>
-                </div>
-            </div>
-            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('2.png');">
-                <div class="slide-content">
-                    <h1 data-i18n="slide2_title">Eşsiz Dokular, Premium Kalite</h1>
-                    <p data-i18n="slide2_desc">Dünyanın en elit taş bloklarını doğrudan projelerinizle buluşturuyoruz.</p>
-                    <a href="#contact" class="btn" data-i18n="btn_quote">Teklif Alın</a>
-                </div>
-            </div>
-            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('3.png');">
-                <div class="slide-content">
-                    <h1 data-i18n="slide3_title">Mısır ve Dünya Pazarına Özel Çözümler</h1>
-                    <p data-i18n="slide3_desc">Uzman ekibimiz ve geniş lojistik ağımızla mimari projelerinizde yanınızdayız.</p>
-                    <a href="#collection" class="btn" data-i18n="btn_explore">Taşlarımızı İnceleyin</a>
-                </div>
-            </div>
-            
-            <button class="slider-btn prev" onclick="moveSlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
-            <button class="slider-btn next" onclick="moveSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
-        </section>
-
-        <!-- Koleksiyon / Taş Düzeni Bölümü (10 Taş) -->
-        <section id="collection" class="section">
-            <h2 class="section-title" data-i18n="title_collection">Doğaltaş & Mermer Koleksiyonumuz</h2>
-            <p class="section-subtitle" data-i18n="sub_collection">İncelemek istediğiniz taşın üzerine tıklayarak detaylı görsellerini görebilirsiniz.</p>
-
-            <div class="stone-grid">
-                <!-- Taş 1 -->
-                <div class="stone-card" onclick="openModal('stone1')">
-                    <div class="stone-img-container">
-                        <img src="1.png" alt="Taş 1">
-                        <span class="badge">N101</span>
-                    </div>
-                    <div class="stone-info">
-                        <h3>Premium Seri - Taş 1</h3>
-                        <p data-i18n="stone_desc_gen">Özel dokusu ve damar yapısıyla mimari projeler için ideal doğaltaş.</p>
-                        <button class="card-btn" data-i18n="btn_view_details">Detaylı Görseller <i class="fa-solid fa-arrow-right"></i></button>
-                    </div>
-                </div>
-
-                <!-- Taş 2 -->
-                <div class="stone-card" onclick="openModal('stone2')">
-                    <div class="stone-img-container">
-                        <img src="2.png" alt="Taş 2">
-                        <span class="badge">N102</span>
-                    </div>
-                    <div class="stone-info">
-                        <h3>Lüks Mermer - Taş 2</h3>
-                        <p data-i18n="stone_desc_gen">Özel dokusu ve damar yapısıyla mimari projeler için ideal doğaltaş.</p>
-                        <button class="card-btn" data-i18n="btn_view_details">Detaylı Görseller <i class="fa-solid fa-arrow-right"></i></button>
-                    </div>
-                </div>
-
-                <!-- Taş 3 -->
-                <div class="stone-card" onclick="openModal('stone3')">
-                    <div class="stone-img-container">
-                        <img src="3.png" alt="Taş 3">
-                        <span class="badge">N103</span>
-                    </div>
-                    <div class="stone-info">
-                        <h3>Modern Dokulu Seri - Taş 3</h3>
-                        <p data-i18n="stone_desc_gen">Özel dokusu ve damar yapısıyla mimari projeler için ideal doğaltaş.</p>
-                        <button class="card-btn" data-i18n="btn_view_details">Detaylı Görseller <i class="fa-solid fa-arrow-right"></i></button>
-                    </div>
-                </div>
-
-                <!-- Taş 4 -->
-                <div class="stone-card" onclick="openModal('stone4')">
-                    <div class="stone-img-container">
-                        <img src="4.png" alt="Taş 4">
-                        <span class="badge">N104</span>
-                    </div>
-                    <div class="stone-info">
-                        <h3>Seçkin Koleksiyon - Taş 4</h3>
-                        <p data-i18n="stone_desc_gen">Özel dokusu ve damar yapısıyla mimari projeler için ideal doğaltaş.</p>
-                        <button class="card-btn" data-i18n="btn_view_details">Detaylı Görseller <i class="fa-solid fa-arrow-right"></i></button>
-                    </div>
-                </div>
-
-                <!-- Taş 5 -->
-                <div class="stone-card" onclick="openModal('stone5')">
-                    <div class="stone-img-container">
-                        <img src="5.png" alt="Taş 5">
-                        <span class="badge">N105</span>
-                    </div>
-                    <div class="stone-info">
-                        <h3>Özel Tasarım Seri - Taş 5</h3>
-                        <p data-i18n="stone_desc_gen">Özel dokusu ve damar yapısıyla mimari projeler için ideal doğaltaş.</p>
-                        <button class="card-btn" data-i18n="btn_view_details">Detaylı Görseller <i class="fa-solid fa-arrow-right"></i></button>
-                    </div>
-                </div>
-
-                <!-- Taş 6 -->
-                <div class="stone-card" onclick="openModal('stone6')">
-                    <div class="stone-img-container">
-                        <img src="6.png" alt="Taş 6">
-                        <span class="badge">N106</span>
-                    </div>
-                    <div class="stone-info">
-                        <h3>Klasik Doğaltaş - Taş 6</h3>
-                        <p data-i18n="stone_desc_gen">Özel dokusu ve damar yapısıyla mimari projeler için ideal doğaltaş.</p>
-                        <button class="card-btn" data-i18n="btn_view_details">Detaylı Görseller <i class="fa-solid fa-arrow-right"></i></button>
-                    </div>
-                </div>
-
-                <!-- Taş 7 -->
-                <div class="stone-card" onclick="openModal('stone7')">
-                    <div class="stone-img-container">
-                        <img src="7.png" alt="Taş 7">
-                        <span class="badge">N107</span>
-                    </div>
-                    <div class="stone-info">
-                        <h3>Zarif Yapılı Seri - Taş 7</h3>
-                        <p data-i18n="stone_desc_gen">Özel dokusu ve damar yapısıyla mimari projeler için ideal doğaltaş.</p>
-                        <button class="card-btn" data-i18n="btn_view_details">Detaylı Görseller <i class="fa-solid fa-arrow-right"></i></button>
-                    </div>
-                </div>
-
-                <!-- Taş 8 -->
-                <div class="stone-card" onclick="openModal('stone8')">
-                    <div class="stone-img-container">
-                        <img src="8.png" alt="Taş 8">
-                        <span class="badge">N108</span>
-                    </div>
-                    <div class="stone-info">
-                        <h3>Estetik Mermer - Taş 8</h3>
-                        <p data-i18n="stone_desc_gen">Özel dokusu ve damar yapısıyla mimari projeler için ideal doğaltaş.</p>
-                        <button class="card-btn" data-i18n="btn_view_details">Detaylı Görseller <i class="fa-solid fa-arrow-right"></i></button>
-                    </div>
-                </div>
-
-                <!-- Taş 9 -->
-                <div class="stone-card" onclick="openModal('stone9')">
-                    <div class="stone-img-container">
-                        <img src="9.png" alt="Taş 9">
-                        <span class="badge">N109</span>
-                    </div>
-                    <div class="stone-info">
-                        <h3>Prestij Serisi - Taş 9</h3>
-                        <p data-i18n="stone_desc_gen">Özel dokusu ve damar yapısıyla mimari projeler için ideal doğaltaş.</p>
-                        <button class="card-btn" data-i18n="btn_view_details">Detaylı Görseller <i class="fa-solid fa-arrow-right"></i></button>
-                    </div>
-                </div>
-
-                <!-- Taş 10 -->
-                <div class="stone-card" onclick="openModal('stone10')">
-                    <div class="stone-img-container">
-                        <img src="10.png" alt="Taş 10">
-                        <span class="badge">N110</span>
-                    </div>
-                    <div class="stone-info">
-                        <h3>Siyah Gold Seri - Taş 10</h3>
-                        <p data-i18n="stone_desc_gen">Özel dokusu ve damar yapısıyla mimari projeler için ideal doğaltaş.</p>
-                        <button class="card-btn" data-i18n="btn_view_details">Detaylı Görseller <i class="fa-solid fa-arrow-right"></i></button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Alt Kısım / İletişim ve Konum -->
-        <footer id="contact" class="footer-section">
-            <div class="footer-container">
-                <div class="footer-info">
-                    <h2 data-i18n="contact_title">Bizimle İletişime Geçin</h2>
-                    <p data-i18n="contact_desc">Projeleriniz ve toplu mermer/taş siparişleriniz için 7/24 hizmetinizdeyiz.</p>
-                    
-                    <div class="contact-detail">
-                        <i class="fa-solid fa-phone"></i>
-                        <div>
-                            <strong>Telefon:</strong>
-                            <a href="tel:+201039812810">+20 103 981 2810</a>
-                        </div>
-                    </div>
-
-                    <div class="contact-detail">
-                        <i class="fa-solid fa-envelope"></i>
-                        <div>
-                            <strong>E-Mail:</strong>
-                            <a href="mailto:levent.aslan@abaycam.com">levent.aslan@abaycam.com</a>
-                        </div>
-                    </div>
-
-                    <div class="contact-detail">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <div>
-                            <strong>Konum:</strong>
-                            <a href="https://maps.app.goo.gl/fuM3JiKSK4K6LEa98" target="_blank" data-i18n="map_link">Haritada Görüntüle (Google Maps)</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="footer-map">
-                    <iframe src="https://maps.google.com/maps?q=30.0444,31.2357&z=15&output=embed" width="100%" height="250" style="border:0; border-radius:8px;" allowfullscreen="" loading="lazy"></iframe>
-                </div>
-            </div>
-        </footer>
-
-    </main>
-
-    <!-- Taş Detay Modalı -->
-    <div id="imageModal" class="modal">
-        <span class="close-modal" onclick="closeModal()">&times;</span>
-        <div class="modal-content">
-            <h3 id="modalTitle">Taş Detayı</h3>
-            <div class="modal-gallery">
-                <img id="modalImgMain" src="" alt="Ana Görsel">
-                <div class="modal-thumbnails" id="modalThumbnails"></div>
-            </div>
-        </div>
     </div>
 
-    <script src="script.js"></script>
+
+
+    <!-- MENU -->
+
+    <nav class="side-navigation">
+
+        <a href="#home" class="nav-link active">
+            <span>01</span>
+            <span data-i18n="home">ANA SAYFA</span>
+        </a>
+
+
+        <a href="#collection" class="nav-link">
+            <span>02</span>
+            <span data-i18n="collection">KOLEKSİYON</span>
+        </a>
+
+
+        <a href="#about" class="nav-link">
+            <span>03</span>
+            <span data-i18n="about">HAKKIMIZDA</span>
+        </a>
+
+
+        <a href="#applications" class="nav-link">
+            <span>04</span>
+            <span data-i18n="applications">UYGULAMALAR</span>
+        </a>
+
+
+        <a href="#contact" class="nav-link">
+            <span>05</span>
+            <span data-i18n="contact">İLETİŞİM</span>
+        </a>
+
+    </nav>
+
+
+
+    <!-- SIDEBAR FOOTER -->
+
+    <div class="sidebar-footer">
+
+        <p>
+            © 2026 AB AYCAM
+        </p>
+
+        <span>
+            Premium Rhinestone Solutions
+        </span>
+
+    </div>
+
+
+</aside>
+
+
+
+<!-- ========================================================= -->
+<!-- MAIN WEBSITE -->
+<!-- ========================================================= -->
+
+<main class="main-content">
+
+
+
+    <!-- ========================================================= -->
+    <!-- TOP BAR -->
+    <!-- ========================================================= -->
+
+    <header class="topbar">
+
+
+        <div class="topbar-left">
+
+            <div class="topbar-title">
+                PREMIUM RHINESTONE & TEXTILE EMBELLISHMENT
+            </div>
+
+        </div>
+
+
+
+        <!-- LANGUAGE SELECTOR -->
+
+        <div class="language-selector">
+
+            <button
+                class="language-button"
+                id="languageButton"
+            >
+
+                <span id="currentLanguage">
+                    TR
+                </span>
+
+                <span class="language-arrow">
+                    ▾
+                </span>
+
+            </button>
+
+
+
+            <div
+                class="language-dropdown"
+                id="languageDropdown"
+            >
+
+                <button
+                    class="language-option"
+                    data-language="tr"
+                >
+                    Türkçe
+                </button>
+
+
+                <button
+                    class="language-option"
+                    data-language="en"
+                >
+                    English
+                </button>
+
+
+                <button
+                    class="language-option"
+                    data-language="ar"
+                >
+                    العربية
+                </button>
+
+            </div>
+
+        </div>
+
+
+    </header>
+
+
+
+
+    <!-- ========================================================= -->
+    <!-- HOME / HERO -->
+    <!-- ========================================================= -->
+
+    <section
+        class="hero-section"
+        id="home"
+    >
+
+
+        <!-- SLIDER -->
+
+        <div
+            class="hero-slider"
+            id="heroSlider"
+        >
+
+
+            <!-- SLIDE 1 -->
+
+            <div
+                class="hero-slide active"
+                style="background-image: url('images/1.png');"
+            >
+
+                <div class="hero-overlay"></div>
+
+
+                <div class="hero-text">
+
+                    <span class="hero-small">
+                        PREMIUM HOTFIX COLLECTION
+                    </span>
+
+
+                    <h1>
+                        MAKE YOUR DESIGNS
+                        <br>
+                        <strong>SHINE.</strong>
+                    </h1>
+
+
+                    <p>
+                        Premium rhinestones and textile embellishment
+                        solutions designed to make every collection
+                        more valuable, more visible and unforgettable.
+                    </p>
+
+
+                    <a
+                        href="#collection"
+                        class="hero-button"
+                    >
+                        EXPLORE COLLECTION
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+
+            <!-- SLIDE 2 -->
+
+            <div
+                class="hero-slide"
+                style="background-image: url('images/2.png');"
+            >
+
+                <div class="hero-overlay"></div>
+
+
+                <div class="hero-text">
+
+                    <span class="hero-small">
+                        COLOR THAT ATTRACTS ATTENTION
+                    </span>
+
+
+                    <h1>
+                        BRILLIANCE
+                        <br>
+                        <strong>IN EVERY DETAIL.</strong>
+                    </h1>
+
+
+                    <p>
+                        Discover carefully selected colors,
+                        premium quality stones and powerful
+                        solutions for fashion and textile brands.
+                    </p>
+
+
+                    <a
+                        href="#collection"
+                        class="hero-button"
+                    >
+                        DISCOVER PRODUCTS
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+
+            <!-- SLIDE 3 -->
+
+            <div
+                class="hero-slide"
+                style="background-image: url('images/3.png');"
+            >
+
+                <div class="hero-overlay"></div>
+
+
+                <div class="hero-text">
+
+                    <span class="hero-small">
+                        HIGH QUALITY • STRONG IMPACT
+                    </span>
+
+
+                    <h1>
+                        TURN IDEAS
+                        <br>
+                        <strong>INTO BRILLIANCE.</strong>
+                    </h1>
+
+
+                    <p>
+                        From classic crystal colors to bold
+                        fashion tones, AB AYCAM brings your
+                        creative ideas to life.
+                    </p>
+
+
+                    <a
+                        href="#contact"
+                        class="hero-button"
+                    >
+                        REQUEST INFORMATION
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+
+
+        <!-- SLIDER CONTROLS -->
+
+        <div class="slider-controls">
+
+
+            <button
+                class="slider-arrow"
+                id="prevSlide"
+            >
+                ←
+            </button>
+
+
+            <div class="slider-dots">
+
+                <button
+                    class="slider-dot active"
+                    data-slide="0"
+                ></button>
+
+
+                <button
+                    class="slider-dot"
+                    data-slide="1"
+                ></button>
+
+
+                <button
+                    class="slider-dot"
+                    data-slide="2"
+                ></button>
+
+            </div>
+
+
+            <button
+                class="slider-arrow"
+                id="nextSlide"
+            >
+                →
+            </button>
+
+
+        </div>
+
+
+    </section>
+
+
+
+
+
+    <!-- ========================================================= -->
+    <!-- INTRODUCTION -->
+    <!-- ========================================================= -->
+
+    <section class="intro-section">
+
+
+        <div class="section-label">
+            AB AYCAM COLLECTION
+        </div>
+
+
+        <h2>
+            SMALL DETAILS.
+            <br>
+            <span>POWERFUL IMPACT.</span>
+        </h2>
+
+
+        <p>
+            We supply premium rhinestones and decorative solutions
+            for textile, fashion and apparel applications.
+            Our goal is simple: help brands create products
+            that attract attention.
+        </p>
+
+
+    </section>
+
+
+
+
+
+    <!-- ========================================================= -->
+    <!-- COLLECTION -->
+    <!-- ========================================================= -->
+
+    <section
+        class="collection-section"
+        id="collection"
+    >
+
+
+        <div class="section-header">
+
+
+            <div>
+
+                <span class="section-label">
+                    PRODUCT COLLECTION
+                </span>
+
+
+                <h2>
+                    FIND YOUR PERFECT
+                    <span>BRILLIANCE.</span>
+                </h2>
+
+            </div>
+
+
+            <p>
+                Select a stone to explore its color,
+                quality and product details.
+            </p>
+
+
+        </div>
+
+
+
+
+        <!-- PRODUCT GRID -->
+
+        <div
+            class="product-grid"
+            id="productGrid"
+        >
+
+
+
+            <!-- PRODUCT 1 -->
+
+            <article
+                class="product-card"
+                data-id="1"
+                data-name="Silver Hotfix Rhinestones"
+                data-code="AB-SLV-001"
+                data-color="Silver"
+                data-image="images/1.png"
+            >
+
+                <div class="product-image">
+
+                    <img
+                        src="images/1.png"
+                        alt="Silver Hotfix Rhinestones"
+                    >
+
+                    <div class="product-hover">
+                        VIEW DETAILS
+                    </div>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <span>
+                        01 · AB-SLV-001
+                    </span>
+
+                    <h3>
+                        SILVER HOTFIX
+                    </h3>
+
+                    <p>
+                        Crystal Silver
+                    </p>
+
+                </div>
+
+            </article>
+
+
+
+
+            <!-- PRODUCT 2 -->
+
+            <article
+                class="product-card"
+                data-id="2"
+                data-name="Light Siam Hotfix Rhinestones"
+                data-code="AB-LS-002"
+                data-color="Light Siam Red"
+                data-image="images/2.png"
+            >
+
+                <div class="product-image">
+
+                    <img
+                        src="images/2.png"
+                        alt="Light Siam Hotfix Rhinestones"
+                    >
+
+                    <div class="product-hover">
+                        VIEW DETAILS
+                    </div>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <span>
+                        02 · AB-LS-002
+                    </span>
+
+                    <h3>
+                        LIGHT SIAM
+                    </h3>
+
+                    <p>
+                        Light Siam Red
+                    </p>
+
+                </div>
+
+            </article>
+
+
+
+
+            <!-- PRODUCT 3 -->
+
+            <article
+                class="product-card"
+                data-id="3"
+                data-name="Siam Hotfix Rhinestones"
+                data-code="AB-SM-003"
+                data-color="Siam Red"
+                data-image="images/3.png"
+            >
+
+                <div class="product-image">
+
+                    <img
+                        src="images/3.png"
+                        alt="Siam Hotfix Rhinestones"
+                    >
+
+                    <div class="product-hover">
+                        VIEW DETAILS
+                    </div>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <span>
+                        03 · AB-SM-003
+                    </span>
+
+                    <h3>
+                        SIAM RED
+                    </h3>
+
+                    <p>
+                        Deep Red Crystal
+                    </p>
+
+                </div>
+
+            </article>
+
+
+
+
+            <!-- PRODUCT 4 -->
+
+            <article
+                class="product-card"
+                data-id="4"
+                data-name="Rose Hotfix Rhinestones"
+                data-code="AB-RS-004"
+                data-color="Rose Pink"
+                data-image="images/4.png"
+            >
+
+                <div class="product-image">
+
+                    <img
+                        src="images/4.png"
+                        alt="Rose Hotfix Rhinestones"
+                    >
+
+                    <div class="product-hover">
+                        VIEW DETAILS
+                    </div>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <span>
+                        04 · AB-RS-004
+                    </span>
+
+                    <h3>
+                        ROSE PINK
+                    </h3>
+
+                    <p>
+                        Soft Pink Crystal
+                    </p>
+
+                </div>
+
+            </article>
+
+
+
+
+            <!-- PRODUCT 5 -->
+
+            <article
+                class="product-card"
+                data-id="5"
+                data-name="Golden Hotfix Rhinestones"
+                data-code="AB-GD-005"
+                data-color="Golden"
+                data-image="images/5.png"
+            >
+
+                <div class="product-image">
+
+                    <img
+                        src="images/5.png"
+                        alt="Golden Hotfix Rhinestones"
+                    >
+
+                    <div class="product-hover">
+                        VIEW DETAILS
+                    </div>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <span>
+                        05 · AB-GD-005
+                    </span>
+
+                    <h3>
+                        GOLDEN SHINE
+                    </h3>
+
+                    <p>
+                        Golden Crystal
+                    </p>
+
+                </div>
+
+            </article>
+
+
+
+
+            <!-- PRODUCT 6 -->
+
+            <article
+                class="product-card"
+                data-id="6"
+                data-name="Aurora Hotfix Rhinestones"
+                data-code="AB-AR-006"
+                data-color="Aurora"
+                data-image="images/6.png"
+            >
+
+                <div class="product-image">
+
+                    <img
+                        src="images/6.png"
+                        alt="Aurora Hotfix Rhinestones"
+                    >
+
+                    <div class="product-hover">
+                        VIEW DETAILS
+                    </div>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <span>
+                        06 · AB-AR-006
+                    </span>
+
+                    <h3>
+                        AURORA AB
+                    </h3>
+
+                    <p>
+                        Multicolor Reflection
+                    </p>
+
+                </div>
+
+            </article>
+
+
+
+
+            <!-- PRODUCT 7 -->
+
+            <article
+                class="product-card"
+                data-id="7"
+                data-name="Emerald Hotfix Rhinestones"
+                data-code="AB-EM-007"
+                data-color="Emerald Green"
+                data-image="images/7.png"
+            >
+
+                <div class="product-image">
+
+                    <img
+                        src="images/7.png"
+                        alt="Emerald Hotfix Rhinestones"
+                    >
+
+                    <div class="product-hover">
+                        VIEW DETAILS
+                    </div>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <span>
+                        07 · AB-EM-007
+                    </span>
+
+                    <h3>
+                        EMERALD
+                    </h3>
+
+                    <p>
+                        Deep Green Crystal
+                    </p>
+
+                </div>
+
+            </article>
+
+
+
+
+            <!-- PRODUCT 8 -->
+
+            <article
+                class="product-card"
+                data-id="8"
+                data-name="Sapphire Hotfix Rhinestones"
+                data-code="AB-SP-008"
+                data-color="Sapphire Blue"
+                data-image="images/8.png"
+            >
+
+                <div class="product-image">
+
+                    <img
+                        src="images/8.png"
+                        alt="Sapphire Hotfix Rhinestones"
+                    >
+
+                    <div class="product-hover">
+                        VIEW DETAILS
+                    </div>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <span>
+                        08 · AB-SP-008
+                    </span>
+
+                    <h3>
+                        SAPPHIRE BLUE
+                    </h3>
+
+                    <p>
+                        Premium Blue Crystal
+                    </p>
+
+                </div>
+
+            </article>
+
+
+
+
+            <!-- PRODUCT 9 -->
+
+            <article
+                class="product-card"
+                data-id="9"
+                data-name="Black Diamond Rhinestones"
+                data-code="AB-BD-009"
+                data-color="Black Diamond"
+                data-image="images/9.png"
+            >
+
+                <div class="product-image">
+
+                    <img
+                        src="images/9.png"
+                        alt="Black Diamond Rhinestones"
+                    >
+
+                    <div class="product-hover">
+                        VIEW DETAILS
+                    </div>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <span>
+                        09 · AB-BD-009
+                    </span>
+
+                    <h3>
+                        BLACK DIAMOND
+                    </h3>
+
+                    <p>
+                        Luxury Dark Crystal
+                    </p>
+
+                </div>
+
+            </article>
+
+
+
+
+            <!-- PRODUCT 10 -->
+
+            <article
+                class="product-card"
+                data-id="10"
+                data-name="Premium Crystal Collection"
+                data-code="AB-PR-010"
+                data-color="Premium Mix"
+                data-image="images/10.png"
+            >
+
+                <div class="product-image">
+
+                    <img
+                        src="images/10.png"
+                        alt="Premium Crystal Collection"
+                    >
+
+                    <div class="product-hover">
+                        VIEW DETAILS
+                    </div>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <span>
+                        10 · AB-PR-010
+                    </span>
+
+                    <h3>
+                        PREMIUM MIX
+                    </h3>
+
+                    <p>
+                        Selected Crystal Collection
+                    </p>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+
+    </section>
+
+
+
+
+
+    <!-- ========================================================= -->
+    <!-- ABOUT -->
+    <!-- ========================================================= -->
+
+    <section
+        class="about-section"
+        id="about"
+    >
+
+
+        <div class="about-content">
+
+
+            <div class="about-text">
+
+                <span class="section-label">
+                    WHY AB AYCAM
+                </span>
+
+
+                <h2>
+                    DESIGNED TO
+                    <span>STAND OUT.</span>
+                </h2>
+
+
+                <p>
+                    Fashion is built on details. A single rhinestone
+                    can transform an ordinary garment into a product
+                    that captures attention.
+                </p>
+
+
+                <p>
+                    AB AYCAM provides premium rhinestone and
+                    embellishment solutions for brands, manufacturers
+                    and textile professionals who want more impact
+                    from their collections.
+                </p>
+
+
+            </div>
+
+
+
+            <div class="about-features">
+
+
+                <div class="feature-box">
+
+                    <span>01</span>
+
+                    <h3>
+                        PREMIUM QUALITY
+                    </h3>
+
+                    <p>
+                        Carefully selected materials
+                        and consistent product quality.
+                    </p>
+
+                </div>
+
+
+
+                <div class="feature-box">
+
+                    <span>02</span>
+
+                    <h3>
+                        COLOR VARIETY
+                    </h3>
+
+                    <p>
+                        A wide range of colors
+                        for different collections.
+                    </p>
+
+                </div>
+
+
+
+                <div class="feature-box">
+
+                    <span>03</span>
+
+                    <h3>
+                        TEXTILE FOCUSED
+                    </h3>
+
+                    <p>
+                        Solutions developed for
+                        fashion and garment applications.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+
+
+    <!-- ========================================================= -->
+    <!-- APPLICATIONS -->
+    <!-- ========================================================= -->
+
+    <section
+        class="applications-section"
+        id="applications"
+    >
+
+
+        <span class="section-label">
+            APPLICATION AREAS
+        </span>
+
+
+        <h2>
+            WHERE BRILLIANCE
+            <span>MEETS DESIGN.</span>
+        </h2>
+
+
+
+        <div class="applications-grid">
+
+
+            <div class="application-item">
+
+                <span>01</span>
+
+                <h3>
+                    FASHION
+                </h3>
+
+                <p>
+                    Dresses, shirts, denim,
+                    outerwear and collections.
+                </p>
+
+            </div>
+
+
+
+            <div class="application-item">
+
+                <span>02</span>
+
+                <h3>
+                    EVENING WEAR
+                </h3>
+
+                <p>
+                    Premium decorative details
+                    for special collections.
+                </p>
+
+            </div>
+
+
+
+            <div class="application-item">
+
+                <span>03</span>
+
+                <h3>
+                    DENIM
+                </h3>
+
+                <p>
+                    Strong visual impact
+                    for modern denim designs.
+                </p>
+
+            </div>
+
+
+
+            <div class="application-item">
+
+                <span>04</span>
+
+                <h3>
+                    CUSTOM DESIGN
+                </h3>
+
+                <p>
+                    Creative solutions
+                    developed around your idea.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+
+
+    <!-- ========================================================= -->
+    <!-- CONTACT -->
+    <!-- ========================================================= -->
+
+    <section
+        class="contact-section"
+        id="contact"
+    >
+
+
+        <div class="contact-left">
+
+
+            <span class="section-label">
+                LET'S WORK TOGETHER
+            </span>
+
+
+            <h2>
+                READY TO MAKE
+                <span>YOUR DESIGNS SHINE?</span>
+            </h2>
+
+
+            <p>
+                Contact us for product information,
+                color options and business enquiries.
+            </p>
+
+
+        </div>
+
+
+
+        <div class="contact-details">
+
+
+            <div class="contact-item">
+
+                <span>
+                    PHONE / WHATSAPP
+                </span>
+
+                <a href="tel:+201039812810">
+                    +20 103 981 2810
+                </a>
+
+            </div>
+
+
+
+            <div class="contact-item">
+
+                <span>
+                    EMAIL
+                </span>
+
+                <a href="mailto:levent.aslan@abaycam.com">
+                    levent.aslan@abaycam.com
+                </a>
+
+            </div>
+
+
+
+            <div class="contact-item">
+
+                <span>
+                    LOCATION
+                </span>
+
+                <a
+                    href="https://maps.app.goo.gl/fuM3JiKSK4K6LEa98"
+                    target="_blank"
+                >
+                    VIEW OUR LOCATION →
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+
+
+    <!-- ========================================================= -->
+    <!-- FOOTER -->
+    <!-- ========================================================= -->
+
+    <footer class="footer">
+
+
+        <div>
+
+            <strong>
+                AB AYCAM
+            </strong>
+
+            <span>
+                Premium Rhinestone & Textile Embellishment
+            </span>
+
+        </div>
+
+
+        <p>
+            © 2026 AB AYCAM. ALL RIGHTS RESERVED.
+        </p>
+
+
+    </footer>
+
+
+
+</main>
+
+
+
+
+
+<!-- ========================================================= -->
+<!-- PRODUCT MODAL -->
+<!-- ========================================================= -->
+
+<div
+    class="product-modal"
+    id="productModal"
+>
+
+
+    <div class="modal-overlay" id="modalOverlay"></div>
+
+
+
+    <div class="modal-content">
+
+
+        <button
+            class="modal-close"
+            id="modalClose"
+        >
+            ×
+        </button>
+
+
+
+        <div class="modal-image">
+
+            <img
+                id="modalProductImage"
+                src=""
+                alt=""
+            >
+
+        </div>
+
+
+
+        <div class="modal-details">
+
+
+            <span
+                class="modal-code"
+                id="modalProductCode"
+            >
+            </span>
+
+
+            <h2
+                id="modalProductName"
+            >
+            </h2>
+
+
+            <div class="modal-line"></div>
+
+
+
+            <div class="modal-info-row">
+
+                <span>
+                    COLOR
+                </span>
+
+                <strong
+                    id="modalProductColor"
+                ></strong>
+
+            </div>
+
+
+
+            <div class="modal-info-row">
+
+                <span>
+                    QUALITY
+                </span>
+
+                <strong>
+                    PREMIUM HOTFIX
+                </strong>
+
+            </div>
+
+
+
+            <div class="modal-info-row">
+
+                <span>
+                    APPLICATION
+                </span>
+
+                <strong>
+                    TEXTILE / FASHION
+                </strong>
+
+            </div>
+
+
+
+            <p class="modal-description">
+
+                Premium quality rhinestone solution
+                developed for textile and fashion
+                applications. Contact AB AYCAM for
+                detailed specifications and availability.
+
+            </p>
+
+
+
+            <a
+                href="mailto:levent.aslan@abaycam.com"
+                class="modal-button"
+            >
+                REQUEST INFORMATION
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+<script src="script.js"></script>
+
+
 </body>
 </html>
