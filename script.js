@@ -1,159 +1,654 @@
-// --- 1. SLIDER MANTIĞI ---
+/* ========================================================= */
+/* ELEMENTS */
+/* ========================================================= */
+
+const slides = document.querySelectorAll(".hero-slide");
+
+const dots = document.querySelectorAll(".slider-dot");
+
+const nextButton = document.getElementById("nextSlide");
+
+const prevButton = document.getElementById("prevSlide");
+
+
+
+/* ========================================================= */
+/* SLIDER */
+/* ========================================================= */
+
 let currentSlide = 0;
-const slides = document.querySelectorAll('.slide');
+
+let sliderInterval;
+
+
 
 function showSlide(index) {
-    slides.forEach((slide, i) => {
-        slide.classList.remove('active');
-        if (i === index) {
-            slide.classList.add('active');
-        }
+
+
+    slides.forEach(function (slide) {
+
+        slide.classList.remove("active");
+
     });
+
+
+    dots.forEach(function (dot) {
+
+        dot.classList.remove("active");
+
+    });
+
+
+
+    slides[index].classList.add("active");
+
+    dots[index].classList.add("active");
+
+
+    currentSlide = index;
+
 }
 
-function moveSlide(direction) {
-    currentSlide += direction;
-    if (currentSlide >= slides.length) currentSlide = 0;
-    if (currentSlide < 0) currentSlide = slides.length - 1;
+
+
+function nextSlide() {
+
+
+    currentSlide++;
+
+
+    if (currentSlide >= slides.length) {
+
+        currentSlide = 0;
+
+    }
+
+
     showSlide(currentSlide);
+
 }
 
-setInterval(() => {
-    moveSlide(1);
-}, 5000);
 
 
-// --- 2. ÇOKLU DİL DESTEĞİ (TR, Mısır Arapçası, EN) ---
-const translations = {
-    tr: {
-        nav_home: "Ana Sayfa",
-        nav_collection: "Koleksiyon",
-        nav_contact: "İletişim",
-        slide1_title: "Doğanın Zarafeti, Mimarinin Gücü",
-        slide1_desc: "En nadide mermer ve doğaltaş koleksiyonları ile projelerinize değer katıyoruz.",
-        btn_explore: "Koleksiyonu Keşfet",
-        slide2_title: "Eşsiz Dokular, Premium Kalite",
-        slide2_desc: "Dünyanın en elit taş bloklarını doğrudan projelerinizle buluşturuyoruz.",
-        btn_quote: "Teklif Alın",
-        slide3_title: "Mısır ve Dünya Pazarına Özel Çözümler",
-        slide3_desc: "Uzman ekibimiz ve geniş lojistik ağımızla mimari projelerinizde yanınızdayız.",
-        title_collection: "Doğaltaş & Mermer Koleksiyonumuz",
-        sub_collection: "İncelemek istediğiniz taşın üzerine tıklayarak detaylı görsellerini görebilirsiniz.",
-        stone_desc_gen: "Özel dokusu ve damar yapısıyla mimari projeler için ideal doğaltaş.",
-        btn_view_details: "Detaylı Görseller",
-        contact_title: "Bizimle İletişime Geçin",
-        contact_desc: "Projeleriniz ve toplu mermer/taş siparişleriniz için 7/24 hizmetinizdeyiz.",
-        map_link: "Haritada Görüntüle (Google Maps)"
-    },
-    ar: {
-        nav_home: "الصفحة الرئيسية",
-        nav_collection: "المجموعات",
-        nav_contact: "تواصل معنا",
-        slide1_title: "أناقة الطبيعة وقوة المعمار",
-        slide1_desc: "بنضيف قيمة لمشاريعك بأرقى تشكيلات الرخام والحجر الطبيعي.",
-        btn_explore: "اكتشف المجموعة",
-        slide2_title: "جودة بريميوم وتصاميم ملهاش مثيل",
-        slide2_desc: "ابنجيبلك أحسن وأفخم كتل الأحجار في العالم لحد عندك.",
-        btn_quote: "احصل على عرض سعر",
-        slide3_title: "حلول خاصة للسوق المصري والعالمي",
-        slide3_desc: "معاك في كل خطوة في مشروعك بفريق خبرة وشبكة توريد قوية.",
-        title_collection: "تشكيلة الأحجار والرخام",
-        sub_collection: "اضغط على أي حجر علشان تشوف الصور والتفاصيل الكاملة.",
-        stone_desc_gen: "حجر طبيعي مثالي للمشاريع المعمارية بلمسة فريدة.",
-        btn_view_details: "عرض الصور بالتفصيل",
-        contact_title: "تواصل معانا دلوقتي",
-        contact_desc: "جاهزين لخدمتك ومتابعة طلبات الرخام في أي وقت.",
-        map_link: "شوف المكان على الخريطة (Google Maps)"
-    },
-    en: {
-        nav_home: "Home",
-        nav_collection: "Collection",
-        nav_contact: "Contact",
-        slide1_title: "Elegance of Nature, Power of Architecture",
-        slide1_desc: "Adding value to your projects with the finest marble and natural stone collections.",
-        btn_explore: "Explore Collection",
-        slide2_title: "Unique Textures, Premium Quality",
-        slide2_desc: "Bringing the world's most elite stone blocks directly to your projects.",
-        btn_quote: "Get a Quote",
-        slide3_title: "Custom Solutions for Egyptian & Global Markets",
-        slide3_desc: "We stand by your architectural projects with expert teams and strong logistics.",
-        title_collection: "Our Stone & Marble Collection",
-        sub_collection: "Click on any stone to view its detailed images and variations.",
-        stone_desc_gen: "Ideal natural stone for architectural projects with its unique texture.",
-        btn_view_details: "Detailed Images",
-        contact_title: "Contact Us",
-        contact_desc: "Available 24/7 for your architectural projects and bulk marble orders.",
-        map_link: "View on Map (Google Maps)"
+function previousSlide() {
+
+
+    currentSlide--;
+
+
+    if (currentSlide < 0) {
+
+        currentSlide = slides.length - 1;
+
     }
-};
 
-function changeLanguage(lang) {
-    const elements = document.querySelectorAll('[data-i18n]');
-    elements.forEach(element => {
-        const key = element.getAttribute('data-i18n');
-        if (translations[lang] && translations[lang][key]) {
-            element.textContent = translations[lang][key];
+
+    showSlide(currentSlide);
+
+}
+
+
+
+/* ========================================================= */
+/* AUTO SLIDER */
+/* ========================================================= */
+
+function startSlider() {
+
+
+    sliderInterval = setInterval(function () {
+
+        nextSlide();
+
+    }, 4500);
+
+}
+
+
+
+function resetSlider() {
+
+
+    clearInterval(sliderInterval);
+
+    startSlider();
+
+}
+
+
+
+/* ========================================================= */
+/* BUTTON EVENTS */
+/* ========================================================= */
+
+if (nextButton) {
+
+
+    nextButton.addEventListener("click", function () {
+
+        nextSlide();
+
+        resetSlider();
+
+    });
+
+}
+
+
+
+if (prevButton) {
+
+
+    prevButton.addEventListener("click", function () {
+
+        previousSlide();
+
+        resetSlider();
+
+    });
+
+}
+
+
+
+/* ========================================================= */
+/* DOT EVENTS */
+/* ========================================================= */
+
+dots.forEach(function (dot, index) {
+
+
+    dot.addEventListener("click", function () {
+
+        showSlide(index);
+
+        resetSlider();
+
+    });
+
+
+});
+
+
+
+startSlider();
+
+
+
+
+
+/* ========================================================= */
+/* LANGUAGE MENU */
+/* ========================================================= */
+
+const languageButton =
+    document.getElementById("languageButton");
+
+
+const languageDropdown =
+    document.getElementById("languageDropdown");
+
+
+const currentLanguage =
+    document.getElementById("currentLanguage");
+
+
+const languageOptions =
+    document.querySelectorAll(".language-option");
+
+
+
+languageButton.addEventListener("click", function () {
+
+
+    languageDropdown.classList.toggle("show");
+
+
+});
+
+
+
+languageOptions.forEach(function (option) {
+
+
+    option.addEventListener("click", function () {
+
+
+        const selectedLanguage =
+            option.dataset.language;
+
+
+
+        if (selectedLanguage === "tr") {
+
+            currentLanguage.textContent = "TR";
+
         }
+
+
+        if (selectedLanguage === "en") {
+
+            currentLanguage.textContent = "EN";
+
+        }
+
+
+        if (selectedLanguage === "ar") {
+
+            currentLanguage.textContent = "AR";
+
+        }
+
+
+
+        languageDropdown.classList.remove("show");
+
+
+        changeLanguage(selectedLanguage);
+
+
     });
 
-    if (lang === 'ar') {
-        document.body.style.direction = 'rtl';
-    } else {
-        document.body.style.direction = 'ltr';
+
+});
+
+
+
+/* ========================================================= */
+/* TRANSLATIONS */
+/* ========================================================= */
+
+const translations = {
+
+
+    tr: {
+
+        home: "ANA SAYFA",
+
+        collection: "KOLEKSİYON",
+
+        about: "HAKKIMIZDA",
+
+        applications: "UYGULAMALAR",
+
+        contact: "İLETİŞİM"
+
+    },
+
+
+    en: {
+
+        home: "HOME",
+
+        collection: "COLLECTION",
+
+        about: "ABOUT US",
+
+        applications: "APPLICATIONS",
+
+        contact: "CONTACT"
+
+    },
+
+
+    ar: {
+
+        home: "الرئيسية",
+
+        collection: "المجموعة",
+
+        about: "من نحن",
+
+        applications: "الاستخدامات",
+
+        contact: "اتصل بنا"
+
     }
-}
 
 
-// --- 3. 10 TAŞ İÇİN DİNAMİK MODAL VE GALERİ ---
-const stoneData = {
-    stone1: { title: "Premium Seri - Taş 1", images: ["1.png", "2.png", "3.png"] },
-    stone2: { title: "Lüks Mermer - Taş 2", images: ["2.png", "3.png", "4.png"] },
-    stone3: { title: "Modern Dokulu Seri - Taş 3", images: ["3.png", "4.png", "5.png"] },
-    stone4: { title: "Seçkin Koleksiyon - Taş 4", images: ["4.png", "5.png", "6.png"] },
-    stone5: { title: "Özel Tasarım Seri - Taş 5", images: ["5.png", "6.png", "7.png"] },
-    stone6: { title: "Klasik Doğaltaş - Taş 6", images: ["6.png", "7.png", "8.png"] },
-    stone7: { title: "Zarif Yapılı Seri - Taş 7", images: ["7.png", "8.png", "9.png"] },
-    stone8: { title: "Estetik Mermer - Taş 8", images: ["8.png", "9.png", "10.png"] },
-    stone9: { title: "Prestij Serisi - Taş 9", images: ["9.png", "10.png", "1.png"] },
-    stone10: { title: "Siyah Gold Seri - Taş 10", images: ["10.png", "1.png", "2.png"] }
 };
 
-function openModal(stoneKey) {
-    const modal = document.getElementById('imageModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalImgMain = document.getElementById('modalImgMain');
-    const modalThumbnails = document.getElementById('modalThumbnails');
 
-    const data = stoneData[stoneKey];
-    if (!data) return;
 
-    modalTitle.textContent = data.title;
-    modalImgMain.src = data.images[0];
-    
-    modalThumbnails.innerHTML = '';
-    data.images.forEach((imgSrc, index) => {
-        const thumb = document.createElement('img');
-        thumb.src = imgSrc;
-        if (index === 0) thumb.classList.add('active-thumb');
-        
-        thumb.onclick = function() {
-            modalImgMain.src = imgSrc;
-            document.querySelectorAll('.modal-thumbnails img').forEach(img => img.classList.remove('active-thumb'));
-            thumb.classList.add('active-thumb');
-        };
-        modalThumbnails.appendChild(thumb);
+function changeLanguage(language) {
+
+
+    const elements =
+        document.querySelectorAll("[data-i18n]");
+
+
+
+    elements.forEach(function (element) {
+
+
+        const key =
+            element.dataset.i18n;
+
+
+
+        if (
+            translations[language]
+            &&
+            translations[language][key]
+        ) {
+
+            element.textContent =
+                translations[language][key];
+
+        }
+
+
     });
 
-    modal.style.display = 'flex';
+
+
+    if (language === "ar") {
+
+        document.body.dir = "rtl";
+
+    } else {
+
+        document.body.dir = "ltr";
+
+    }
+
+
 }
+
+
+
+
+
+/* ========================================================= */
+/* CLOSE LANGUAGE MENU */
+/* ========================================================= */
+
+document.addEventListener("click", function (event) {
+
+
+    if (
+        !languageButton.contains(event.target)
+        &&
+        !languageDropdown.contains(event.target)
+    ) {
+
+        languageDropdown.classList.remove("show");
+
+    }
+
+
+});
+
+
+
+
+
+/* ========================================================= */
+/* PRODUCT MODAL */
+/* ========================================================= */
+
+const productCards =
+    document.querySelectorAll(".product-card");
+
+
+const productModal =
+    document.getElementById("productModal");
+
+
+const modalOverlay =
+    document.getElementById("modalOverlay");
+
+
+const modalClose =
+    document.getElementById("modalClose");
+
+
+const modalProductImage =
+    document.getElementById("modalProductImage");
+
+
+const modalProductCode =
+    document.getElementById("modalProductCode");
+
+
+const modalProductName =
+    document.getElementById("modalProductName");
+
+
+const modalProductColor =
+    document.getElementById("modalProductColor");
+
+
+
+productCards.forEach(function (card) {
+
+
+    card.addEventListener("click", function () {
+
+
+        const image =
+            card.dataset.image;
+
+
+        const name =
+            card.dataset.name;
+
+
+        const code =
+            card.dataset.code;
+
+
+        const color =
+            card.dataset.color;
+
+
+
+        modalProductImage.src =
+            image;
+
+
+        modalProductImage.alt =
+            name;
+
+
+        modalProductName.textContent =
+            name;
+
+
+        modalProductCode.textContent =
+            code;
+
+
+        modalProductColor.textContent =
+            color;
+
+
+
+        productModal.classList.add("show");
+
+
+        document.body.style.overflow =
+            "hidden";
+
+
+    });
+
+
+});
+
+
+
+
+
+/* ========================================================= */
+/* CLOSE MODAL */
+/* ========================================================= */
 
 function closeModal() {
-    document.getElementById('imageModal').style.display = 'none';
+
+
+    productModal.classList.remove("show");
+
+
+    document.body.style.overflow =
+        "auto";
+
+
 }
 
-window.onclick = function(event) {
-    const modal = document.getElementById('imageModal');
-    if (event.target === modal) {
+
+
+modalClose.addEventListener("click", closeModal);
+
+
+modalOverlay.addEventListener("click", closeModal);
+
+
+
+document.addEventListener("keydown", function (event) {
+
+
+    if (event.key === "Escape") {
+
         closeModal();
+
     }
-};
+
+
+});
+
+
+
+
+
+/* ========================================================= */
+/* MOBILE MENU */
+/* ========================================================= */
+
+const mobileMenuButton =
+    document.getElementById("mobileMenuButton");
+
+
+const sidebar =
+    document.getElementById("sidebar");
+
+
+
+mobileMenuButton.addEventListener("click", function () {
+
+
+    sidebar.classList.toggle("open");
+
+
+});
+
+
+
+/* ========================================================= */
+/* MOBILE MENU CLOSE AFTER CLICK */
+/* ========================================================= */
+
+const navigationLinks =
+    document.querySelectorAll(".nav-link");
+
+
+navigationLinks.forEach(function (link) {
+
+
+    link.addEventListener("click", function () {
+
+
+        if (
+            window.innerWidth <= 768
+        ) {
+
+            sidebar.classList.remove("open");
+
+        }
+
+
+    });
+
+
+});
+
+
+
+
+
+/* ========================================================= */
+/* ACTIVE MENU ON SCROLL */
+/* ========================================================= */
+
+const sections =
+    document.querySelectorAll(
+        "section[id]"
+    );
+
+
+
+window.addEventListener(
+    "scroll",
+    function () {
+
+
+        let current = "";
+
+
+
+        sections.forEach(function (section) {
+
+
+            const sectionTop =
+                section.offsetTop - 150;
+
+
+            const sectionHeight =
+                section.offsetHeight;
+
+
+
+            if (
+                window.scrollY >= sectionTop
+                &&
+                window.scrollY <
+                sectionTop + sectionHeight
+            ) {
+
+                current =
+                    section.getAttribute("id");
+
+            }
+
+
+        });
+
+
+
+        navigationLinks.forEach(
+            function (link) {
+
+
+                link.classList.remove(
+                    "active"
+                );
+
+
+                if (
+                    link.getAttribute("href")
+                    === "#" + current
+                ) {
+
+                    link.classList.add(
+                        "active"
+                    );
+
+                }
+
+
+            }
+        );
+
+
+    }
+);
